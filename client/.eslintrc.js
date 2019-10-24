@@ -6,12 +6,10 @@ module.exports = {
   extends: [
     'standard',
     'plugin:jest/recommended',
-    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended'
   ],
   plugins: [
     'jest',
-    '@typescript-eslint',
     'react'
   ],
   parser: '@typescript-eslint/parser',
@@ -21,7 +19,6 @@ module.exports = {
     }
   },
   "rules": {
-    "@typescript-eslint/no-var-requires": "off",
     "react/jsx-filename-extension": "off"
   }
 }

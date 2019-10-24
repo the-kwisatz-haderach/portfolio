@@ -15,7 +15,7 @@ module.exports = {
     historyApiFallback: true
   },
   entry: {
-    client: path.resolve('client', 'src', 'index.tsx')
+    client: path.resolve('client', 'src', 'index.js')
   },
   output: {
     path: path.resolve('client', 'build'),
@@ -24,8 +24,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: ['ts-loader', 'babel-loader'],
+        test: /\.jsx?$/,
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
@@ -40,7 +40,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js', '.jsx', '.tsx']
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new CleanWebpackPlugin(),
