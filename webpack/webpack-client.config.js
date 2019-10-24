@@ -6,6 +6,7 @@ module.exports = {
   target: 'web',
   mode: 'development',
   devtool: 'source-map',
+  watch: true,
   devServer: {
     contentBase: path.resolve('client', 'public'),
     compress: true,
@@ -34,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
