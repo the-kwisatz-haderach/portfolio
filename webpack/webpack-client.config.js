@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'source-map',
   watch: true,
   devServer: {
-    contentBase: path.resolve('client', 'public'),
+    contentBase: path.resolve('client', 'src'),
     compress: true,
     port: 3000,
     hot: true,
@@ -32,6 +32,13 @@ module.exports = {
         test: /\.js?$/,
         loader: ['source-map-loader'],
         enforce: 'pre'
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          outputPath: path.join('assets', 'images')
+        }
       },
       {
         test: /\.s?css$/,
