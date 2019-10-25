@@ -58,14 +58,6 @@ const DoorFrontRight = styled(Door)`
   }
 `
 
-// const Plank = styled.div`
-//   flex: 1;
-//   background-image: url('https://www.hipsthetic.com/wp-content/uploads/2017/12/timber-wall-texture-pattern.jpeg');
-//   background-size: cover;
-//   background-repeat: repeat;
-//   border: 2px solid #564104;
-// `
-
 const Landing = () => {
   return (
     <DoorScene>
