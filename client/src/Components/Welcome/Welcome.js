@@ -11,11 +11,13 @@ import {
 import { greenishBlue, warningRed } from '../../styles/variables'
 import '../../assets/images/black-texture.png'
 import WarningSign from '../WarningSign'
+import LoginForm from '../LoginForm'
 import { Absolute } from '../../styles/Position'
 import { Rotate } from '../../styles/Transform'
 
 const Welcome = () => {
   const [isHovered, setIsHovered] = useState(false)
+  const [isUnlocked, setIsUnlocked] = useState(false)
 
   const handleHover = () => {
     if (isHovered) setIsHovered(false)
@@ -61,16 +63,19 @@ const Welcome = () => {
       </LeftSide>
       <RightSide
         className="side"
-        color={isHovered ? greenishBlue : warningRed}
+        color={isUnlocked ? greenishBlue : warningRed}
       >
+        <Absolute top="45%" right="20%" style={{ zIndex: 5 }}>
+          <LoginForm />
+        </Absolute>
         <CenterBlob
-          color={isHovered ? greenishBlue : warningRed}
+          color={isUnlocked ? greenishBlue : warningRed}
         >
           <CenterLightContainer>
             <CenterLight
               onMouseEnter={handleHover}
               onMouseLeave={handleHover}
-              color={isHovered ? greenishBlue : warningRed}
+              color={isUnlocked ? greenishBlue : warningRed}
               onClick={handleClick}
             />
           </CenterLightContainer>

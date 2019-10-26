@@ -112,7 +112,7 @@ export const CenterLight = styled.div`
   left: calc(50% - 25);
   width: 150px;
   height: 50px;
-  background-image: linear-gradient(110deg, ${greenishBlue}, #000000, #777777, #000000);
+  background-image: linear-gradient(110deg, ${(props) => props.color}, #000000, #777777, #000000);
   z-index: 5;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
