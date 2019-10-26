@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { greenishBlue } from '../../styles/variables'
 import {
   slideLeft,
   slideRight,
   pulseOpacity,
   pulseOpacityLess
-} from '../styles/keyframes'
-import { greenishBlue, warningRed } from '../styles/variables'
-import '../assets/images/black-texture.png'
+} from '../../styles/keyframes'
 
-const Container = styled.div`
+export const Container = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -21,27 +19,37 @@ const Container = styled.div`
     z-index: 5;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(to bottom, #000000a8, transparent, #000000a8)
+    background-image: linear-gradient(to bottom, #000000, transparent, #000000)
   }
 `
 
-const Side = styled.div`
+export const Side = styled.div`
   width: 50vw;
   height: 100vh;
   position: absolute;
   background-image: url('./assets/images/black-texture.png');
   background-size: contain;
   background-repeat: repeat;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(0.38, 0.13, 0.57, 0.75);
+  animation-duration: 5s;
 `
 
-const LeftSide = styled(Side)`
+export const LeftSide = styled(Side)`
   left: 0;
   border-right: 5px solid black;
   outline: 1px solid #232323;
-  /* animation: ${slideLeft} 5s cubic-bezier(0.38, 0.13, 0.57, 0.75) infinite; */
+  @keyframes slideLeft {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
 `
 
-const RightSide = styled(Side)`
+export const RightSide = styled(Side)`
   right: 0;
   border-left: 5px solid black;
   outline: 1px solid #232323;
@@ -49,16 +57,22 @@ const RightSide = styled(Side)`
     content: '';
     transform-origin: center;
     position: absolute;
-    right: 3px;
-    box-shadow: 0px 0px 13px 2px ${(props) => props.color};
+    box-shadow: -4px 0px 13px 2px ${(props) => props.color};
     width: 100%;
     height: 100%;
     animation: ${pulseOpacityLess} 2s ease-in-out 0.5s infinite;
   }
-  /* animation: ${slideRight} 5s cubic-bezier(0.38, 0.13, 0.57, 0.75) infinite; */
+  @keyframes slideRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(125%);
+    }
+  }
 `
 
-const CenterBlob = styled.div`
+export const CenterBlob = styled.div`
   position: absolute;
   top: calc(50% - 100px);
   left: -100px;
@@ -80,7 +94,7 @@ const CenterBlob = styled.div`
   }
 `
 
-const CenterLightContainer = styled.div`
+export const CenterLightContainer = styled.div`
   position: absolute;
   top: calc(50% - 25px);
   left: calc(50% - 25px);
@@ -91,7 +105,7 @@ const CenterLightContainer = styled.div`
   overflow: hidden;
 `
 
-const CenterLight = styled.div`
+export const CenterLight = styled.div`
   position: absolute;
   top: calc(50% - 25px);
   left: calc(50% - 25);
@@ -100,47 +114,9 @@ const CenterLight = styled.div`
   background-image: linear-gradient(110deg, ${greenishBlue}, #000000, #777777, #000000);
   z-index: 5;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   transform: translateX(-50px);
   &:hover {
     transform: translateX(0);
   }
 `
-
-const Welcome = () => {
-  const [isHovered, setIsHovered] = useState(false)
-
-  const handleHover = (e) => {
-    if (isHovered) {
-      setIsHovered(false)
-    }
-    if (!isHovered) {
-      setIsHovered(true)
-    }
-  }
-
-  useEffect(() => {
-    const initialOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = initialOverflow }
-  }, [])
-
-  return (
-    <Container>
-      <LeftSide />
-      <RightSide color={isHovered ? greenishBlue : warningRed}>
-        <CenterBlob color={isHovered ? greenishBlue : warningRed}>
-          <CenterLightContainer>
-            <CenterLight
-              onMouseEnter={handleHover}
-              onMouseLeave={handleHover}
-              color={isHovered ? greenishBlue : warningRed}
-            />
-          </CenterLightContainer>
-        </CenterBlob>
-      </RightSide>
-    </Container>
-  )
-}
-
-export default Welcome
