@@ -45,7 +45,7 @@ const Welcome = () => {
       <LeftSide className="side">
         <Absolute top="10%" right="-10px">
           <Rotate angle="-12">
-            <WarningSign title="warning" />
+            <WarningSign title="warning!" />
           </Rotate>
         </Absolute>
         <Absolute top="68%" left="-5px">
@@ -54,7 +54,7 @@ const Welcome = () => {
               title="danger"
               color="red"
             >
-              Keep out.
+              Keep out!
             </WarningSign>
           </Rotate>
         </Absolute>

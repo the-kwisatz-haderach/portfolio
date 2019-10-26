@@ -6,7 +6,7 @@ const Container = styled.div`
   font-weight: bold;
   text-transform: uppercase;
   padding: 15px 25px;
-  border-radius: 10px;
+  border-radius: ${props => props.color === 'red' ? '2' : '10'}px;
   background-image:
     linear-gradient(to bottom, ${props => props.color === 'red' ? '#ed462fe6,#ed462fbd' : '#ffe500db,#f7e632e6'}),
     url('http://2.bp.blogspot.com/-LmJzgd-qT9Q/UFwYiaxcTcI/AAAAAAAACOw/vjXLznPSNeA/s1600/Tileable+eroded+scratch+metal+texture+background+07.jpg');
@@ -16,6 +16,16 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-flow: ${props => props.color === 'red' ? 'row' : 'column'};
+  &:before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: ${props => props.color === 'red' ? '0' : '3'}px;
+    width: ${props => props.color === 'red' ? '97' : '94'}%;
+    height: ${props => props.color === 'red' ? '90' : '94'}%;
+    border: 2px solid ${props => props.color === 'red' ? 'white' : 'black'};
+    border-radius: ${props => props.color === 'red' ? '2px' : '6px'};
+  }
 `
 const MessageContainer = styled.div`
   display: inline-flex;
@@ -38,7 +48,7 @@ const WarningText = styled.p`
   font-weight: 400;
   margin-top: ${props => props.margin ? '12' : '0'}px;
   margin-bottom: 0;
-  font-size: 0.7em;
+  font-size: 0.8em;
 `
 
 const WarningIcon = styled.i`

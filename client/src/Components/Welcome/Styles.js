@@ -39,6 +39,7 @@ export const LeftSide = styled(Side)`
   left: 0;
   border-right: 5px solid black;
   outline: 1px solid #232323;
+  overflow: hidden;
   @keyframes slideLeft {
     from {
       transform: translateX(0);
