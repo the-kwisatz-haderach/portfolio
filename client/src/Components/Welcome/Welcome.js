@@ -24,7 +24,12 @@ const Welcome = () => {
     if (!isHovered) setIsHovered(true)
   }
 
+  const unlockDoor = () => {
+    setIsUnlocked(true)
+  }
+
   const handleClick = () => {
+    if (!isUnlocked) return
     const hide = (e) => {
       e.target.style.display = 'none'
       e.target.removeEventListener('animationend', hide)
@@ -66,7 +71,9 @@ const Welcome = () => {
         color={isUnlocked ? greenishBlue : warningRed}
       >
         <Absolute top="45%" right="20%" style={{ zIndex: 5 }}>
-          <LoginForm />
+          <LoginForm
+            submitHandler={unlockDoor}
+          />
         </Absolute>
         <CenterBlob
           color={isUnlocked ? greenishBlue : warningRed}

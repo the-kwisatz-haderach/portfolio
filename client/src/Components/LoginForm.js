@@ -34,11 +34,20 @@ const StyledInput = styled.input`
     box-shadow: inset 3px 3px 12px 7px #e7ff0085;
   }
   &:focus {
-    background-color: #a9b348e6;
+    background-color: #858c45;
   }
   &::placeholder {
     color: #f1ff85;
     text-shadow: 1px 1px 4px white;
+  }
+  &:disabled {
+    transition: none;
+    background-color: #4cb167;
+    box-shadow: inset 3px 3px 12px 7px #e7ff0085;
+    color: white;
+    text-shadow: 1px 1px 4px white;
+    outline: none;
+    cursor: auto;
   }
   @keyframes shiftLeft {
     from {
@@ -52,16 +61,23 @@ const StyledInput = styled.input`
 
 const SubmitButton = styled.button`
   transform: translateX(90px);
+  outline: none;
   animation-timing-function: linear;
   animation-duration: 3s;
   animation-iteration-count: 1;
-  padding: 10px 20px;
-  font-size: 34px;
+  padding: 10px 13px 10px 16px;
+  font-size: 18px;
+  font-family: Helvetica, arial, sans-serif;
+  font-weight: 100;
+  height: 50px;
+  position: relative;
+  bottom: 4px;
   text-transform: uppercase;
   cursor: pointer;
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 16px 16px 0;
   border: none;
   color: white;
+  letter-spacing: 2px;
   background-image: linear-gradient(95deg, #053317, #2baf4dab);
   @keyframes shiftRight {
     from {
@@ -79,17 +95,24 @@ const LoginForm = ({ submitHandler }) => {
     submitHandler()
   }
 
-  const checkInputLength = ({ target }) => {
-    const inputValue = target.value
-    target.value = inputValue
-      .replace(inputValue, stringReplacer('admin', inputValue))
+  const handleInput = ({ target }) => {
+    target.value = target.value
+      .replace(target.value, stringReplacer('admin', target.value))
 
     if (target.value.length >= target.maxLength) {
       target.disabled = true
-      const input = document.getElementById('form-input')
-      const button = document.getElementById('form-button')
-      input.style.translateX = ''
-      button.style.translateX = ''
+      const input = target
+      const button = input.previousElementSibling
+      const setNewInputPosition = (e) => {
+        e.target.style.transform = 'translateX(-100px)'
+        e.target.removeEventListener('animationend', setNewInputPosition)
+      }
+      const setNewButtonPosition = (e) => {
+        e.target.style.transform = 'translateX(170px)'
+        e.target.removeEventListener('animationend', setNewButtonPosition)
+      }
+      input.addEventListener('animationend', setNewInputPosition)
+      button.addEventListener('animationend', setNewButtonPosition)
       input.style.animationName = 'shiftLeft'
       button.style.animationName = 'shiftRight'
     }
@@ -98,18 +121,16 @@ const LoginForm = ({ submitHandler }) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
       <SubmitButton
-        id="form-button"
         type="submit"
       >
-        Enter
+        Unlock
       </SubmitButton>
       <StyledInput
-        id="form-input"
         type="text"
         size={9}
         maxLength="5"
         placeholder="Pass"
-        onChange={checkInputLength}
+        onChange={handleInput}
         autoComplete="off"
       />
     </StyledForm>
