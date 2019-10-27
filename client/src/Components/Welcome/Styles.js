@@ -52,10 +52,10 @@ export const RightSide = styled(Side)`
     content: '';
     transform-origin: center;
     position: absolute;
-    box-shadow: -4px 0px 13px 2px ${(props) => props.color};
+    box-shadow: -4px 0px ${(props) => props.isWarning ? '15px 4px red' : `13px 2px ${props.color}`};
     width: 100%;
     height: 100%;
-    animation: ${pulseOpacityLess} 2s ease-in-out 0.5s infinite;
+    animation: ${pulseOpacityLess} ${props => props.isWarning ? '0.3s' : '2s'} ease-in-out 0.5s infinite;
   }
   @keyframes slideRight {
     from {
@@ -82,10 +82,10 @@ export const CenterBlob = styled.div`
     transform-origin: center;
     position: absolute;
     border-radius: 50%;
-    box-shadow: 1px 1px 16px 5px ${(props) => props.color};
+    box-shadow: 1px 1px ${(props) => props.isWarning ? '20px 7px red' : `16px 5px ${props.color}`};
     width: 100%;
     height: 100%;
-    animation: ${pulseOpacity} 2s ease-in-out 0.3s infinite;
+    animation: ${pulseOpacity} ${props => props.isWarning ? '0.3s' : '2s'} ease-in-out 0.3s infinite;
   }
 `
 

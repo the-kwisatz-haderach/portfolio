@@ -72,7 +72,7 @@ const ControlPanel = ({
     >
       <ScreenMessage>
         {isWarning
-          ? 'Access denied. Password required.'
+          ? 'Incorrect Password. Access denied.'
           : message}
       </ScreenMessage>
     </ScreenSurface>

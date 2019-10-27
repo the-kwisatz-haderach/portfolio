@@ -86,6 +86,7 @@ const Welcome = () => {
       <RightSide
         className="side"
         color={isUnlocked ? greenishBlue : warningRed}
+        isWarning={isWarning}
       >
         <Absolute top="35%" right="15%" style={{ zIndex: 5 }}>
           <PasswordContainer>
@@ -107,6 +108,7 @@ const Welcome = () => {
         </Absolute>
         <CenterBlob
           color={isUnlocked ? greenishBlue : warningRed}
+          isWarning={isWarning}
         >
           <CenterLightContainer>
             <CenterLight
