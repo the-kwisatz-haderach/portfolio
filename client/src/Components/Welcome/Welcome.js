@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import freezeScroll from '../../utils/DOM-manipulation/freezeScroll'
 import {
   Container,
@@ -6,7 +7,8 @@ import {
   RightSide,
   CenterBlob,
   CenterLightContainer,
-  CenterLight
+  CenterLight,
+  ButtonIcon
 } from './Styles'
 import { greenishBlue, warningRed } from '../../styles/variables'
 import '../../assets/images/black-texture.png'
@@ -16,9 +18,16 @@ import ControlPanel from '../ControlPanel'
 import { Absolute } from '../../styles/Position'
 import { Rotate } from '../../styles/Transform'
 
+const PasswordContainer = styled.div`
+  > :first-child {
+    margin-bottom: 20px;
+  }
+`
+
 const Welcome = () => {
   const [isHovered, setIsHovered] = useState(false)
   const [isUnlocked, setIsUnlocked] = useState(false)
+  const [isWarning, setIsWarning] = useState(false)
 
   const handleHover = () => {
     if (isHovered) setIsHovered(false)
@@ -30,7 +39,14 @@ const Welcome = () => {
   }
 
   const handleClick = () => {
-    if (!isUnlocked) return
+    if (!isUnlocked) {
+      clearTimeout(warningTimeout)
+      setIsWarning(true)
+      let warningTimeout = setTimeout(() => {
+        setIsWarning(false)
+      }, 3000)
+      return
+    }
     const hide = (e) => {
       e.target.style.display = 'none'
       e.target.removeEventListener('animationend', hide)
@@ -62,7 +78,7 @@ const Welcome = () => {
               title="danger"
               color="red"
             >
-              Keep out!
+              Keep out
             </WarningSign>
           </Rotate>
         </Absolute>
@@ -71,13 +87,23 @@ const Welcome = () => {
         className="side"
         color={isUnlocked ? greenishBlue : warningRed}
       >
-        <Absolute top="33%" right="34%" style={{ zIndex: 5 }}>
-          <ControlPanel />
-        </Absolute>
-        <Absolute top="45%" right="20%" style={{ zIndex: 5 }}>
-          <LoginForm
-            submitHandler={unlockDoor}
-          />
+        <Absolute top="35%" right="15%" style={{ zIndex: 5 }}>
+          <PasswordContainer>
+            <ControlPanel
+              isActivated={isUnlocked}
+              isWarning={isWarning}
+            >
+              {isUnlocked
+                ? 'Access granted. Press button to proceed.'
+                : 'Welcome. Please enter password below for access.'}
+            </ControlPanel>
+            <LoginForm
+              submitHandler={unlockDoor}
+              password="Hello, world"
+              isActivated={isUnlocked}
+              isWarning={isWarning}
+            />
+          </PasswordContainer>
         </Absolute>
         <CenterBlob
           color={isUnlocked ? greenishBlue : warningRed}
@@ -88,7 +114,9 @@ const Welcome = () => {
               onMouseLeave={handleHover}
               color={isUnlocked ? greenishBlue : warningRed}
               onClick={handleClick}
-            />
+            >
+              <ButtonIcon className={`fas fa-${isUnlocked ? 'laugh' : 'ban'}`} />
+            </CenterLight>
           </CenterLightContainer>
         </CenterBlob>
       </RightSide>

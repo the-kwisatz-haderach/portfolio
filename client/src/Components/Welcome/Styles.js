@@ -1,11 +1,5 @@
 import styled from 'styled-components'
-import { greenishBlue } from '../../styles/variables'
-import {
-  slideLeft,
-  slideRight,
-  pulseOpacity,
-  pulseOpacityLess
-} from '../../styles/keyframes'
+import { pulseOpacity, pulseOpacityLess } from '../../styles/keyframes'
 
 export const Container = styled.div`
   position: absolute;
@@ -120,4 +114,11 @@ export const CenterLight = styled.div`
   &:hover {
     transform: translateX(0);
   }
+`
+
+export const ButtonIcon = styled.i`
+  color: white;
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  font-size: 1.6em;
 `
