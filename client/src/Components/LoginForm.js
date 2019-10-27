@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import stringReplacer from '../utils/stringReplacer'
 
 const StyledForm = styled.form`
   font-size: 34px;
@@ -72,9 +73,19 @@ const SubmitButton = styled.button`
   }
 `
 
-const LoginForm = () => {
-  const checkInputLength = (e) => {
-    if (e.target.value.length >= e.target.maxLength) {
+const LoginForm = ({ submitHandler }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    submitHandler()
+  }
+
+  const checkInputLength = ({ target }) => {
+    const inputValue = target.value
+    target.value = inputValue
+      .replace(inputValue, stringReplacer('admin', inputValue))
+
+    if (target.value.length >= target.maxLength) {
+      target.disabled = true
       const input = document.getElementById('form-input')
       const button = document.getElementById('form-button')
       input.style.translateX = ''
@@ -85,7 +96,7 @@ const LoginForm = () => {
   }
 
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit}>
       <SubmitButton
         id="form-button"
         type="submit"
@@ -99,6 +110,7 @@ const LoginForm = () => {
         maxLength="5"
         placeholder="Pass"
         onChange={checkInputLength}
+        autoComplete="off"
       />
     </StyledForm>
   )
