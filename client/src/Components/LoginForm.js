@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { greenishBlue } from '../styles/variables'
 
 const StyledForm = styled.form`
   font-size: 34px;
@@ -11,6 +10,10 @@ const StyledForm = styled.form`
 `
 
 const StyledInput = styled.input`
+  transform: translateX(-60px);
+  animation-timing-function: linear;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
   cursor: pointer;
   color: #f1ff85;
   text-transform: inherit;
@@ -36,9 +39,21 @@ const StyledInput = styled.input`
     color: #f1ff85;
     text-shadow: 1px 1px 4px white;
   }
+  @keyframes shiftLeft {
+    from {
+      transform: translateX(-60px);
+    }
+    to {
+      transform: translateX(-100px);
+    }
+  }
 `
 
 const SubmitButton = styled.button`
+  transform: translateX(90px);
+  animation-timing-function: linear;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
   padding: 10px 20px;
   font-size: 34px;
   text-transform: uppercase;
@@ -47,18 +62,44 @@ const SubmitButton = styled.button`
   border: none;
   color: white;
   background-image: linear-gradient(95deg, #053317, #2baf4dab);
+  @keyframes shiftRight {
+    from {
+      transform: translateX(90px);
+    }
+    to {
+      transform: translateX(170px);
+    }
+  }
 `
 
 const LoginForm = () => {
+  const checkInputLength = (e) => {
+    if (e.target.value.length >= e.target.maxLength) {
+      const input = document.getElementById('form-input')
+      const button = document.getElementById('form-button')
+      input.style.translateX = ''
+      button.style.translateX = ''
+      input.style.animationName = 'shiftLeft'
+      button.style.animationName = 'shiftRight'
+    }
+  }
+
   return (
     <StyledForm>
+      <SubmitButton
+        id="form-button"
+        type="submit"
+      >
+        Enter
+      </SubmitButton>
       <StyledInput
+        id="form-input"
         type="text"
         size={9}
         maxLength="5"
         placeholder="Pass"
+        onChange={checkInputLength}
       />
-      <SubmitButton type="submit">Enter</SubmitButton>
     </StyledForm>
   )
 }
