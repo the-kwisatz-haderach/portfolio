@@ -12,6 +12,7 @@ import { greenishBlue, warningRed } from '../../styles/variables'
 import '../../assets/images/black-texture.png'
 import WarningSign from '../WarningSign'
 import LoginForm from '../LoginForm'
+import ControlPanel from '../ControlPanel'
 import { Absolute } from '../../styles/Position'
 import { Rotate } from '../../styles/Transform'
 
@@ -70,6 +71,9 @@ const Welcome = () => {
         className="side"
         color={isUnlocked ? greenishBlue : warningRed}
       >
+        <Absolute top="33%" right="34%" style={{ zIndex: 5 }}>
+          <ControlPanel />
+        </Absolute>
         <Absolute top="45%" right="20%" style={{ zIndex: 5 }}>
           <LoginForm
             submitHandler={unlockDoor}
