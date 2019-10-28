@@ -60,7 +60,7 @@ const ControlPanel = ({
         const newMessage = charArray.slice(0, i)
         i += 1
         setMessage(newMessage)
-      }, 120)
+      }, 100)
     }
     return () => { clearInterval(addCharacters) }
   }, [children])

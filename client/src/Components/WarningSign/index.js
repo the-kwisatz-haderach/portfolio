@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import './style.scss'
 
 const Container = styled.div`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -60,7 +62,11 @@ const defTitle = 'default title'
 const defChildren = ''
 const defColor = 'yellow'
 
-const WarningSign = ({ title = defTitle, children = defChildren, color = defColor }) => {
+const WarningSign = ({
+  title = defTitle,
+  children = defChildren,
+  color = defColor
+}) => {
   const iconClass = color === 'red' ? 'fa-skull-crossbones' : 'fa-exclamation-triangle'
   return (
     <Container color={color}>
@@ -75,6 +81,12 @@ const WarningSign = ({ title = defTitle, children = defChildren, color = defColo
       </MessageContainer>
     </Container>
   )
+}
+
+WarningSign.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.string,
+  color: PropTypes.string
 }
 
 export default WarningSign

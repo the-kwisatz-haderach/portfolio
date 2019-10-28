@@ -15,8 +15,7 @@ import '../../assets/images/black-texture.png'
 import WarningSign from '../WarningSign'
 import LoginForm from '../LoginForm'
 import ControlPanel from '../ControlPanel'
-import { Absolute } from '../../styles/Position'
-import { Rotate } from '../../styles/Transform'
+import SmokeContainer from '../SmokeContainer'
 
 const PasswordContainer = styled.div`
   > :first-child {
@@ -28,6 +27,7 @@ const Welcome = () => {
   const [isHovered, setIsHovered] = useState(false)
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [isWarning, setIsWarning] = useState(false)
+  const [isOpened, setIsOpened] = useState(false)
 
   const handleHover = () => {
     if (isHovered) setIsHovered(false)
@@ -49,6 +49,7 @@ const Welcome = () => {
     }
     const hide = (e) => {
       e.target.style.display = 'none'
+      setIsOpened(true)
       e.target.removeEventListener('animationend', hide)
     }
     const sides = document.querySelectorAll('.side')
@@ -66,36 +67,35 @@ const Welcome = () => {
 
   return (
     <Container>
-      <LeftSide className="side">
-        <Absolute top="10%" right="-10px">
-          <Rotate angle="-12">
+      {isOpened
+        ? <SmokeContainer />
+        : (
+      <>
+        <LeftSide className="side">
+          <div id="warning-top">
             <WarningSign title="warning!" />
-          </Rotate>
-        </Absolute>
-        <Absolute top="68%" left="-5px">
-          <Rotate angle="2">
+          </div>
+          <div id="warning-bottom">
             <WarningSign
               title="danger"
               color="red"
             >
               Keep out
             </WarningSign>
-          </Rotate>
-        </Absolute>
-      </LeftSide>
-      <RightSide
-        className="side"
-        color={isUnlocked ? greenishBlue : warningRed}
-        isWarning={isWarning}
-      >
-        <Absolute top="35%" right="15%" style={{ zIndex: 5 }}>
-          <PasswordContainer>
+          </div>
+        </LeftSide>
+        <RightSide
+          className="side"
+          color={isUnlocked ? greenishBlue : warningRed}
+          isWarning={isWarning}
+        >
+          <PasswordContainer id="password-container">
             <ControlPanel
               isActivated={isUnlocked}
               isWarning={isWarning}
             >
               {isUnlocked
-                ? 'Access granted. Press button to proceed.'
+                ? 'Access granted. Press central button to proceed.'
                 : 'Welcome. Please enter password below for access.'}
             </ControlPanel>
             <LoginForm
@@ -105,23 +105,25 @@ const Welcome = () => {
               isWarning={isWarning}
             />
           </PasswordContainer>
-        </Absolute>
-        <CenterBlob
-          color={isUnlocked ? greenishBlue : warningRed}
-          isWarning={isWarning}
-        >
-          <CenterLightContainer>
-            <CenterLight
-              onMouseEnter={handleHover}
-              onMouseLeave={handleHover}
-              color={isUnlocked ? greenishBlue : warningRed}
-              onClick={handleClick}
-            >
-              <ButtonIcon className={`fas fa-${isUnlocked ? 'laugh' : 'ban'}`} />
-            </CenterLight>
-          </CenterLightContainer>
-        </CenterBlob>
-      </RightSide>
+          <CenterBlob
+            color={isUnlocked ? greenishBlue : warningRed}
+            isWarning={isWarning}
+          >
+            <CenterLightContainer>
+              <CenterLight
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
+                color={isUnlocked ? greenishBlue : warningRed}
+                onClick={handleClick}
+              >
+                <ButtonIcon className={`fas fa-${isUnlocked ? 'laugh' : 'ban'}`} />
+              </CenterLight>
+            </CenterLightContainer>
+          </CenterBlob>
+        </RightSide>
+      </>
+        )
+      }
     </Container>
   )
 }
