@@ -16,6 +16,7 @@ import WarningSign from '../WarningSign'
 import LoginForm from '../LoginForm'
 import ControlPanel from '../ControlPanel'
 import SmokeContainer from '../SmokeContainer'
+import Gate from '../Gate'
 
 const PasswordContainer = styled.div`
   > :first-child {
@@ -49,8 +50,8 @@ const Welcome = () => {
     }
     const hide = (e) => {
       e.target.style.display = 'none'
-      setIsOpened(true)
       e.target.removeEventListener('animationend', hide)
+      setIsOpened(true)
     }
     const sides = document.querySelectorAll('.side')
     sides.forEach((side) => {
@@ -67,8 +68,9 @@ const Welcome = () => {
 
   return (
     <Container>
-      {isOpened
-        ? <SmokeContainer />
+      <Gate />
+      {/* {isOpened
+        ? <SmokeContainer isOpened={isOpened} />
         : (
       <>
         <LeftSide className="side">
@@ -123,7 +125,7 @@ const Welcome = () => {
         </RightSide>
       </>
         )
-      }
+      } */}
     </Container>
   )
 }
