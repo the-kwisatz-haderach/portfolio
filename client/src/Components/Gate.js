@@ -16,10 +16,11 @@ const DoorScene = styled.div`
 const Door = styled.div`
   position: absolute;
   backface-visibility: hidden;
+  background-image: url('/assets/images/black-texture.png');
 `
 
 const DoorContainer = styled.div`
-  transform: translateZ(-25px) rotateX(0deg);
+  transform: translateZ(-50px) rotateX(0deg);
   width: 100vh;
   height: 50vw;
   position: relative;
@@ -31,13 +32,10 @@ const DoorContainer = styled.div`
   animation-name: swingUp;
   @keyframes swingUp {
     from {
-      transform: translateZ(-25px) rotateX(0deg);
-    }
-    20% {
-      transform: translateZ(-50px) rotateX(25deg);
+      transform: translateZ(-50px) rotateX(0deg);
     }
     to {
-      transform: translateZ(-100px) rotateX(73deg);
+      transform: translateZ(-100px) rotateX(75deg);
     }
   }
 `
@@ -91,6 +89,14 @@ const DoorRight = styled(DoorLeftRight)`
 
 const Gate = () => (
   <DoorScene>
+    <DoorContainer>
+      <DoorTop />
+      <DoorLeft />
+      <DoorFront />
+      <DoorBack />
+      <DoorRight />
+      <DoorBottom />
+    </DoorContainer>
     <DoorContainer>
       <DoorTop />
       <DoorLeft />

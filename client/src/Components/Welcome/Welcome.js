@@ -16,7 +16,7 @@ import WarningSign from '../WarningSign'
 import LoginForm from '../LoginForm'
 import ControlPanel from '../ControlPanel'
 import SmokeContainer from '../SmokeContainer'
-import Gate from '../Gate'
+import OpeningGate from '../OpeningGate'
 
 const PasswordContainer = styled.div`
   > :first-child {
@@ -28,7 +28,7 @@ const Welcome = () => {
   const [isHovered, setIsHovered] = useState(false)
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [isWarning, setIsWarning] = useState(false)
-  const [isOpened, setIsOpened] = useState(false)
+  const [isOpened, setIsOpened] = useState({ first: false, second: false })
 
   const handleHover = () => {
     if (isHovered) setIsHovered(false)
@@ -48,12 +48,14 @@ const Welcome = () => {
       }, 3000)
       return
     }
-    const hide = (e) => {
+    const horizontalDoorsOpened = (e) => {
       e.target.style.display = 'none'
-      e.target.removeEventListener('animationend', hide)
+      const secondGate = document.getElementById('vertical-sides')
+      secondGate.style.animationName = ''
+      e.target.removeEventListener('animationend', horizontalDoorsOpened)
       setIsOpened(true)
     }
-    const sides = document.querySelectorAll('.side')
+    const sides = document.querySelectorAll('.horizontal-side')
     sides.forEach((side) => {
       if (side.nextElementSibling) {
         side.style.animationName = 'slideLeft'
@@ -61,19 +63,18 @@ const Welcome = () => {
       if (!side.nextElementSibling) {
         side.style.animationName = 'slideRight'
       }
-      side.addEventListener('animationend', hide)
+      side.addEventListener('animationend', horizontalDoorsOpened)
     })
   }
   useEffect(freezeScroll, [])
 
   return (
     <Container>
-      <Gate />
-      {/* {isOpened
+      {isOpened
         ? <SmokeContainer isOpened={isOpened} />
         : (
       <>
-        <LeftSide className="side">
+        <LeftSide className="horizontal-side">
           <div id="warning-top">
             <WarningSign title="warning!" />
           </div>
@@ -87,7 +88,7 @@ const Welcome = () => {
           </div>
         </LeftSide>
         <RightSide
-          className="side"
+          className="horizontal-side"
           color={isUnlocked ? greenishBlue : warningRed}
           isWarning={isWarning}
         >
@@ -125,7 +126,8 @@ const Welcome = () => {
         </RightSide>
       </>
         )
-      } */}
+      }
+      <OpeningGate id="vertical-sides" />
     </Container>
   )
 }

@@ -92,10 +92,10 @@ export const CenterBlob = styled.div`
 
 export const CenterLightContainer = styled.div`
   position: absolute;
-  top: calc(50% - 25px);
-  left: calc(50% - 25px);
-  width: 50px;
-  height: 50px;
+  top: calc(50% - 35px);
+  left: calc(50% - 35px);
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   box-shadow: 1px 1px 1px 2px black;
   overflow: hidden;
@@ -103,15 +103,15 @@ export const CenterLightContainer = styled.div`
 
 export const CenterLight = styled.div`
   position: absolute;
-  top: calc(50% - 25px);
-  left: calc(50% - 25);
-  width: 150px;
-  height: 50px;
-  background-image: linear-gradient(110deg, ${(props) => props.color}, #000000, #777777, #000000);
+  top: calc(50% - 35px);
+  left: calc(50% - 35px);
+  width: 140px;
+  height: 70px;
+  background-image: linear-gradient(110deg, ${(props) => props.color}, #000000,#292929,#9c9c9c);
   z-index: 5;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
-  transform: translateX(-50px);
+  transform: translateX(-70px);
   &:hover {
     transform: translateX(0);
   }
@@ -121,5 +121,5 @@ export const ButtonIcon = styled.i`
   color: white;
   margin-top: 0.5em;
   margin-left: 0.5em;
-  font-size: 1.6em;
+  font-size: 2.2em;
 `

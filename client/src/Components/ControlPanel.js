@@ -30,8 +30,8 @@ const ScreenSurface = styled(Screen)`
     left: 1px;
     width: calc(100% - 4px);
     height: inherit;
-    box-shadow: inset 4px 4px 20px 8px #eff885f2;
-    animation: ${pulseOpacity} 2.5s ease-in-out infinite;
+    box-shadow: inset 5px 7px 30px 9px #f7ff9af2;
+    animation: ${pulseOpacity} 2s ease-in-out infinite;
     border-radius: 7px;
   }
 `

@@ -18,6 +18,24 @@ export const slideRight = keyframes`
   }
 `
 
+export const slideDown = keyframes`
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(125%);
+  }
+`
+
+export const slideUp = keyframes`
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-125%);
+  }
+`
+
 export const pulseOpacity = keyframes`
   from {
     opacity: 0.2;
