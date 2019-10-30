@@ -5,7 +5,6 @@ import '../../assets/images/black-texture.png'
 import SmokeContainer from '../SmokeContainer'
 import useLink from '../../Hooks/useLink'
 import Login from '../Login'
-import Light from '../Light'
 
 const Welcome = () => {
   const $doorIsOpened = useLink(false)
@@ -14,16 +13,12 @@ const Welcome = () => {
 
   return (
     <Container>
-      <Light />
-      <SmokeContainer doorIsOpened={$doorIsOpened.value} />
+      {$doorIsOpened.value
+        ? <SmokeContainer doorIsOpened={$doorIsOpened.value} />
+        : <Login handleDoorOpen={() => $doorIsOpened.set(true)} />
+      }
     </Container>
   )
 }
-{/* <Container>
-  {$doorIsOpened.value
-    ? <SmokeContainer doorIsOpened={$doorIsOpened.value} />
-    : <Login handleDoorOpen={() => $doorIsOpened.set(true)} />
-  }
-</Container> */}
 
 export default Welcome

@@ -6,20 +6,10 @@ const LightZone = styled.div`
   width: 100vw;
   height: 100vh;
   background-image: radial-gradient(ellipse at top, #ff0000, #80000052);
-  animation: blinkLess 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite 2s;
+  animation: blink 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite 1s;
+  opacity: 0;
   background-position-y: top;
   pointer-events: none;
-  @keyframes blinkLess {
-    from {
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
 `
 
 const LightContainer = styled.div`
@@ -35,9 +25,9 @@ const LightSource = styled.div`
   border-radius: 45%;
   border: 2px solid #ffd2d22e;
   border-bottom: 2px solid #ffe6e6;
-  opacity: 0;
   box-shadow: 0px 30px 50px 40px #e91e63;
-  animation: blink 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite 2s;
+  opacity: 0;
+  animation: blink 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite 1s;
   @keyframes blink {
     from {
       opacity: 0;
@@ -53,14 +43,14 @@ const LightSource = styled.div`
 
 const LightPlug = styled.div`
   position: absolute;
-  margin-left: 5px;
+  margin-left: 4px;
   z-index: 6;
   width: 40px;
-  border-top: 5px solid #cccccc;
+  border-bottom: 5px solid #cccccc;
   border-radius: 0 0 10px 10px;
 `
 
-const Light = () => {
+const AlarmLight = () => {
   return (
     <>
       <LightZone />
@@ -73,4 +63,4 @@ const Light = () => {
   )
 }
 
-export default Light
+export default AlarmLight

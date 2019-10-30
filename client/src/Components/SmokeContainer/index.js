@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import SmokeMachine from '@bijection/smoke'
 import './style.scss'
+import AlarmLight from '../AlarmLight'
 
 const Container = styled.div`
   width: 100vw;
@@ -42,14 +43,17 @@ const SmokeContainer = ({ doorIsOpened }) => {
   }, [doorIsOpened])
 
   return (
-    <Container>
-      <StyledTitle>Welcome to my website.</StyledTitle>
-      <canvas
-        id="smoke-canvas"
-        width={window.innerWidth}
-        height={window.innerHeight}
-      ></canvas>
-    </Container>
+    <>
+      <AlarmLight />
+      <Container>
+        <StyledTitle>Welcome to my website.</StyledTitle>
+        <canvas
+          id="smoke-canvas"
+          width={window.innerWidth}
+          height={window.innerHeight}
+        ></canvas>
+      </Container>
+    </>
   )
 }
 
