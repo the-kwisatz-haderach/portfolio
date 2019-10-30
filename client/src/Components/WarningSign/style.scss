@@ -1,13 +1,23 @@
-#warning-top {
+#warning-triangle {
   position: absolute;
-  top: 10%;
-  right: -10px;
+  top: 25%;
+  right: -5%;
   transform: rotate(-12deg);
+  z-index: 10;
 }
 
-#warning-bottom {
+#warning-skull {
   position: absolute;
-  top: 68%;
-  left: -5px;
-  transform: rotate(2deg);
+  top: 35%;
+  left: -4%;
+  transform: rotate(3deg);
+  z-index: 20;
+}
+
+#warning-biohazard {
+  position: absolute;
+  top: 38%;
+  left: 11%;
+  transform: rotate(-3deg);
+  z-index: 10;
 }

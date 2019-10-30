@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import WarningSign from '../WarningSign'
 import LoginForm from '../LoginForm'
 import ControlPanel from '../ControlPanel'
 import VerticalGate from '../VerticalGate'
@@ -53,19 +52,7 @@ const Login = ({ handleDoorOpen = defHandleDoorOpen }) => {
 
   return (
     <div>
-      <LeftSide className="horizontal-side">
-        <div id="warning-top">
-          <WarningSign title="warning!" />
-        </div>
-        <div id="warning-bottom">
-          <WarningSign
-            title="danger"
-            color="red"
-          >
-            Keep out
-          </WarningSign>
-        </div>
-      </LeftSide>
+      <LeftSide className="horizontal-side" />
       <RightSide
         className="horizontal-side"
         color={isUnlocked ? greenishBlue : warningRed}

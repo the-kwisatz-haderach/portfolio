@@ -61,16 +61,17 @@ const WarningIcon = styled.i`
 const defTitle = 'default title'
 const defChildren = ''
 const defColor = 'yellow'
+const defIconClass = 'fas fa-skull-crossbones'
 
 const WarningSign = ({
   title = defTitle,
   children = defChildren,
-  color = defColor
+  color = defColor,
+  iconClass = defIconClass
 }) => {
-  const iconClass = color === 'red' ? 'fa-skull-crossbones' : 'fa-exclamation-triangle'
   return (
     <Container color={color}>
-      <WarningIcon className={`fas ${iconClass}`} color={color} />
+      <WarningIcon className={iconClass} color={color} />
       <MessageContainer color={color}>
         <WarningTitle color={color}>
           {title}
@@ -86,7 +87,8 @@ const WarningSign = ({
 WarningSign.propTypes = {
   title: PropTypes.string,
   children: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
+  iconClass: PropTypes.string
 }
 
 export default WarningSign
