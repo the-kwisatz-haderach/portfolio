@@ -23,7 +23,7 @@ const StyledTitle = styled.h1`
   text-align: center;
 `
 
-const SmokeContainer = ({ isOpened }) => {
+const SmokeContainer = ({ doorIsOpened }) => {
   useEffect(() => {
     const canvas = document.getElementById('smoke-canvas')
     const ctx = canvas.getContext('2d')
@@ -39,7 +39,7 @@ const SmokeContainer = ({ isOpened }) => {
       smoker.stop()
       clearTimeout(smoke)
     }
-  }, [isOpened])
+  }, [doorIsOpened])
 
   return (
     <Container>
