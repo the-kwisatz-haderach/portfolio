@@ -30,7 +30,7 @@ const ScreenSurface = styled(Screen)`
     left: -12px;
     width: 100%;
     height: 100%;
-    border: 14px solid #3a3a3a;
+    border: 14px solid #252525;
     border-radius: 18px;
     box-shadow: 3px 3px 20px 0px black;
   }

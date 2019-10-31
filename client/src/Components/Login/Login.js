@@ -10,7 +10,9 @@ import {
   CenterBlob,
   CenterLightContainer,
   CenterLight,
-  ButtonIcon
+  ButtonIcon,
+  MetalPlateTop,
+  MetalPlateBottom
 } from './Styles'
 import { greenishBlue, warningRed } from '../../styles/variables'
 import useDelayedToggle from '../../Hooks/useDelayedToggle'
@@ -53,6 +55,7 @@ const Login = ({ handleDoorOpen = defHandleDoorOpen }) => {
   return (
     <div>
       <TopSide className="vertical-side">
+        <MetalPlateTop />
         <ControlPanel
           isActivated={isUnlocked}
           isWarning={{ state: isWarning, duration: 4000 }}
@@ -65,6 +68,7 @@ const Login = ({ handleDoorOpen = defHandleDoorOpen }) => {
         color={isUnlocked ? greenishBlue : warningRed}
         isWarning={isWarning}
       >
+        <MetalPlateBottom />
         <div>
           <LoginForm
             submitHandler={() => setIsUnlocked(true)}

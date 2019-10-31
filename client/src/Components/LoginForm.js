@@ -69,7 +69,7 @@ const Form = styled.form`
     left: -12px;
     width: calc(100% - 7px);
     height: calc(100% - 7px);
-    border: 14px solid #3a3a3a;
+    border: 14px solid #252525;
     border-radius: 18px;
     box-shadow: 3px 3px 20px 0px black;
   }

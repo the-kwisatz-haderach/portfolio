@@ -23,6 +23,7 @@ const LightSource = styled.div`
   width: 40px;
   height: 80px;
   position: absolute;
+  top: -4px;
   z-index: 5;
   background-image: radial-gradient(ellipse at bottom, #ffa0a0, red);
   border-radius: 45%;
@@ -50,7 +51,7 @@ const LightPlug = styled.div`
   position: absolute;
   z-index: 6;
   margin-left: 3px;
-  top: -2px;
+  top: 4px;
   width: 30px;
   border-bottom: 5px solid #cccccc;
   border-radius: 0 0 10px 10px;

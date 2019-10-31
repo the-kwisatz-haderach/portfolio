@@ -5,6 +5,7 @@ export const Side = styled.div`
   width: 100vw;
   height: 50vh;
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -140,4 +141,26 @@ export const ButtonIcon = styled.i`
     left: 18px;
     font-size: 2.2em;
   }
+`
+
+export const MetalPlate = styled.div`
+  position: absolute;
+  left: calc(50% - 35px);
+  width: 70px;
+  height: 50%;
+  background-size: contain;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLUUK9ApPucEUg14Pms63eVqtaYeg7JcBQtkaSfIwqVFchze1H&s');
+  box-shadow: 3px 3px 20px 0px black;
+  @media only screen and (min-width: 425px) {
+    left: calc(50% - 50px);
+    width: 100px;
+  }
+`
+
+export const MetalPlateTop = styled(MetalPlate)`
+  top: 0;
+`
+
+export const MetalPlateBottom = styled(MetalPlate)`
+  bottom: 0;
 `
