@@ -1,23 +1,38 @@
-#warning-triangle {
+#warning-triangle,
+#warning-skull,
+#warning-biohazard {
   position: absolute;
-  top: 79%;
-  right: 40%;
-  transform: rotate(15deg);
+  display: none;
   z-index: 10;
+  @media only screen and (min-width: 425px) {
+    display: block;
+  }
+}
+
+#warning-triangle {
+  bottom: 40px;
+  left: -55px;
+  transform: rotate(15deg);
+  box-shadow: -2px 3px 3px 1px #00000054;
+  @media only screen and (min-width: 1024px) {
+    left: 5%;
+    bottom: 10px;
+  }
 }
 
 #warning-skull {
-  position: absolute;
-  top: 15%;
-  left: -6%;
+  top: 160px;
+  left: -100px;
   transform: rotate(3deg);
-  z-index: 20;
+  box-shadow: 1px -2px 5px 2px #00000054;
+  @media only screen and (min-width: 1024px) {
+    left: -3%;
+  }
 }
 
 #warning-biohazard {
-  position: absolute;
   top: 17%;
   left: 61%;
   transform: rotate(-3deg);
-  z-index: 10;
+  box-shadow: 2px -4px 5px 2px #00000054;
 }

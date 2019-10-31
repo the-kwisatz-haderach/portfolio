@@ -13,18 +13,19 @@ const LightZone = styled.div`
 `
 
 const LightContainer = styled.div`
-  margin-left: calc(50vw - 25px);
+  margin-left: calc(50vw - 20px);
+  @media only screen and (min-width: 768px) {
+    margin-left: calc(50vw - 25px);
+  }
 `
 
 const LightSource = styled.div`
-  width: 50px;
-  height: 100px;
+  width: 40px;
+  height: 80px;
   position: absolute;
   z-index: 5;
-  background-image: linear-gradient(to bottom, #ff5151e0, #ff5151e0, #ffb8b8);
+  background-image: radial-gradient(ellipse at bottom, #ffa0a0, red);
   border-radius: 45%;
-  border: 2px solid #ffd2d22e;
-  border-bottom: 2px solid #ffe6e6;
   box-shadow: 0px 30px 50px 40px #e91e63;
   opacity: 0;
   animation: blink 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
@@ -39,16 +40,23 @@ const LightSource = styled.div`
       opacity: 0;
     }
   }
+  @media only screen and (min-width: 768px) {
+    width: 50px;
+    height: 100px;
+  }
 `
 
 const LightPlug = styled.div`
   position: absolute;
-  margin-left: 3px;
   z-index: 6;
+  margin-left: 3px;
   top: -2px;
-  width: 40px;
+  width: 30px;
   border-bottom: 5px solid #cccccc;
   border-radius: 0 0 10px 10px;
+  @media only screen and (min-width: 768px) {
+    width: 40px;
+  }
 `
 
 const AlarmLight = () => {

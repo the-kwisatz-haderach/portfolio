@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 const Screen = styled.div`
-  width: 100%;
-  max-width: 250px;
-  padding: 10px;
+  padding: 15px;
   background-color: #828663;
   outline-offset: -2px;
   border: 2px solid #ffffff94;

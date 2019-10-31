@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import LoginForm from '../LoginForm'
 import ControlPanel from '../ControlPanel'
 import HorizontalGate from '../HorizontalGate'
+import { TopBottomGradient } from '../../styles/TopBottomGradient'
 import {
   TopSide,
   BottomSide,
   CenterBlob,
   CenterLightContainer,
   CenterLight,
-  ButtonIcon,
-  PasswordContainer
+  ButtonIcon
 } from './Styles'
 import { greenishBlue, warningRed } from '../../styles/variables'
 import useDelayedToggle from '../../Hooks/useDelayedToggle'
@@ -52,23 +52,27 @@ const Login = ({ handleDoorOpen = defHandleDoorOpen }) => {
 
   return (
     <div>
-      <TopSide className="vertical-side" />
+      <TopSide className="vertical-side">
+        <ControlPanel
+          isActivated={isUnlocked}
+          isWarning={{ state: isWarning, duration: 4000 }}
+        >
+          Welcome. Please enter password below for access.
+        </ControlPanel>
+      </TopSide>
       <BottomSide
         className="vertical-side"
         color={isUnlocked ? greenishBlue : warningRed}
         isWarning={isWarning}
       >
-        <PasswordContainer id="password-container">
-          <ControlPanel isActivated={isUnlocked} isWarning={{ state: isWarning, duration: 4000 }}>
-            Welcome. Please enter password below for access.
-          </ControlPanel>
+        <div>
           <LoginForm
             submitHandler={() => setIsUnlocked(true)}
             password="Hello, world"
             isActivated={isUnlocked}
             isWarning={isWarning}
           />
-        </PasswordContainer>
+        </div>
         <CenterBlob
           color={isUnlocked ? greenishBlue : warningRed}
           isWarning={isWarning}
@@ -83,7 +87,9 @@ const Login = ({ handleDoorOpen = defHandleDoorOpen }) => {
           </CenterLightContainer>
         </CenterBlob>
       </BottomSide>
-      <HorizontalGate />
+      <TopBottomGradient>
+        <HorizontalGate />
+      </TopBottomGradient>
     </div>
   )
 }

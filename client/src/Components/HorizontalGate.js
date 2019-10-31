@@ -28,19 +28,26 @@ const Gate = styled.div`
 
 const Stripes = styled.div`
   position: absolute;
-  width: 100px;
+  width: 60px;
   height: 100vh;
   background-color: #ffe500bf;
   right: ${(props) => props.right ? 0 : ''};
   &::before {
     content: '';
     position: absolute;
-    left: ${(props) => props.left ? 0 : ''};;
+    left: ${(props) => props.left ? 0 : ''};
     right: ${(props) => props.right ? 0 : ''};
     background-image: url('assets/images/black-stripes.png');
-    width: 40px;
+    width: 25px;
     height: 100vh;
     background-repeat: repeat;
+  }
+  @media only screen and (min-width: 768px) {
+    width: 100px;
+    &::before {
+      width: 40px;
+      background-repeat: repeat;
+    }
   }
 `
 

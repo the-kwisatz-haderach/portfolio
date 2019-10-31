@@ -5,6 +5,7 @@ import Screen from '../styles/Screen'
 import { pulseOpacity } from '../styles/keyframes'
 
 const ScreenSurface = styled(Screen)`
+  position: relative;
   background-color: ${props => {
     if (props.activated) return '#4cb167'
     if (props.warning) return 'red'
@@ -12,9 +13,8 @@ const ScreenSurface = styled(Screen)`
   }};
   width: 100%;
   max-width: 270px;
-  margin: auto;
   height: 120px;
-  overflow: hidden;
+  margin: auto;
   text-shadow: 1px 1px 4px white;
   color: ${props => props.activated || props.warning ? 'white' : '#f1ff85'};
   box-shadow: inset 3px 3px 12px 7px ${props => props.warning ? '#651903' : '#e7ff0085'};
@@ -26,13 +26,34 @@ const ScreenSurface = styled(Screen)`
   &::after {
     content: '';
     position: absolute;
-    top: 0;
+    top: -12px;
+    left: -12px;
+    width: 100%;
+    height: 100%;
+    border: 14px solid #3a3a3a;
+    border-radius: 18px;
+    box-shadow: 3px 3px 20px 0px black;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 1px;
     left: 1px;
-    width: calc(100% - 4px);
-    height: inherit;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
     box-shadow: inset 5px 7px 30px 9px #f7ff9af2;
     animation: ${pulseOpacity} 2s ease-in-out infinite;
     border-radius: 7px;
+  }
+  @media only screen and (min-width: 768px) {
+    max-width: 350px;
+    height: 145px;
+    font-size: 26px;
+  }
+  @media only screen and (min-width: 1400px) {
+    max-width: 440px;
+    height: 185px;
+    font-size: 36px;
   }
 `
 

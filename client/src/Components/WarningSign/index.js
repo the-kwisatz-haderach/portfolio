@@ -7,7 +7,7 @@ const Container = styled.div`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
-  padding: ${props => props.color === 'red' ? '35px 45px' : '30px 40px'};
+  padding: ${props => props.color === 'red' ? '25px' : '30px 40px'};
   border-radius: ${props => props.color === 'red' ? '2' : '10'}px;
   background-image:
     linear-gradient(to bottom, ${props => props.color === 'red' ? '#ed462fe6,#ed462fbd' : '#ffe500db,#f7e632e6'}),
@@ -21,12 +21,21 @@ const Container = styled.div`
   &:before {
     content: '';
     position: absolute;
-    top: 6px;
-    left: ${props => props.color === 'red' ? '8' : '5'}px;
-    width: ${props => props.color === 'red' ? '94' : '92'}%;
-    height: ${props => props.color === 'red' ? '88' : '92'}%;
+    top: 4px;
+    left: ${props => props.color === 'red' ? '7' : '5'}px;
+    width: ${props => props.color === 'red' ? '92' : '92'}%;
+    height: ${props => props.color === 'red' ? '86' : '92'}%;
     border: 3px solid ${props => props.color === 'red' ? 'white' : 'black'};
     border-radius: ${props => props.color === 'red' ? '2px' : '6px'};
+  }
+  @media only screen and (min-width: 768px) {
+    padding: ${props => props.color === 'red' ? '35px 45px' : '30px 40px'};
+    &:before {
+      top: 6px;
+      left: ${props => props.color === 'red' ? '8' : '5'}px;
+      width: ${props => props.color === 'red' ? '94' : '92'}%;
+      height: ${props => props.color === 'red' ? '88' : '92'}%;
+    }
   }
 `
 const MessageContainer = styled.div`
@@ -40,26 +49,35 @@ const WarningTitle = styled.h4`
   margin-bottom: 0;
   margin-top: 10px;
   width: 100%;
-  font-size: 26px;
+  font-size: 20px;
   letter-spacing: 2px;
   color: ${props => props.color === 'red' ? 'red' : ''};
   background-color: ${props => props.color === 'red' ? 'white' : ''};
   border-radius: ${props => props.color === 'red' ? '10px' : ''};
+  @media only screen and (min-width: 768px) {
+    font-size: 26px;
+  }
 `
 
 const WarningText = styled.p`
   margin: 0;
   margin-top: ${props => props.hasChildren ? '6' : '0'}px;
-  font-size: 0.9em;
+  font-size: 0.7em;
   padding: 3px 6px;
   color: white;
   background-color: ${props => props.hasChildren && props.color !== 'red' ? 'black' : ''};
   border-radius: ${props => props.color === 'red' ? '' : '10px'};
+  @media only screen and (min-width: 768px) {
+    font-size: 0.9em;
+  }
 `
 
 const WarningIcon = styled.i`
-  font-size: 80px;
+  font-size: 50px;
   flex: 1.7;
+  @media only screen and (min-width: 768px) {
+    font-size: 80px;
+  }
 `
 
 const defTitle = 'default title'

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import SmokeMachine from '@bijection/smoke'
 import './style.scss'
 import AlarmLight from '../AlarmLight'
+import { TopBottomGradient } from '../../styles/TopBottomGradient'
 
 const Container = styled.div`
   width: 100vw;
@@ -16,15 +18,17 @@ const Container = styled.div`
 `
 
 const StyledTitle = styled.h1`
+  font-size: 10vw;
   color: black;
-  font-size: 100px;
   display: block;
   z-index: 500;
   padding: 0 5%;
   text-align: center;
 `
 
-const SmokeContainer = ({ doorIsOpened }) => {
+const defDoorIsOpened = true
+
+const SmokeContainer = ({ doorIsOpened = defDoorIsOpened }) => {
   useEffect(() => {
     const canvas = document.getElementById('smoke-canvas')
     const ctx = canvas.getContext('2d')
@@ -44,7 +48,7 @@ const SmokeContainer = ({ doorIsOpened }) => {
   }, [doorIsOpened])
 
   return (
-    <>
+    <TopBottomGradient>
       <AlarmLight />
       <Container>
         <StyledTitle>Welcome to my website.</StyledTitle>
@@ -54,8 +58,12 @@ const SmokeContainer = ({ doorIsOpened }) => {
           height={window.innerHeight}
         ></canvas>
       </Container>
-    </>
+    </TopBottomGradient>
   )
+}
+
+SmokeContainer.propTypes = {
+  doorIsOpened: PropTypes.bool
 }
 
 export default SmokeContainer
