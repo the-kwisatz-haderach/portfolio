@@ -8,8 +8,8 @@ export const PasswordContainer = styled.div`
 `
 
 export const Side = styled.div`
-  width: 50vw;
-  height: 100vh;
+  width: 100vw;
+  height: 50vh;
   position: absolute;
   background-image: url('./assets/images/black-texture.png');
   background-size: contain;
@@ -17,27 +17,28 @@ export const Side = styled.div`
   animation-iteration-count: 1;
   animation-timing-function: cubic-bezier(0.38, 0.13, 0.57, 0.75);
   animation-duration: 5s;
+  animation-fill-mode: forwards;
 `
 
-export const LeftSide = styled(Side)`
-  left: 0;
-  border-right: 5px solid black;
+export const TopSide = styled(Side)`
+  top: 0;
+  border-bottom: 5px solid black;
   outline: 1px solid #232323;
   overflow: hidden;
   z-index: 1;
-  @keyframes slideLeft {
+  @keyframes slideUp {
     from {
-      transform: translateX(0);
+      transform: translateY(0);
     }
     to {
-      transform: translateX(-100%);
+      transform: translateY(-100%);
     }
   }
 `
 
-export const RightSide = styled(Side)`
-  right: 0;
-  border-left: 5px solid black;
+export const BottomSide = styled(Side)`
+  bottom: 0;
+  border-top: 5px solid black;
   outline: 1px solid #232323;
   z-index: 2;
   &:before {
@@ -49,20 +50,20 @@ export const RightSide = styled(Side)`
     height: 100%;
     animation: ${pulseOpacityLess} ${props => props.isWarning ? '0.3s' : '2s'} ease-in-out 0.5s infinite;
   }
-  @keyframes slideRight {
+  @keyframes slideDown {
     from {
-      transform: translateX(0);
+      transform: translateY(0);
     }
     to {
-      transform: translateX(125%);
+      transform: translateY(125%);
     }
   }
 `
 
 export const CenterBlob = styled.div`
   position: absolute;
-  top: calc(50% - 100px);
-  left: -100px;
+  left: calc(50% - 100px);
+  top: -100px;
   width: 200px;
   height: 200px;
   background-image: radial-gradient(#f9fff8,black);

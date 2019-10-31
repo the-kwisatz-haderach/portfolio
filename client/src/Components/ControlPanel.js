@@ -43,38 +43,48 @@ const ScreenMessage = styled.p`
 
 const defChildren = 'Placeholder message'
 const defIsActivated = false
-const defIsWarning = false
+const defIsWarning = { state: false, duration: 3000 }
 
 const ControlPanel = ({
   children = defChildren,
   isActivated = defIsActivated,
   isWarning = defIsWarning
 }) => {
-  const [message, setMessage] = useState('')
+  const [displayMessage, setDisplayMessage] = useState('')
+  const [message, setMessage] = useState(children)
 
   useEffect(() => {
-    const charArray = [...children]
-    let addCharacters
+    if (isWarning.state) setMessage('Incorrect Password. Access denied.')
+    if (isActivated) setMessage('Access granted. Press central button to proceed.')
+  }, [isActivated, isWarning.state])
+
+  useEffect(() => {
+    let addIncrementally
+    let warningTimeout
+    if (isWarning.state) {
+      warningTimeout = setTimeout(() => {
+        setMessage(children)
+      }, isWarning.duration)
+    }
+    const characters = [...message]
     let i = 0
-    if (i <= charArray.length) {
-      addCharacters = setInterval(() => {
-        const newMessage = charArray.slice(0, i)
+    if (i <= characters.length) {
+      addIncrementally = setInterval(() => {
+        const newMessage = characters.slice(0, i)
         i += 1
-        setMessage(newMessage)
+        setDisplayMessage(newMessage)
       }, 100)
     }
-    return () => { clearInterval(addCharacters) }
-  }, [children])
+    return () => {
+      clearInterval(addIncrementally)
+      clearTimeout(warningTimeout)
+    }
+  }, [message])
 
   return (
-    <ScreenSurface
-      activated={isActivated}
-      warning={isWarning}
-    >
+    <ScreenSurface activated={isActivated} warning={isWarning.state}>
       <ScreenMessage>
-        {isWarning
-          ? 'Incorrect Password. Access denied.'
-          : message}
+        {displayMessage}
       </ScreenMessage>
     </ScreenSurface>
   )
@@ -83,7 +93,10 @@ const ControlPanel = ({
 ControlPanel.propTypes = {
   children: PropTypes.string,
   isActivated: PropTypes.bool,
-  isWarning: PropTypes.bool
+  isWarning: PropTypes.shape({
+    state: PropTypes.bool,
+    duration: PropTypes.number
+  })
 }
 
 export default ControlPanel

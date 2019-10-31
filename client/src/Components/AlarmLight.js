@@ -6,7 +6,7 @@ const LightZone = styled.div`
   width: 100vw;
   height: 100vh;
   background-image: radial-gradient(ellipse at top, #ff0000, #80000052);
-  animation: blink 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite 1s;
+  animation: blink 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
   opacity: 0;
   background-position-y: top;
   pointer-events: none;
@@ -27,7 +27,7 @@ const LightSource = styled.div`
   border-bottom: 2px solid #ffe6e6;
   box-shadow: 0px 30px 50px 40px #e91e63;
   opacity: 0;
-  animation: blink 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite 1s;
+  animation: blink 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
   @keyframes blink {
     from {
       opacity: 0;

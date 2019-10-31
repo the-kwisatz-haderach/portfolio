@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import LoginForm from '../LoginForm'
 import ControlPanel from '../ControlPanel'
-import VerticalGate from '../VerticalGate'
+import HorizontalGate from '../HorizontalGate'
 import {
-  LeftSide,
-  RightSide,
+  TopSide,
+  BottomSide,
   CenterBlob,
   CenterLightContainer,
   CenterLight,
@@ -21,53 +21,46 @@ const Login = ({ handleDoorOpen = defHandleDoorOpen }) => {
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [isWarning, setIsWarning] = useState(false)
 
-  const verticalDoorsOpened = (e) => {
-    e.target.style.display = 'none'
-    e.target.removeEventListener('animationend', verticalDoorsOpened)
+  const horizontalDoorsOpened = (e) => {
+    e.target.removeEventListener('animationend', horizontalDoorsOpened)
     handleDoorOpen()
   }
 
-  const horizontalDoorsOpened = (e) => {
-    e.target.style.display = 'none'
-    e.target.removeEventListener('animationend', horizontalDoorsOpened)
+  const verticalDoorsOpened = (e) => {
+    e.target.removeEventListener('animationend', verticalDoorsOpened)
   }
 
   const handleClick = () => {
     if (!isUnlocked) {
-      useDelayedToggle(setIsWarning, 3000)
+      useDelayedToggle(setIsWarning, 4000)
       return
     }
 
-    const [leftSide, rightSide] = document.querySelectorAll('.horizontal-side')
-    const [topSide, bottomSide] = document.querySelectorAll('.vertical-side')
-    leftSide.style.animationName = 'slideLeft'
-    rightSide.style.animationName = 'slideRight'
-    topSide.style.animationName = 'slideUp'
-    bottomSide.style.animationName = 'slideDown'
-    topSide.style.display = 'block'
-    bottomSide.style.display = 'block'
-    leftSide.addEventListener('animationend', horizontalDoorsOpened)
-    rightSide.addEventListener('animationend', horizontalDoorsOpened)
-    topSide.addEventListener('animationend', verticalDoorsOpened)
-    bottomSide.addEventListener('animationend', verticalDoorsOpened)
+    const [top, bottom] = document.querySelectorAll('.vertical-side')
+    const [left, right] = document.querySelectorAll('.horizontal-side')
+    top.style.animationName = 'slideUp'
+    bottom.style.animationName = 'slideDown'
+    left.style.animationName = 'slideLeft'
+    right.style.animationName = 'slideRight'
+    left.style.display = 'block'
+    right.style.display = 'block'
+    top.addEventListener('animationend', verticalDoorsOpened)
+    bottom.addEventListener('animationend', verticalDoorsOpened)
+    left.addEventListener('animationend', horizontalDoorsOpened)
+    right.addEventListener('animationend', horizontalDoorsOpened)
   }
 
   return (
     <div>
-      <LeftSide className="horizontal-side" />
-      <RightSide
-        className="horizontal-side"
+      <TopSide className="vertical-side" />
+      <BottomSide
+        className="vertical-side"
         color={isUnlocked ? greenishBlue : warningRed}
         isWarning={isWarning}
       >
         <PasswordContainer id="password-container">
-          <ControlPanel
-            isActivated={isUnlocked}
-            isWarning={isWarning}
-          >
-            {isUnlocked
-              ? 'Access granted. Press central button to proceed.'
-              : 'Welcome. Please enter password below for access.'}
+          <ControlPanel isActivated={isUnlocked} isWarning={{ state: isWarning, duration: 4000 }}>
+            Welcome. Please enter password below for access.
           </ControlPanel>
           <LoginForm
             submitHandler={() => setIsUnlocked(true)}
@@ -89,8 +82,8 @@ const Login = ({ handleDoorOpen = defHandleDoorOpen }) => {
             </CenterLight>
           </CenterLightContainer>
         </CenterBlob>
-      </RightSide>
-      <VerticalGate />
+      </BottomSide>
+      <HorizontalGate />
     </div>
   )
 }

@@ -12,66 +12,66 @@ const Container = styled.div`
 
 const Gate = styled.div`
   background-image: url('assets/images/silver-metal.jpg');
-  width: 100vw;
-  height: 50vh;
+  width: 50vw;
+  height: 100vh;
   position: absolute;
-  left: 0;
+  top: 0;
   background-size: contain;
   background-repeat: repeat;
   animation-iteration-count: 1;
   animation-timing-function: cubic-bezier(0.38, 0.13, 0.57, 0.75);
   animation-duration: 7s;
   animation-delay: 3s;
+  animation-fill-mode: forwards;
   display: none;
 `
 
 const Stripes = styled.div`
   position: absolute;
-  width: 100vw;
-  height: 100px;
+  width: 100px;
+  height: 100vh;
   background-color: #ffe500bf;
-  bottom: ${(props) => props.bottom ? 0 : ''};
+  right: ${(props) => props.right ? 0 : ''};
   &::before {
     content: '';
     position: absolute;
-    top: ${(props) => props.top ? 0 : ''};;
-    bottom: ${(props) => props.bottom ? 0 : ''};
+    left: ${(props) => props.left ? 0 : ''};;
+    right: ${(props) => props.right ? 0 : ''};
     background-image: url('assets/images/black-stripes.png');
-    height: 40px;
-    width: 100vw;
+    width: 40px;
+    height: 100vh;
     background-repeat: repeat;
-    background-position: left;
   }
 `
 
-export const TopGate = styled(Gate)`
-  top: 0;
-  @keyframes slideUp {
+export const LeftGate = styled(Gate)`
+  left: 0;
+  @keyframes slideLeft {
     from {
-      transform: translateY(0);
+      transform: translateX(0);
     }
     to {
-      transform: translateY(-125%);
+      transform: translateX(-125%);
     }
   }
 `
 
-export const BottomGate = styled(Gate)`
-  bottom: 0;
-  @keyframes slideDown {
+export const RightGate = styled(Gate)`
+  right: 0;
+  @keyframes slideRight {
     from {
-      transform: translateY(0);
+      transform: translateX(0);
     }
     to {
-      transform: translateY(125%);
+      transform: translateX(125%);
     }
   }
 `
 
-const VerticalGate = () => {
+const HorizontalGate = () => {
   return (
     <Container>
-      <TopGate className="vertical-side">
+      <LeftGate className="horizontal-side">
         <div id="warning-triangle">
           <WarningSign
             title="warning!"
@@ -87,19 +87,21 @@ const VerticalGate = () => {
             Keep out
           </WarningSign>
         </div>
-        <Stripes bottom />
-      </TopGate>
-      <BottomGate className="vertical-side">
-        <Stripes top />
+        <Stripes right />
+      </LeftGate>
+      <RightGate className="horizontal-side">
+        <Stripes left />
         <div id="warning-biohazard">
           <WarningSign
-            title="warning!"
+            title="warning"
             iconClass="fas fa-biohazard"
-          />
+          >
+            Biohazard
+          </WarningSign>
         </div>
-      </BottomGate>
+      </RightGate>
     </Container>
   )
 }
 
-export default VerticalGate
+export default HorizontalGate

@@ -82,6 +82,7 @@ const LoginForm = ({
         onChange={handleInput}
         autoComplete="off"
         warning={isWarning}
+        autoFocus
       />
       {isActivated
         ? <LockIcon className="fas fa-key" />
