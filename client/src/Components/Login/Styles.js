@@ -149,7 +149,7 @@ export const MetalPlate = styled.div`
   width: 70px;
   height: 50%;
   background-size: contain;
-  background-image: url('assets/images/pipe.jpeg');
+  background-image: url('/assets/images/pipe.jpeg');
   box-shadow: 3px 3px 20px 0px black;
   @media only screen and (min-width: 425px) {
     left: calc(50% - 50px);

@@ -1,7 +1,7 @@
 import React from 'react'
 import Welcome from '../Components/Welcome'
 
-const Landing = () => {
+const Login = () => {
   return (
     <div>
       <Welcome />
@@ -9,4 +9,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default Login

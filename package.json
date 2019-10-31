@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "proxy": "http://localhost:8000",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "start": "node index.js",
-    "start:client": "webpack-dev-server --open --config ./webpack/webpack-client.config.js",
+    "start:client": "webpack-dev-server --open --config ./webpack/webpack.client.dev.js",
     "start:server": "nodemon index.js",
     "test": "jest",
     "lint:client": "eslint './client/**/*.tsx'",
     "lint:server": "eslint './server/**/*.ts'",
-    "bundle:server": "webpack --config ./webpack/webpack-server.config.js",
-    "bundle:client": "webpack --config ./webpack/webpack-client.config.js"
+    "bundle:server": "webpack --config ./webpack/webpack.server.prod.js",
+    "bundle:client": "webpack --config ./webpack/webpack.client.prod.js",
+    "build": "npm run bundle:server && npm run bundle:client"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +26,7 @@
     "@types/express": "^4.17.1",
     "@types/react-router-dom": "^5.1.0",
     "@types/styled-components": "^4.1.19",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
@@ -34,7 +40,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@fortawesome/fontawesome-free": "^5.11.2",
@@ -67,6 +73,7 @@
     "ts-loader": "^6.0.4",
     "typescript": "^3.6.2",
     "typescript-plugin-styled-components": "^1.4.3",
+    "url-loader": "^2.2.0",
     "webpack-cli": "^3.3.8",
     "webpack-dev-server": "^3.9.0"
   }

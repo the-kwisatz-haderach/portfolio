@@ -1,10 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-import Landing from './Landing'
+import Login from './Login'
+import Home from './Home'
 
 const PageRoutes = () => (
   <BrowserRouter>
-    <Route exact path="/" component={Landing} />
+    <Route exact path="/" component={Login} />
   </BrowserRouter>
 )
 

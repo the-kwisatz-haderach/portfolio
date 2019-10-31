@@ -1,0 +1,31 @@
+const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const nodeExternals = require('webpack-node-externals')
+
+module.exports = {
+  target: 'node',
+  mode: 'production',
+  entry: {
+    server: path.resolve('server', 'src', 'index.ts')
+  },
+  output: {
+    path: path.resolve('server', 'build'),
+    filename: '[name].bundle.js'
+  },
+  externals: [nodeExternals()],
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: ['babel-loader'],
+        exclude: /node_modules/
+      },
+    ]
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+  plugins: [
+    new CleanWebpackPlugin()
+  ]
+}
