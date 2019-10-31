@@ -16,7 +16,7 @@
     "lint:server": "eslint './server/**/*.ts'",
     "bundle:server": "webpack --config ./webpack/webpack.server.prod.js",
     "bundle:client": "webpack --config ./webpack/webpack.client.prod.js",
-    "build": "npm run bundle:server && npm run bundle:client"
+    "heroku:postbuild": "npm run bundle:server && npm run bundle:client"
   },
   "keywords": [],
   "author": "",
