@@ -23,6 +23,7 @@ const Gate = styled.div`
   animation-timing-function: cubic-bezier(0.38, 0.13, 0.57, 0.75);
   animation-duration: 7s;
   animation-delay: 3s;
+  display: none;
 `
 
 const Stripes = styled.div`

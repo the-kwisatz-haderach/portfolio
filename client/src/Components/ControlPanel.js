@@ -38,6 +38,7 @@ const ScreenSurface = styled(Screen)`
 
 const ScreenMessage = styled.p`
   margin: 0;
+  font-family: 'calculator', sans-serif;
 `
 
 const defChildren = 'Placeholder message'

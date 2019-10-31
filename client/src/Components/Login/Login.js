@@ -44,6 +44,8 @@ const Login = ({ handleDoorOpen = defHandleDoorOpen }) => {
     rightSide.style.animationName = 'slideRight'
     topSide.style.animationName = 'slideUp'
     bottomSide.style.animationName = 'slideDown'
+    topSide.style.display = 'block'
+    bottomSide.style.display = 'block'
     leftSide.addEventListener('animationend', horizontalDoorsOpened)
     rightSide.addEventListener('animationend', horizontalDoorsOpened)
     topSide.addEventListener('animationend', verticalDoorsOpened)

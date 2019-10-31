@@ -32,9 +32,10 @@ const SmokeContainer = ({ doorIsOpened }) => {
     const smoke = setTimeout(() => {
       smoker.start()
       smoker.addSmoke(100, 1000, 35)
-      smoker.addSmoke(300, 900, 50)
-      smoker.addSmoke(500, 1000, 70)
-      smoker.addSmoke(900, 1000, 25)
+      smoker.addSmoke(300, 1200, 50)
+      smoker.addSmoke(500, 1100, 70)
+      smoker.addSmoke(900, 1200, 25)
+      smoker.addSmoke(1200, 1000, 55)
     }, 0)
     return () => {
       smoker.stop()

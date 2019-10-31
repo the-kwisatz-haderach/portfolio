@@ -43,8 +43,9 @@ const LightSource = styled.div`
 
 const LightPlug = styled.div`
   position: absolute;
-  margin-left: 4px;
+  margin-left: 3px;
   z-index: 6;
+  top: -2px;
   width: 40px;
   border-bottom: 5px solid #cccccc;
   border-radius: 0 0 10px 10px;
