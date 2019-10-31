@@ -11,8 +11,7 @@ const Container = styled.div`
 `
 
 const Gate = styled.div`
-  /* background-image: url('./assets/images/black-texture.png'); */
-  background-image: url('https://previews.123rf.com/images/kokoroyuki/kokoroyuki1611/kokoroyuki161100051/68284170-silver-metal-texture-background.jpg');
+  background-image: url('assets/images/silver-metal.jpg');
   width: 100vw;
   height: 50vh;
   position: absolute;
@@ -37,7 +36,7 @@ const Stripes = styled.div`
     position: absolute;
     top: ${(props) => props.top ? 0 : ''};;
     bottom: ${(props) => props.bottom ? 0 : ''};
-    background-image: url('https://generator.background-tiles.com/transparant-patterns/pattern-9007.png');
+    background-image: url('assets/images/black-stripes.png');
     height: 40px;
     width: 100vw;
     background-repeat: repeat;
