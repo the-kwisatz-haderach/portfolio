@@ -45,12 +45,7 @@ const ScreenSurface = styled(Screen)`
     animation: ${pulseOpacity} 2s ease-in-out infinite;
     border-radius: 7px;
   }
-  @media only screen and (min-width: 768px) {
-    max-width: 350px;
-    height: 145px;
-    font-size: 26px;
-  }
-  @media only screen and (min-width: 1400px) {
+  @media only screen and (min-width: 1500px) {
     max-width: 440px;
     height: 185px;
     font-size: 36px;
