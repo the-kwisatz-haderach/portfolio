@@ -17,13 +17,24 @@ const Container = styled.div`
   align-items: center;
 `
 
-const StyledTitle = styled.h1`
-  font-size: 10vw;
-  color: black;
-  display: block;
+const TextContainer = styled.div`
   z-index: 500;
-  padding: 0 5%;
   text-align: center;
+  color: black;
+  text-transform: uppercase;
+  > * {
+    margin: 0;
+    width: 100%;
+  }
+`
+
+const StyledTitle = styled.h1`
+  font-size: 9vw;
+`
+
+const StyledSubTitle = styled.p`
+  font-size: 7vw;
+  font-family: 'Inconsolata', monospace;
 `
 
 const defDoorIsOpened = true
@@ -51,7 +62,10 @@ const SmokeContainer = ({ doorIsOpened = defDoorIsOpened }) => {
     <TopBottomGradient>
       <AlarmLight />
       <Container>
-        <StyledTitle>Under construction.</StyledTitle>
+        <TextContainer>
+          <StyledTitle>Under construction</StyledTitle>
+          <StyledSubTitle>Come back later</StyledSubTitle>
+        </TextContainer>
         <canvas
           id="smoke-canvas"
           width={window.innerWidth}
