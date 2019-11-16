@@ -51,7 +51,7 @@ const SmokeContainer = ({ doorIsOpened = defDoorIsOpened }) => {
     <TopBottomGradient>
       <AlarmLight />
       <Container>
-        <StyledTitle>Hello, world...</StyledTitle>
+        <StyledTitle>Under construction.</StyledTitle>
         <canvas
           id="smoke-canvas"
           width={window.innerWidth}

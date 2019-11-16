@@ -81,9 +81,12 @@ const LockIcon = styled.i`
   font-size: 24px;
   display: block;
   color: white;
-  top: 0.8em;
+  top: 0.7em;
   @media only screen and (min-width: 768px) {
     font-size: 28px;
+  }
+  @media only screen and (min-width: 1400px) {
+    top: 0.9em;
   }
 `
 

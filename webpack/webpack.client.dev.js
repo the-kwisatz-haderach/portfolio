@@ -34,11 +34,35 @@ module.exports = {
         enforce: 'pre'
       },
       {
-        test: /\.(png|svg|jpg|gif)$/i,
+        test: /\.(png|svg|jpe?g|gif)$/i,
         loader: 'file-loader',
         options: {
           outputPath: path.join('assets', 'images')
         }
+      },
+      {
+        test: /\.ico$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: '/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: path.join('assets', 'fonts')
+            }
+          }
+        ]
       },
       {
         test: /\.s?css$/,
