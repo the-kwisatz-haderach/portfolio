@@ -36,9 +36,6 @@ module.exports = {
       {
         test: /\.(png|svg|jpe?g|gif)$/i,
         loader: 'file-loader',
-        options: {
-          outputPath: path.join('assets', 'images')
-        }
       },
       {
         test: /\.ico$/i,
@@ -47,7 +44,6 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: '/'
             }
           }
         ]
@@ -59,7 +55,6 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: path.join('assets', 'fonts')
             }
           }
         ]

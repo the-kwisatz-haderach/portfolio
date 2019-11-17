@@ -7,9 +7,9 @@ import './assets/images/black-stripes.png'
 import './assets/images/black-texture.png'
 import './assets/images/silver-metal.jpg'
 import './assets/images/pipe.jpeg'
-import './assets/fonts/calculator/calculator.ttf'
-import './assets/fonts/calculator/calculator.woff'
-import './assets/fonts/calculator/calculator.woff2'
+// import './assets/fonts/calculator/calculator.ttf'
+// import './assets/fonts/calculator/calculator.woff'
+// import './assets/fonts/calculator/calculator.woff2'
 import './favicon.ico'
 
 ReactDOM.render(<App />, document.getElementById('app'))
