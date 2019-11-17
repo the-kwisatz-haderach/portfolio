@@ -13,6 +13,8 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   "rules": {
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/no-namespace": "off"
   }
 }

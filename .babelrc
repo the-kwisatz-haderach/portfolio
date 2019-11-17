@@ -1,13 +1,13 @@
 {
-  "env": {
-    "test": {
-      "plugins": ["@babel/transform-modules-commonjs", ["babel-plugin-styled-components", {
-        "displayName": true,
-        "fileName": true,
-        "transpileTemplateLiterals": true
-      }]]
-    }
-  },
+  "plugins":[
+    "@babel/plugin-proposal-class-properties",
+    "@babel/transform-modules-commonjs",
+    ["babel-plugin-styled-components", {
+      "displayName": true,
+      "fileName": true,
+      "transpileTemplateLiterals": true
+    }]
+  ],
   "presets": ["@babel/react", "@babel/typescript", ["@babel/env", {
     "modules": false
   }]]
