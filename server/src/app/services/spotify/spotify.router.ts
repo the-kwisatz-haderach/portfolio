@@ -1,4 +1,4 @@
-import express from 'express'
+import * as express from 'express'
 import SpotifyClient from './SpotifyClient'
 const router = express.Router()
 
