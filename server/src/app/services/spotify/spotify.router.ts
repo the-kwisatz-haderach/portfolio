@@ -8,7 +8,8 @@ const spotifyClient = new SpotifyClient({
   redirectUri: process.env.SPOTIFY_REDIRECT_URI
 })
 
-router.get('/auth', spotifyClient.authorize)
-router.get('/callback', spotifyClient.authorize)
+router.get('/auth', spotifyClient.authorize.bind(spotifyClient))
+router.get('/callback', spotifyClient.authorizeCallback.bind(spotifyClient))
+router.get('/recently', spotifyClient.getRecentlyPlayedTrack.bind(spotifyClient))
 
 export default router
