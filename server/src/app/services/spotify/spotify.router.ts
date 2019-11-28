@@ -9,7 +9,7 @@ const spotifyClient = new SpotifyClient({
 })
 
 router.get('/auth', spotifyClient.authorize.bind(spotifyClient))
-router.get('/callback', spotifyClient.authorizeCallback.bind(spotifyClient))
-router.get('/recently', spotifyClient.getRecentlyPlayedTrack.bind(spotifyClient))
+router.get('/auth/callback', spotifyClient.authorizeCallback.bind(spotifyClient))
+router.get('/recently', spotifyClient.getRecentlyPlayed.bind(spotifyClient))
 
 export default router

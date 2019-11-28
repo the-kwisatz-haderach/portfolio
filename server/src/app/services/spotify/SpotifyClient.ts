@@ -22,8 +22,9 @@ class SpotifyClient {
   private state: string
   private refreshToken: string
   private accessToken: string
+  private axiosTokenInstance: AxiosInstance
+  private axiosPlayerInstance: AxiosInstance
   public tokenIsValid: boolean
-  public axiosTokenInstance: AxiosInstance
   public grantedScopes: string[]
   public endpointBase = 'https://accounts.spotify.com/'
 
@@ -40,6 +41,10 @@ class SpotifyClient {
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Basic ${this.encodedCredentials}`
       }
+    })
+    this.axiosPlayerInstance = axios.create({
+      baseURL: 'https://api.spotify.com/v1/me/player',
+      headers: { Authorization: `Bearer ${this.accessToken}` }
     })
   }
 
@@ -77,7 +82,7 @@ class SpotifyClient {
           this.accessToken = data.access_token
           this.refreshToken = data.refresh_token
           this.grantedScopes = data.scope.split(' ')
-          res.end()
+          res.redirect('auth')
         })
         .catch((response) => {
           console.error(response)
@@ -105,13 +110,17 @@ class SpotifyClient {
       })
   }
 
-  public getRecentlyPlayedTrack (): void {
-    axios.get('https://api.spotify.com/v1/me/player/recently-played', {
-      headers: {
-        Authorization: `Bearer ${this.accessToken}`
-      }
-    })
-      .then(({ data }) => console.log(data))
+  public getRecentlyPlayed (): Promise<JSON> {
+    return this.axiosPlayerInstance.get('/recently-played')
+      .then(({ data }) => data)
+      .catch((res) => {
+        console.error(res)
+      })
+  }
+
+  public getCurrentlyPlaying (): Promise<JSON> {
+    return this.axiosPlayerInstance.get('/recently-played')
+      .then(({ data }) => data.items)
       .catch((res) => {
         console.error(res)
       })
