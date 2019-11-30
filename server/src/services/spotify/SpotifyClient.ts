@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import * as Express from 'express'
 import qs from 'querystring'
 import axios, { AxiosInstance } from 'axios'
 
@@ -6,12 +6,6 @@ interface ClientCredentials {
   clientId: string;
   clientSecret: string;
   redirectUri: string;
-}
-
-interface SpotifyCallbackQueryParameters {
-  state: string;
-  code?: string;
-  error?: string;
 }
 
 class SpotifyClient {
@@ -26,7 +20,7 @@ class SpotifyClient {
   private axiosPlayerInstance: AxiosInstance
   public tokenIsValid: boolean
   public grantedScopes: string[]
-  public endpointBase = 'https://accounts.spotify.com/'
+  public endpointBase = 'https://api.spotify.com/v1/'
 
   constructor (credentials: ClientCredentials) {
     this.clientId = credentials.clientId
@@ -36,19 +30,19 @@ class SpotifyClient {
       .from(this.clientId + ':' + this.clientSecret)
       .toString('base64')
     this.axiosTokenInstance = axios.create({
-      baseURL: this.endpointBase + 'api/token',
+      baseURL: 'https://accounts.spotify.com/api/token',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Basic ${this.encodedCredentials}`
       }
     })
     this.axiosPlayerInstance = axios.create({
-      baseURL: 'https://api.spotify.com/v1/me/player',
+      baseURL: this.endpointBase + 'me/player',
       headers: { Authorization: `Bearer ${this.accessToken}` }
     })
   }
 
-  authorize (_req: Request, res: Response): void {
+  public authorize (_req: Express.Request, res: Express.Response): void {
     this.state = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
     const query = qs.stringify({
       client_id: this.clientId,
@@ -57,10 +51,10 @@ class SpotifyClient {
       state: this.state,
       scope: 'playlist-read-collaborative%20user-read-currently-playing%20user-read-recently-played'
     })
-    res.redirect(this.endpointBase + 'authorize?' + query)
+    res.redirect('https://accounts.spotify.com/authorize?' + query)
   }
 
-  public authorizeCallback (req: Request, res: Response): void {
+  public authorizeCallback (req: Express.Request, res: Express.Response): void {
     const { query } = req
     if (query.state !== this.state) {
       res.status(401).end()
@@ -86,7 +80,7 @@ class SpotifyClient {
         })
         .catch((response) => {
           console.error(response)
-          res.end()
+          res.json(response)
         })
     }
   }
@@ -113,17 +107,11 @@ class SpotifyClient {
   public getRecentlyPlayed (): Promise<JSON> {
     return this.axiosPlayerInstance.get('/recently-played')
       .then(({ data }) => data)
-      .catch((res) => {
-        console.error(res)
-      })
   }
 
   public getCurrentlyPlaying (): Promise<JSON> {
-    return this.axiosPlayerInstance.get('/recently-played')
+    return this.axiosPlayerInstance.get('/currently-playing')
       .then(({ data }) => data.items)
-      .catch((res) => {
-        console.error(res)
-      })
   }
 }
 

@@ -1,7 +1,21 @@
-import http from 'http'
-import app from './app'
+import path from 'path'
+import { Response } from 'express'
+import App from './app'
+import makeRouter from './routers'
+import middlewares, { errorHandler } from './middleware'
+import services from './services'
 
-const PORT = process.env.PORT || 8000
-const server = http.createServer(app)
+const router = makeRouter(services)
+const publicFolder = path.resolve('client', 'build')
 
-server.listen(PORT, () => console.log(`Server is listening on port ${PORT}`))
+router.get('/auth', (req, res) => {
+  res.sendFile(path.resolve('client', 'public', 'auth.html'))
+})
+
+router.get('/', (_, res: Response) => {
+  res.sendFile(path.resolve('client', 'build', 'index.html'))
+})
+
+const app = new App(router, errorHandler, middlewares, publicFolder)
+
+app.listen(process.env.PORT || 8000)
