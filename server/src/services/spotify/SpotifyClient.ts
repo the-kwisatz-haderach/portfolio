@@ -1,6 +1,15 @@
-import * as Express from 'express'
+import { Request, Response, NextFunction } from 'express'
 import qs from 'querystring'
 import axios, { AxiosInstance } from 'axios'
+import { HttpException } from '../../errors'
+
+class SpotifyError extends HttpException {
+  constructor (status: number, message: string) {
+    super(status, message)
+    this.status = status
+    this.message = message
+  }
+}
 
 interface ClientCredentials {
   clientId: string;
@@ -15,12 +24,10 @@ class SpotifyClient {
   private redirectUri: string
   private state: string
   private refreshToken: string
-  private accessToken: string
   private axiosTokenInstance: AxiosInstance
-  private axiosPlayerInstance: AxiosInstance
+  public accessToken: string
   public tokenIsValid: boolean
   public grantedScopes: string[]
-  public endpointBase = 'https://api.spotify.com/v1/'
 
   constructor (credentials: ClientCredentials) {
     this.clientId = credentials.clientId
@@ -36,13 +43,9 @@ class SpotifyClient {
         Authorization: `Basic ${this.encodedCredentials}`
       }
     })
-    this.axiosPlayerInstance = axios.create({
-      baseURL: this.endpointBase + 'me/player',
-      headers: { Authorization: `Bearer ${this.accessToken}` }
-    })
   }
 
-  public authorize (_req: Express.Request, res: Express.Response): void {
+  public authorize (_req: Request, res: Response): void {
     this.state = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
     const query = qs.stringify({
       client_id: this.clientId,
@@ -54,13 +57,13 @@ class SpotifyClient {
     res.redirect('https://accounts.spotify.com/authorize?' + query)
   }
 
-  public authorizeCallback (req: Express.Request, res: Express.Response): void {
+  public authorizeCallback (req: Request, res: Response, next: NextFunction): void {
     const { query } = req
     if (query.state !== this.state) {
-      res.status(401).end()
+      next(new SpotifyError(401, 'Invalid state parameter provided.'))
     }
     if (query.error) {
-      res.json({ error: query.error })
+      next(query.error)
     }
     if (query.code) {
       this.axiosTokenInstance.post('', qs.stringify({
@@ -76,16 +79,16 @@ class SpotifyClient {
           this.accessToken = data.access_token
           this.refreshToken = data.refresh_token
           this.grantedScopes = data.scope.split(' ')
-          res.redirect('auth')
+          res.redirect('/auth')
         })
-        .catch((response) => {
-          console.error(response)
-          res.json(response)
+        .catch(response => {
+          next(new SpotifyError(response.status, 'Authorization failed.'))
         })
     }
   }
 
-  private refreshAccessToken (): Promise<void> {
+  public refreshAccessToken (): Promise<void> {
+    console.log('Refreshing!')
     return this.axiosTokenInstance.post('', qs.stringify({
       grant_type: 'refresh_token',
       refresh_token: this.refreshToken
@@ -98,20 +101,9 @@ class SpotifyClient {
         this.accessToken = data.access_token
         this.grantedScopes = data.scope.split(' ')
       })
-      .catch((res) => {
-        console.error(res)
-        res.end()
+      .catch(response => {
+        throw new SpotifyError(response.status, 'Refreshing token failed.')
       })
-  }
-
-  public getRecentlyPlayed (): Promise<JSON> {
-    return this.axiosPlayerInstance.get('/recently-played')
-      .then(({ data }) => data)
-  }
-
-  public getCurrentlyPlaying (): Promise<JSON> {
-    return this.axiosPlayerInstance.get('/currently-playing')
-      .then(({ data }) => data.items)
   }
 }
 
