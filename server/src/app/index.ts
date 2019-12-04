@@ -1,5 +1,5 @@
 import path from 'path'
-import App from './app'
+import App from './App'
 import router from '../router'
 import middlewares, { errorHandler } from '../middleware'
 

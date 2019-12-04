@@ -57,7 +57,7 @@ class SpotifyClient {
     res.redirect('https://accounts.spotify.com/authorize?' + query)
   }
 
-  public authorizeCallback (req: Request, res: Response, next: NextFunction): void {
+  public authorizeCallback (req: Request, res: Response, next: NextFunction): Promise<void> {
     const { query } = req
     if (query.state !== this.state) {
       next(new SpotifyError(401, 'Invalid state parameter provided.'))
@@ -66,7 +66,7 @@ class SpotifyClient {
       next(query.error)
     }
     if (query.code) {
-      this.axiosTokenInstance.post('', qs.stringify({
+      return this.axiosTokenInstance.post('', qs.stringify({
         grant_type: 'authorization_code',
         code: query.code,
         redirect_uri: this.redirectUri
@@ -79,7 +79,7 @@ class SpotifyClient {
           this.accessToken = data.access_token
           this.refreshToken = data.refresh_token
           this.grantedScopes = data.scope.split(' ')
-          res.redirect('/auth')
+          next()
         })
         .catch(response => {
           next(new SpotifyError(response.status, 'Authorization failed.'))
@@ -88,7 +88,6 @@ class SpotifyClient {
   }
 
   public refreshAccessToken (): Promise<void> {
-    console.log('Refreshing!')
     return this.axiosTokenInstance.post('', qs.stringify({
       grant_type: 'refresh_token',
       refresh_token: this.refreshToken

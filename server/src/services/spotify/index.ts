@@ -8,6 +8,10 @@ const spotifyClient = new SpotifyClient({
   redirectUri: process.env.SPOTIFY_REDIRECT_URI
 })
 
-const spotifyService = makeSpotifyService(spotifyClient, getSpotifyResource)
+const spotifyService = makeSpotifyService(
+  spotifyClient,
+  getSpotifyResource,
+  [process.env.SPOTIFY_USER_ID]
+)
 
 export default spotifyService
