@@ -15,7 +15,7 @@
     "start": "node index.js",
     "start:client": "webpack-dev-server --open --config ./webpack/webpack.client.dev.js",
     "start:server": "nodemon ./server/build/*.js",
-    "test": "jest",
+    "test": "jest --watch",
     "lint:client": "eslint './client/**/*.tsx'",
     "lint:server": "eslint './server/**/*.ts'",
     "bundle:server:dev": "webpack --config ./webpack/webpack.server.dev.js",

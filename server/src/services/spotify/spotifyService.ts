@@ -1,13 +1,15 @@
 import path from 'path'
-import { Router } from 'express'
-import SpotifyClient from './SpotifyClient'
+import { Request, Response, NextFunction, Router } from 'express'
+import SpotifyClient from './SpotifyClient/SpotifyClient'
 import { HttpException } from '../../errors'
 
 type spotifyResourceRequester = (endpoint: string, accessToken: string) => Promise<any>
+type spotifyTokenRefresher = (req: Request, res: Response, next: NextFunction) => Promise<void>
 
 function makeSpotifyService (
   spotifyClient: SpotifyClient,
   spotifyResourceRequester: spotifyResourceRequester,
+  spotifyTokenRefresher: spotifyTokenRefresher,
   allowedUsers?: string[]
 ): Router {
   const router = Router()
@@ -25,22 +27,7 @@ function makeSpotifyService (
       res.redirect(path.resolve(__dirname, 'auth'))
     })
 
-  router.all('/api/*', async (_req, _res, next) => {
-    if (!spotifyClient.accessToken) {
-      return next(new HttpException(401, 'Access token missing.'))
-    }
-    if (!spotifyClient.tokenIsValid) {
-      try {
-        await spotifyClient.refreshAccessToken()
-        next()
-      } catch (err) {
-        next(err)
-      }
-    }
-    if (spotifyClient.tokenIsValid) {
-      next()
-    }
-  })
+  router.all('/api/*', spotifyTokenRefresher)
 
   router.get('/api/user', async (_req, res, next) => {
     try {

@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express'
 import qs from 'querystring'
 import axios, { AxiosInstance } from 'axios'
-import { HttpException } from '../../errors'
+import { HttpException } from '../../../errors'
 
-class SpotifyError extends HttpException {
+export class SpotifyError extends HttpException {
   constructor (status: number, message: string) {
     super(status, message)
     this.status = status
@@ -11,28 +11,30 @@ class SpotifyError extends HttpException {
   }
 }
 
-interface ClientCredentials {
+export interface ClientCredentials {
   clientId: string;
   clientSecret: string;
   redirectUri: string;
 }
 
 class SpotifyClient {
-  private clientId: string
-  private clientSecret: string
-  private encodedCredentials: string
-  private redirectUri: string
-  private state: string
-  private refreshToken: string
-  private axiosTokenInstance: AxiosInstance
+  protected clientId: string
+  protected clientSecret: string
+  protected redirectUri: string
+  protected encodedCredentials: string
+  protected state: string
+  protected refreshToken: string
+  protected axiosTokenInstance: AxiosInstance
+  public scopes: string[]
   public accessToken: string
   public tokenIsValid: boolean
   public grantedScopes: string[]
 
-  constructor (credentials: ClientCredentials) {
+  constructor (credentials: ClientCredentials, scopes: string[]) {
     this.clientId = credentials.clientId
     this.clientSecret = credentials.clientSecret
     this.redirectUri = credentials.redirectUri
+    this.scopes = scopes
     this.encodedCredentials = Buffer
       .from(this.clientId + ':' + this.clientSecret)
       .toString('base64')
@@ -52,7 +54,7 @@ class SpotifyClient {
       response_type: 'code',
       redirect_uri: this.redirectUri,
       state: this.state,
-      scope: 'playlist-read-collaborative%20user-read-currently-playing%20user-read-recently-played'
+      scope: this.scopes.join('%20')
     })
     res.redirect('https://accounts.spotify.com/authorize?' + query)
   }
@@ -87,22 +89,28 @@ class SpotifyClient {
     }
   }
 
-  public refreshAccessToken (): Promise<void> {
-    return this.axiosTokenInstance.post('', qs.stringify({
-      grant_type: 'refresh_token',
-      refresh_token: this.refreshToken
-    }))
-      .then(({ data }) => {
-        setTimeout(() => {
-          this.tokenIsValid = false
-        }, 1000 * data.expires_in)
-        this.tokenIsValid = true
-        this.accessToken = data.access_token
-        this.grantedScopes = data.scope.split(' ')
-      })
-      .catch(response => {
-        throw new SpotifyError(response.status, 'Refreshing token failed.')
-      })
+  public refreshAccessToken (next: NextFunction): Promise<void> {
+    if (this.tokenIsValid) {
+      next()
+    }
+    if (!this.tokenIsValid) {
+      return this.axiosTokenInstance.post('', qs.stringify({
+        grant_type: 'refresh_token',
+        refresh_token: this.refreshToken
+      }))
+        .then(({ data }) => {
+          setTimeout(() => {
+            this.tokenIsValid = false
+          }, 1000 * data.expires_in)
+          this.tokenIsValid = true
+          this.accessToken = data.access_token
+          this.grantedScopes = data.scope.split(' ')
+          next()
+        })
+        .catch(response => {
+          next(new SpotifyError(response.status, 'Refreshing token failed.'))
+        })
+    }
   }
 }
 
