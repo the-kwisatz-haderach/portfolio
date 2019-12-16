@@ -5,7 +5,8 @@ import Home from './Home'
 
 const PageRoutes = () => (
   <BrowserRouter>
-    <Route exact path="/" component={Login} />
+    <Route exact path="/" component={Home} />
+    <Route exact path="/login" component={Login} />
   </BrowserRouter>
 )
 
