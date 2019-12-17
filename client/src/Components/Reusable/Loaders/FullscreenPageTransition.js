@@ -57,7 +57,6 @@ function FullscreenPageTransition ({ children }) {
     <Container>
       <TopMessageContainer ref={topContainer} />
       <BottomMessageContainer ref={bottomContainer} />
-      <Cube />
       {children}
     </Container>
   )

@@ -1,22 +1,11 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-
-const theme = {
-  colors: {
-    yellow: '#ffe42a',
-    'yellow-light': '#ffee7c',
-    'yellow-dark': '#ffdf09'
-  },
-  fonts: {
-    primary: '',
-    secondary: ''
-  }
-}
+import { mainTheme } from '../../styles/themes'
 
 function withTheme (Component) {
   return function WrappedComponent (props) {
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={mainTheme}>
         <Component {...props} />
       </ThemeProvider>
     )

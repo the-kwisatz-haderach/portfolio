@@ -16,7 +16,7 @@ const CubeContainer = styled.div`
   transform: translateZ(-100px);
   transform-style: preserve-3d;
   transition: transform 2s linear;
-  animation: rotate3dCube 3s linear infinite forwards;
+  /* animation: rotate3dCube 3s linear infinite forwards; */
   @keyframes rotate3dCube {
     to {
       transform: translateZ(-100px) rotateX(360deg) rotateZ(360deg);
