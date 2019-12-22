@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { throttle } from 'lodash'
@@ -38,19 +38,34 @@ const NavigationProvider = ({ children }) => {
     next.current = nextPage
   }, [location.pathname])
 
-  useEffect(() => {
-    const navigateWithKeyboard = throttle((e) => {
-      if (/(Down|Right)$/g.test(e.code)) {
+  let lastScrollTop = 0
+  const handleNavigation = throttle((e) => {
+    e.preventDefault()
+    if (/^Arrow.*/g.test(e.code)) {
+      if (/^Arrow(Down|Right)$/g.test(e.code)) {
         history.push(next.current)
       }
-      if (/(Up|Left)$/g.test(e.code)) {
+      if (/^Arrow(Up|Left)$/g.test(e.code)) {
         history.push(prev.current)
       }
-    }, 400, { trailing: false })
-    window.addEventListener('keyup', navigateWithKeyboard)
+    } else {
+      if (window.scrollY < lastScrollTop) {
+        lastScrollTop = window.scrollY
+        history.push(prev.current)
+      }
+      if (window.scrollY > lastScrollTop) {
+        lastScrollTop = window.scrollY
+        history.push(next.current)
+      }
+    }
+  }, 600, { trailing: false })
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleNavigation)
+    window.addEventListener('scroll', handleNavigation)
     return () => {
-      console.log('unmounting')
-      window.removeEventListener('keyup', navigateWithKeyboard)
+      window.removeEventListener('scroll', handleNavigation)
+      window.removeEventListener('keydown', handleNavigation)
     }
   }, [])
 
