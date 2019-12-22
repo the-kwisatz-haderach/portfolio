@@ -16,7 +16,7 @@ const CubeContainer = styled.div`
   transform: translateZ(-100px);
   transform-style: preserve-3d;
   transition: transform 2s linear;
-  /* animation: rotate3dCube 3s linear infinite forwards; */
+  animation: rotate3dCube 3s linear infinite forwards;
   @keyframes rotate3dCube {
     to {
       transform: translateZ(-100px) rotateX(360deg) rotateZ(360deg);
@@ -32,31 +32,36 @@ const CubeFace = styled.div`
   width: 200px;
   height: 200px;
   border: 4px solid grey;
-  background-image: url('assets/images/black-texture.png');
 `
 
 const FrontFace = styled(CubeFace)`
   transform: rotateY(0deg) translateZ(100px);
+  background-color: blue;
 `
 
 const BackFace = styled(CubeFace)`
   transform: rotateY(180deg) translateZ(100px);
+  background-color: purple;
 `
 
 const RightFace = styled(CubeFace)`
   transform: rotateY(90deg) translateZ(100px);
+  background-color: green;
 `
 
 const LeftFace = styled(CubeFace)`
   transform: rotateY(-90deg) translateZ(100px);
+  background-color: yellow;
 `
 
 const TopFace = styled(CubeFace)`
   transform: rotateX(90deg) translateZ(100px);
+  background-color: blue;
 `
 
 const BottomFace = styled(CubeFace)`
   transform: rotateX(-90deg) translateZ(100px);
+  background-color: orange;
 `
 
 function Cube () {
