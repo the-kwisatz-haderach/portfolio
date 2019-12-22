@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { slideLeft } from '../../styles/keyframes'
+import { slideLeft } from '../../../styles/keyframes'
 
 const Container = styled.div`
   width: 100%;
@@ -12,6 +12,9 @@ const Container = styled.div`
   left: 0;
   display: flex;
   align-items: flex-end;
+  background-image: url(${props => props.image});
+  background-size: cover;
+  background-position: center;
 `
 
 const TextContainer = styled.div`
@@ -44,8 +47,7 @@ const HeroImage = ({
   description
 }) => {
   return (
-    <Container>
-      <Img src={image} />
+    <Container image={image}>
       <TextContainer>
         <HeroTitle>{title}</HeroTitle>
         <HeroDescription>{description}</HeroDescription>

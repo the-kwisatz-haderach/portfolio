@@ -1,0 +1,28 @@
+.route-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: scale(1.4);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: all 500ms;
+  transform: scale(1);
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: all 500ms;
+}

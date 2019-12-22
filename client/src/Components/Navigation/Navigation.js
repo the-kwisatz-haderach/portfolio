@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import NavigationContext from '../../Context'
+import { elementHide, elementReveal } from './helpers'
 
 const NavigationButton = styled.button`
   position: fixed;
@@ -35,7 +36,7 @@ const NavigationContainer = styled.div`
   width: 100%;
   height: 100vh;
   background-color: ${props => props.theme.colors.yellow};
-  clip-path: inset(85% 0% 8% 88%);
+  clip-path: inset(100% 0% 8% 100%);
   transition: clip-path 0.3s ease-in-out;
 `
 
@@ -65,9 +66,9 @@ const NavigationLink = styled(NavLink)`
     position: absolute;
     left: -80px;
     opacity: 0;
-    bottom: 0.6em;
-    width: 20px;
-    height: 20px;
+    top: 20%;
+    width: 100%;
+    height: 100%;
     transition: opacity 0.3s ease-in-out, left 0.3s ease-in-out;
   }
   &.active::before {
@@ -97,67 +98,57 @@ const NavigationLink = styled(NavLink)`
   }
 `
 
-function Navigation () {
+const Navigation = () => {
+  const navigationContext = useContext(NavigationContext)
   const navContainerRef = useRef(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
 
-  const openMenu = () => {
+  useEffect(() => {
     if (!isMenuOpen) {
-      window.requestAnimationFrame(() => {
-        navContainerRef.current.style.clipPath = 'inset(0% 0% 0% 0%)'
-      })
-      setIsMenuOpen(true)
+      elementHide(navContainerRef.current)
     }
     if (isMenuOpen) {
-      window.requestAnimationFrame(() => {
-        navContainerRef.current.style.clipPath = 'inset(85% 0% 8% 88%)'
-      })
-      setIsMenuOpen(false)
+      elementReveal(navContainerRef.current)
     }
-  }
+  }, [isMenuOpen])
 
-  const handleHover = () => {
+  useEffect(() => {
     if (!isMenuOpen) {
       if (isHovered) {
-        window.requestAnimationFrame(() => {
-          navContainerRef.current.style.clipPath = 'inset(85% 0% 8% 88%)'
-        })
-        setIsHovered(false)
+        elementReveal(navContainerRef.current)
       }
       if (!isHovered) {
-        window.requestAnimationFrame(() => {
-          navContainerRef.current.style.clipPath = 'inset(0% 0% 0% 0%)'
-        })
-        setIsHovered(true)
+        elementHide(navContainerRef.current)
       }
     }
-  }
+  }, [isHovered])
 
   return (
-    <>
+    <nav>
       <NavigationContainer ref={navContainerRef}>
         <NavigationLinkContainer>
-          <NavigationLink to="/">Home</NavigationLink>
-          <NavigationLink to="/about">About</NavigationLink>
-          <NavigationLink to="/something">Something</NavigationLink>
-          <NavigationLink to="/something-else">Something else</NavigationLink>
+          {navigationContext.navLinks.map(link => (
+            <NavigationLink
+              key={link.path}
+              exact to={link.path}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {link.label}
+            </NavigationLink>
+          ))}
         </NavigationLinkContainer>
       </NavigationContainer>
       <NavigationButton
-        onMouseEnter={handleHover}
-        onMouseLeave={handleHover}
-        onClick={openMenu}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={() => setIsMenuOpen((openState) => !openState)}
         isMenuOpen={isMenuOpen}
       >
         Menu
       </NavigationButton>
-    </>
+    </nav>
   )
-}
-
-Navigation.propTypes = {
-
 }
 
 export default Navigation
