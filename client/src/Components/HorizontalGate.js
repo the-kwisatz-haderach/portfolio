@@ -31,12 +31,12 @@ const Stripes = styled.div`
   width: 60px;
   height: 100vh;
   background-color: #ffe500bf;
-  right: ${(props) => props.right ? 0 : ''};
+  right: ${(props) => (props.right ? 0 : '')};
   &::before {
     content: '';
     position: absolute;
-    left: ${(props) => props.left ? 0 : ''};
-    right: ${(props) => props.right ? 0 : ''};
+    left: ${(props) => (props.left ? 0 : '')};
+    right: ${(props) => (props.right ? 0 : '')};
     background-image: url('assets/images/black-stripes.png');
     width: 25px;
     height: 100vh;
@@ -99,10 +99,7 @@ const HorizontalGate = () => {
       <RightGate className="horizontal-side">
         <Stripes left />
         <div id="warning-biohazard">
-          <WarningSign
-            title="warning"
-            iconClass="fas fa-biohazard"
-          >
+          <WarningSign title="warning" iconClass="fas fa-biohazard">
             Biohazard
           </WarningSign>
         </div>

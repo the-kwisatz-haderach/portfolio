@@ -13,9 +13,10 @@ const NavigationButton = styled.button`
   letter-spacing: 2px;
   text-transform: capitalize;
   border: none;
-  font-family: ${props => props.theme.fonts.primary};
-  color: ${props => props.isMenuOpen ? '#fff' : '#000'};
-  background-color: ${props => props.isMenuOpen ? '#000' : props.theme.colors.yellow};
+  font-family: ${(props) => props.theme.fonts.primary};
+  color: ${(props) => (props.isMenuOpen ? '#fff' : '#000')};
+  background-color: ${(props) =>
+    props.isMenuOpen ? '#000' : props.theme.colors.primary};
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease-in-out;
@@ -35,7 +36,7 @@ const NavigationContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: ${props => props.theme.colors.yellow};
+  background-color: ${(props) => props.theme.colors.primary};
   clip-path: inset(100% 0% 8% 100%);
   transition: clip-path 0.3s ease-in-out;
 `
@@ -53,7 +54,7 @@ const NavigationLink = styled(NavLink)`
   position: relative;
   top: 0;
   left: 0;
-  font-family: ${props => props.theme.fonts.primary};
+  font-family: ${(props) => props.theme.fonts.primary};
   font-size: 40px;
   color: black;
   text-decoration: none;
@@ -86,7 +87,8 @@ const NavigationLink = styled(NavLink)`
     transform-origin: left;
     transition: transform 0.3s ease-in-out;
   }
-  &:hover, &.active {
+  &:hover,
+  &.active {
     transform: translateX(40px);
     &::after {
       transform: scaleX(1);
@@ -128,10 +130,11 @@ const Navigation = () => {
     <nav>
       <NavigationContainer ref={navContainerRef}>
         <NavigationLinkContainer>
-          {navigationContext.navLinks.map(link => (
+          {navigationContext.navLinks.map((link) => (
             <NavigationLink
               key={link.path}
-              exact to={link.path}
+              exact
+              to={link.path}
               onClick={() => setIsMenuOpen(false)}
             >
               {link.label}

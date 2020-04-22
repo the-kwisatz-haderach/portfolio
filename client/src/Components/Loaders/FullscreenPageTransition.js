@@ -18,7 +18,7 @@ const Container = styled.div`
 const MessageContainer = styled.div`
   width: inherit;
   height: inherit;
-  background-color: ${props => props.theme.colors['yellow-dark']};
+  background-color: ${(props) => props.theme.colors.primaryDark};
   position: absolute;
   z-index: 10;
   transition: transform 1.5s ease-in-out;
@@ -26,15 +26,15 @@ const MessageContainer = styled.div`
 
 const TopMessageContainer = styled(MessageContainer)`
   transform: translateX(100%);
-  clip-path: polygon(100% 0%,100% 100%,0% 0%);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 0%);
 `
 
 const BottomMessageContainer = styled(MessageContainer)`
   transform: translateX(-100%);
-  clip-path: polygon(0% 0%,0% 100%,100% 100%);
+  clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
 `
 
-function FullscreenPageTransition ({ children }) {
+function FullscreenPageTransition({ children }) {
   const [isAnimationDone, setIsAnimationDone] = useState(false)
   const topContainer = useRef(null)
   const bottomContainer = useRef(null)
@@ -63,7 +63,7 @@ function FullscreenPageTransition ({ children }) {
 }
 
 FullscreenPageTransition.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 }
 
 export default FullscreenPageTransition

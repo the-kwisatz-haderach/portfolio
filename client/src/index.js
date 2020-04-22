@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
-import App from './Components/App'
+import App from './App'
 import 'normalize.css'
 import './styles/index.scss'
 import './assets/images/black-stripes.png'

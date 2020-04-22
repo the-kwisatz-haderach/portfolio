@@ -2,10 +2,15 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { mainTheme } from '../../styles/themes'
 
-function withTheme (Component) {
-  return function WrappedComponent (props) {
+function withTheme(Component, colorTheme) {
+  return function WrappedComponent(props) {
     return (
-      <ThemeProvider theme={mainTheme}>
+      <ThemeProvider
+        theme={{
+          ...mainTheme,
+          colors: colorTheme || mainTheme.colors,
+        }}
+      >
         <Component {...props} />
       </ThemeProvider>
     )
