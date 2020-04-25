@@ -16,6 +16,7 @@ export default function withRouteTransition(
               key={location.key}
               classNames={classNames}
               timeout={timeout}
+              unmountOnExit
             >
               <Switch location={location}>
                 <RoutesComponent {...props} />

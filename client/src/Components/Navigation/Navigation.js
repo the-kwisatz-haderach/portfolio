@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef, useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import NavigationContext from '../../Context'
 import { elementHide, elementReveal } from './helpers'
 
-const NavigationButton = styled.button`
+const NavigationButton = styled(Link)`
   position: fixed;
   right: 0;
   bottom: 50px;
@@ -143,12 +143,13 @@ const Navigation = () => {
         </NavigationLinkContainer>
       </NavigationContainer>
       <NavigationButton
+        to="/contact"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={() => setIsMenuOpen((openState) => !openState)}
-        isMenuOpen={isMenuOpen}
+        // onClick={() => setIsMenuOpen((openState) => !openState)}
+        // isMenuOpen={isMenuOpen}
       >
-        Menu
+        Contact me
       </NavigationButton>
     </nav>
   )

@@ -10,6 +10,9 @@ export const mainTheme = {
     accentDark: '#ffe42a',
     accentLight: '#ffe42a',
   },
+  padding: {
+    horizontal: 60,
+  },
   fonts: {
     primary: 'Inconsolata, monospace',
     secondary: 'Montserrat, sans-serif',

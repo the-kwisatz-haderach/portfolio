@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from './Routes'
 import { ThemeProvider } from 'styled-components'
-import Navigation from './components/Navigation'
 import { NavigationProvider } from './Context/NavigationContext'
 import { mainTheme } from './styles/themes'
 
@@ -41,7 +40,6 @@ const App = () => {
           }}
         >
           <Routes />
-          <Navigation />
         </ThemeProvider>
       </NavigationProvider>
     </BrowserRouter>

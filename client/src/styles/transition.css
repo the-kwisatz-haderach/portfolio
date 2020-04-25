@@ -1,17 +1,17 @@
-.fade-enter {
-  opacity: 0.1;
+.page-enter {
+  transform: translateY(-100%);
 }
 
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 500ms;
+.page-enter-active {
+  transform: translateY(0%);
+  transition: transform 500ms;
 }
 
-.fade-exit {
-  opacity: 0.9;
+.page-exit {
+  transform: translateY(0%);
 }
 
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 500ms;
+.page-exit-active {
+  transform: translateY(100%);
+  transition: transform 500ms;
 }
