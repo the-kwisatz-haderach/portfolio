@@ -1,77 +1,60 @@
 import React from 'react'
 import styled from 'styled-components'
-import profilePhoto from '../../../assets/images/profile_photo.png'
+import useTypedMessage from '../../../Hooks/useTypedMessage'
 
 const Container = styled.div`
   width: 100%;
-  padding: 80px ${(props) => props.theme.padding.horizontal}px;
+  padding-left: ${(props) => props.theme.padding.horizontal}px;
+  padding-right: ${(props) => props.theme.padding.horizontal}px;
+  min-height: 450px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: flex-start;
   background-color: ${(props) => props.theme.colors.primary};
 `
 
-const Description = styled.p`
-  font-size: 24px;
-  color: black;
-  margin-right: 50px;
-`
-
-const Scene = styled.div`
-  width: 800px;
-  height: 300px;
-  perspective: 1400px;
-`
-
-const Flip = styled.div`
-  width: 100%;
-  height: 100%;
+const TextContainer = styled.div`
   position: relative;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  animation: spin 1.2s 1s cubic-bezier(0.5, 0.2, 0.4, 0.9);
-  @keyframes spin {
-    from {
-      transform: rotateY(0deg);
-    }
-    to {
-      transform: rotateY(360deg);
-    }
-  }
 `
 
-const ImageFront = styled.img`
-  position: absolute;
+const Heading = styled.h2`
+  display: inline-block;
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  backface-visibility: hidden;
-  transform: rotateY(0deg);
+  align-self: center;
+  font-size: 4em;
+  margin-top: 0;
+  margin-bottom: 0.3em;
 `
 
-const ImageBack = styled.div`
+const Hidden = styled.p`
+  display: inline-block;
+  font-size: 1.8em;
+  line-height: 1.5em;
+  visibility: hidden;
+`
+
+const Description = styled.p`
+  display: inline-block;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: black;
-  backface-visibility: hidden;
-  transform: rotateY(180deg);
+  top: 0;
+  left: 0;
+  font-size: 1.8em;
+  line-height: 1.5em;
 `
 
 export default function Biography() {
+  const message =
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.'
+  const presentationalText = useTypedMessage(message, 60)
+
   return (
     <Container>
-      <Description>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni
-        omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.
-      </Description>
-      <Scene>
-        <Flip>
-          <ImageFront src={profilePhoto} />
-          <ImageBack />
-        </Flip>
-      </Scene>
+      <Heading>Hi there...</Heading>
+      <TextContainer>
+        <Description>{presentationalText}</Description>
+        <Hidden>{message}</Hidden>
+      </TextContainer>
     </Container>
   )
 }
