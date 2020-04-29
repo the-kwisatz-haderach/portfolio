@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from './Routes'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { NavigationProvider } from './Context/NavigationContext'
-import { mainTheme } from './styles/themes'
+import { mainTheme } from './theme'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: ${(props) => props.theme.fonts.primary};
+  }
+`
 
 function generateTheme(hue) {
   return {
@@ -39,6 +45,7 @@ const App = () => {
             colors: colorTheme,
           }}
         >
+          <GlobalStyle />
           <Routes />
         </ThemeProvider>
       </NavigationProvider>
