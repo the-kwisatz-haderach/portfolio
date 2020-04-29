@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import useTypedMessage from '../../../Hooks/useTypedMessage'
+import useScrollBreakpoint from '../../../Hooks/useScrollBreakpoint'
 
 const Container = styled.div`
   width: 100%;
@@ -11,7 +12,11 @@ const Container = styled.div`
   flex-flow: column wrap;
   justify-content: center;
   align-items: flex-start;
-  background-color: ${(props) => props.theme.colors.primary};
+  background-image: linear-gradient(
+    160deg,
+    ${(props) => props.theme.colors.primaryLight},
+    ${(props) => props.theme.colors.primaryDark}
+  );
 `
 
 const TextContainer = styled.div`
@@ -43,16 +48,75 @@ const Description = styled.p`
   line-height: 1.5em;
 `
 
+const TypeMarker = styled.span`
+  display: ${(props) => (props.hide ? 'none' : 'inline')};
+  position: relative;
+  &::before {
+    content: '|';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    animation: ${(props) =>
+      props.blink ? 'blink 0.8s linear infinite' : 'none'};
+  }
+  @keyframes blink {
+    0% {
+      visibility: hidden;
+    }
+    50% {
+      visibility: hidden;
+    }
+    100% {
+      visibility: visible;
+    }
+  }
+`
+
+const message =
+  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.'
+
 export default function Biography() {
-  const message =
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.'
-  const presentationalText = useTypedMessage(message, 60)
+  const [headerIsDone, setHeaderIsDone] = useState(false)
+
+  const reachedBiography = useScrollBreakpoint(() =>
+    Math.floor(document.querySelector('.biography').offsetTop / 2)
+  )
+
+  const [slowlyTypedHeading, isDoneTypingHeading] = useTypedMessage(
+    'Hi there...',
+    60,
+    reachedBiography
+  )
+
+  const [slowlyTypedDescription, isDoneTypingDescription] = useTypedMessage(
+    message,
+    60,
+    reachedBiography && headerIsDone
+  )
+
+  useEffect(() => {
+    let timer
+    if (isDoneTypingHeading) {
+      timer = setTimeout(() => {
+        setHeaderIsDone(true)
+      }, 2000)
+    }
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [isDoneTypingHeading])
 
   return (
-    <Container>
-      <Heading>Hi there...</Heading>
+    <Container className="biography">
+      <Heading>
+        {slowlyTypedHeading}
+        <TypeMarker hide={headerIsDone} blink={isDoneTypingHeading} />
+      </Heading>
       <TextContainer>
-        <Description>{presentationalText}</Description>
+        <Description>
+          {slowlyTypedDescription}
+          <TypeMarker hide={!headerIsDone} blink={isDoneTypingDescription} />
+        </Description>
         <Hidden>{message}</Hidden>
       </TextContainer>
     </Container>
