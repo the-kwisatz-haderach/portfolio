@@ -6,8 +6,8 @@ import { elementHide, elementReveal } from './helpers'
 
 const NavigationButton = styled(Link)`
   position: fixed;
-  right: 0;
-  bottom: 50px;
+  right: 20px;
+  bottom: 0px;
   padding: 20px 50px;
   font-size: 18px;
   letter-spacing: 2px;

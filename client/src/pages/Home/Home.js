@@ -3,6 +3,8 @@ import MainLayout from '../../Layouts/MainLayout'
 import HeroImage from '../../components/HeroImage'
 import Biography from './components/Biography'
 import bearImg from '../../assets/images/bear.jpg'
+import Technologies from './components/Technologies'
+import GetInTouch from './components/GetInTouch'
 
 const Home = () => {
   return (
@@ -13,6 +15,8 @@ const Home = () => {
         description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, doloribus?"
       />
       <Biography />
+      <Technologies />
+      <GetInTouch />
     </MainLayout>
   )
 }
