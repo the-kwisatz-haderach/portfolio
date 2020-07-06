@@ -5,8 +5,8 @@ import useScrollBreakpoint from '../../../Hooks/useScrollBreakpoint'
 
 const Container = styled.div`
   width: 100%;
-  padding-left: ${(props) => props.theme.padding.horizontal}px;
-  padding-right: ${(props) => props.theme.padding.horizontal}px;
+  padding-left: ${(props) => props.theme.padding.horizontal};
+  padding-right: ${(props) => props.theme.padding.horizontal};
   min-height: 450px;
   display: flex;
   flex-flow: column wrap;

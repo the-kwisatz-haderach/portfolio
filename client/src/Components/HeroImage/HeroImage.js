@@ -1,40 +1,73 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { slideLeft } from '../../styles/keyframes'
-
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  background-image: url(${(props) => props.image});
-  background-size: cover;
-  background-position: center;
-`
-
-const TextContainer = styled.div`
-  color: white;
-  padding: 30px;
-  width: 50%;
-  animation: ${slideLeft} 1s ease-in reverse;
-`
-
-const HeroTitle = styled.h1`
-  font-size: 42px;
-`
-
-const HeroDescription = styled.p`
-  font-size: 20px;
-`
+import useTypedMessage from '../../Hooks/useTypedMessage'
+import {
+  Container,
+  Hidden,
+  Heading,
+  Description,
+  TextContainer,
+  TypeMarker,
+} from './styles'
 
 const HeroImage = ({ image, title, description }) => {
+  const [canHeaderStart, setCanHeaderStart] = useState(false)
+  const [headerIsDone, setHeaderIsDone] = useState(false)
+
+  const [slowlyTypedHeading, isDoneTypingHeading] = useTypedMessage(
+    title,
+    70,
+    canHeaderStart
+  )
+
+  const [slowlyTypedDescription, isDoneTypingDescription] = useTypedMessage(
+    description,
+    60,
+    headerIsDone
+  )
+
+  useEffect(() => {
+    let timer
+    if (!canHeaderStart) {
+      timer = setTimeout(() => {
+        setCanHeaderStart(true)
+      }, 1500)
+    }
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
+
+  useEffect(() => {
+    let timer
+    if (isDoneTypingHeading) {
+      timer = setTimeout(() => {
+        setHeaderIsDone(true)
+      }, 2000)
+    }
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [isDoneTypingHeading])
+
   return (
     <Container image={image}>
-      <TextContainer>
-        <HeroTitle>{title}</HeroTitle>
-        <HeroDescription>{description}</HeroDescription>
-      </TextContainer>
+      <div>
+        <Heading>
+          {slowlyTypedHeading}
+          <TypeMarker
+            hide={headerIsDone || !canHeaderStart}
+            blink={isDoneTypingHeading}
+          />
+        </Heading>
+        <TextContainer>
+          <Description>
+            {slowlyTypedDescription}
+            <TypeMarker hide={!headerIsDone} blink={isDoneTypingDescription} />
+          </Description>
+          <Hidden>{description}</Hidden>
+        </TextContainer>
+      </div>
     </Container>
   )
 }

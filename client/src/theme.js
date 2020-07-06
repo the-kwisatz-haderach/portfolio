@@ -11,7 +11,7 @@ export const mainTheme = {
     accentLight: '#ffe42a',
   },
   padding: {
-    horizontal: 60,
+    horizontal: '10%',
   },
   fonts: {
     primary: 'Inconsolata, monospace',

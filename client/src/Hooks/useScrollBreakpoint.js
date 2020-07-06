@@ -8,7 +8,11 @@ const defaultOptions = {
   reset: false,
 }
 
-const useScrollBreakpoint = (breakpoint = 0, options = defaultOptions) => {
+const useScrollBreakpoint = (
+  breakpoint = 0,
+  options = defaultOptions,
+  element = document
+) => {
   const [activeBreakpoint, setActiveBreakpoint] = useState(null)
   const [reachedBreakpoint, setReachedBreakpoint] = useState(false)
 
@@ -38,11 +42,9 @@ const useScrollBreakpoint = (breakpoint = 0, options = defaultOptions) => {
   )
 
   useEffect(() => {
-    window.addEventListener('load', checkBreakpoint)
     window.addEventListener('scroll', checkBreakpoint)
     return () => {
       window.removeEventListener('scroll', checkBreakpoint)
-      window.removeEventListener('load', checkBreakpoint)
     }
   }, [activeBreakpoint])
 

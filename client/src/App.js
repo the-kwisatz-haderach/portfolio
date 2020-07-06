@@ -9,6 +9,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: ${(props) => props.theme.fonts.primary};
   }
+  h2 {
+    font-size: 3em;
+    margin-bottom: 0.4em;
+  }
 `
 
 function generateTheme(hue) {
