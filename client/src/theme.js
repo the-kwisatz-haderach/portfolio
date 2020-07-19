@@ -8,13 +8,13 @@ export const mainTheme = {
     secondaryLight: '#ffe42a',
     accent: '#ffe42a',
     accentDark: '#ffe42a',
-    accentLight: '#ffe42a',
+    accentLight: '#ffe42a'
   },
   padding: {
-    horizontal: '10%',
+    horizontal: '10%'
   },
   fonts: {
     primary: 'Inconsolata, monospace',
-    secondary: 'Montserrat, sans-serif',
-  },
+    secondary: 'Montserrat, sans-serif'
+  }
 }
