@@ -13,8 +13,7 @@ const useTypedMessage = (message, interval = 100, startTyping = true) => {
       addIncrementally = setInterval(() => {
         if (messageIndex.current < characters.length) {
           setTypedMessage(
-            (currentMessage) =>
-              currentMessage + characters[messageIndex.current]
+            currentMessage => currentMessage + characters[messageIndex.current]
           )
           messageIndex.current += 1
         }

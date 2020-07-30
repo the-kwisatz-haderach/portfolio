@@ -7,11 +7,19 @@ import { mainTheme } from './theme'
 
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: ${(props) => props.theme.fonts.primary};
+    font-family: ${props => props.theme.fonts.primary};
   }
   h2 {
     font-size: 3em;
     margin-bottom: 0.4em;
+  }
+
+  .show {
+    visibility: visible;
+  }
+
+  .hide {
+    visibility: hidden;
   }
 `
 
@@ -25,7 +33,7 @@ function generateTheme(hue) {
     secondaryLight: 'green',
     accent: 'green',
     accentDark: 'green',
-    accentLight: 'green',
+    accentLight: 'green'
   }
 }
 
@@ -46,7 +54,7 @@ const App = () => {
         <ThemeProvider
           theme={{
             ...mainTheme,
-            colors: colorTheme,
+            colors: colorTheme
           }}
         >
           <GlobalStyle />

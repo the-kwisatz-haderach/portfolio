@@ -5,7 +5,7 @@ const defaultOptions = {
   onReachBreakpoint: null,
   throttleTime: 200,
   removeListenerOnReach: false,
-  reset: false,
+  reset: false
 }
 
 const useScrollBreakpoint = (
@@ -24,7 +24,7 @@ const useScrollBreakpoint = (
 
   const checkBreakpoint = useCallback(
     throttle(
-      (e) => {
+      e => {
         if (window.scrollY >= activeBreakpoint) {
           if (options.removeListenerOnReach) {
             window.removeEventListener('scroll', checkBreakpoint)

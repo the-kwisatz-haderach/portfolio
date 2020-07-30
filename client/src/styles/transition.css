@@ -15,3 +15,29 @@
   transform: translateY(100%);
   transition: transform 500ms;
 }
+
+.swell {
+  animation: swell 1.4s ease-in-out forwards;
+}
+
+@keyframes swell {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.7);
+  }
+  100% {
+    transform: scale(1) rotate(720deg);
+  }
+}
+
+.widen {
+  animation: widen 1s ease-in-out forwards 1s;
+}
+
+@keyframes widen {
+  to {
+    width: 50px;
+  }
+}

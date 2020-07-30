@@ -9,16 +9,16 @@ import {
   Description,
   TextContainer,
   TypeMarker,
-  TextWrapper,
-  BackDropFront,
-  BackDropBack
+  TextWrapper
 } from './styles'
+import useElementScrollTop from '../../../Hooks/useElementScrollTop'
 
 const title = 'Hi. Welcome.'
 const description =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.'
 
 export default function PageHeader() {
+  const [headerRef, headerIsVisible] = useElementScrollTop()
   const [canHeaderStart, setCanHeaderStart] = useState(false)
   const [headerIsDone, setHeaderIsDone] = useState(false)
 
@@ -36,7 +36,7 @@ export default function PageHeader() {
 
   useEffect(() => {
     let timer
-    if (!canHeaderStart) {
+    if (headerIsVisible) {
       timer = setTimeout(() => {
         setCanHeaderStart(true)
       }, 1500)
@@ -44,7 +44,7 @@ export default function PageHeader() {
     return () => {
       clearTimeout(timer)
     }
-  }, [])
+  }, [headerIsVisible])
 
   useEffect(() => {
     let timer
@@ -59,7 +59,7 @@ export default function PageHeader() {
   }, [isDoneTypingHeading])
 
   return (
-    <Container>
+    <Container ref={headerRef}>
       <HeroImage image={profilePhoto}>
         <TextWrapper>
           <Heading>
@@ -80,8 +80,6 @@ export default function PageHeader() {
             <Hidden>{description}</Hidden>
           </TextContainer>
         </TextWrapper>
-        <BackDropFront />
-        <BackDropBack />
       </HeroImage>
     </Container>
   )

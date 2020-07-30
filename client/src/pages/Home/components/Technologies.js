@@ -9,7 +9,7 @@ const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   background-color: white;
-  padding: 60px ${(props) => props.theme.padding.horizontal};
+  padding: 60px ${props => props.theme.padding.horizontal.medium};
 `
 
 const ContentContainer = styled.div`

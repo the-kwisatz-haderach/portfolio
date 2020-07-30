@@ -17,7 +17,7 @@ export const TextContainer = styled.div`
 `
 
 export const Heading = styled.h1`
-  font-size: 6em;
+  font-size: 8em;
   line-height: 1.4;
   display: inline;
 `

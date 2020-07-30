@@ -8,7 +8,7 @@ const Wrapper = styled.footer`
   align-items: center;
   background-color: black;
   color: white;
-  padding: 60px ${({ theme }) => theme.padding.horizontal}px;
+  padding: 60px ${({ theme }) => theme.padding.horizontal.medium};
   min-height: 500px;
 `
 

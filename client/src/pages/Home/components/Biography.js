@@ -5,8 +5,8 @@ import useScrollBreakpoint from '../../../Hooks/useScrollBreakpoint'
 
 const Container = styled.div`
   width: 100%;
-  padding-left: ${(props) => props.theme.padding.horizontal};
-  padding-right: ${(props) => props.theme.padding.horizontal};
+  padding-left: ${props => props.theme.padding.horizontal.medium};
+  padding-right: ${props => props.theme.padding.horizontal.medium};
   min-height: 450px;
   display: flex;
   flex-flow: column wrap;
@@ -14,8 +14,8 @@ const Container = styled.div`
   align-items: flex-start;
   background-image: linear-gradient(
     160deg,
-    ${(props) => props.theme.colors.primaryLight},
-    ${(props) => props.theme.colors.primaryDark}
+    ${props => props.theme.colors.primaryLight},
+    ${props => props.theme.colors.primaryDark}
   );
 `
 
@@ -49,14 +49,14 @@ const Description = styled.p`
 `
 
 const TypeMarker = styled.span`
-  display: ${(props) => (props.hide ? 'none' : 'inline')};
+  display: ${props => (props.hide ? 'none' : 'inline')};
   position: relative;
   &::before {
     content: '|';
     position: absolute;
     bottom: 0px;
     left: 0px;
-    animation: ${(props) =>
+    animation: ${props =>
       props.blink ? 'blink 0.8s linear infinite' : 'none'};
   }
   @keyframes blink {

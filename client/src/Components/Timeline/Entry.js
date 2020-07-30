@@ -4,36 +4,103 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   width: 100%;
+  padding: 25px;
+  border: 1px solid #0000001f;
+  border-radius: 3px;
+  box-shadow: 3px 3px 14px 3px #0000000d;
+  position: relative;
+  background-color: white;
 `
 
 const TextContainer = styled.div`
-  padding: 20px;
+  padding: 0 20px;
+`
+const Logo = styled.img`
+  width: 50px;
+  height: 50px;
 `
 
-const Title = styled.h4``
+const Title = styled.h3`
+  margin: 0;
+  font-size: 1.4em;
+  margin-bottom: 0.4em;
+`
 
-const SubTitle = styled.p``
+const SubTitle = styled.p`
+  color: #737373;
+  font-size: 0.9em;
+  margin-bottom: 1em;
+`
 
-const Location = styled.p``
+const Header = styled.div`
+  display: flex;
+`
 
-const DateMarker = styled.div``
+const Description = styled.p`
+  max-height: 4em;
+  overflow-y: hidden;
+  display: inline-block;
+  position: relative;
+  &::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1.2em;
+    background-image: linear-gradient(45deg, transparent, white 85%);
+  }
+`
 
-const Entry = ({ title, subtitle, location, date }) => (
+const CompanyLink = styled.a`
+  color: #737373;
+  text-decoration: none;
+  margin-right: 8px;
+  &:hover {
+    text-decoration: none;
+  }
+  &::before {
+    content: '\f0c1';
+    font-weight: 600;
+    margin-right: 6px;
+    font-family: 'Font Awesome 5 Free';
+  }
+`
+
+const Location = styled.span`
+  &::before {
+    content: '\f3c5';
+    font-weight: 600;
+    margin-right: 6px;
+    font-family: 'Font Awesome 5 Free';
+  }
+`
+
+const Entry = ({ title, subtitle, description, location, logo, link }) => (
   <Container>
-    <TextContainer>
-      <Title>{title}</Title>
-      <SubTitle>{subtitle}</SubTitle>
-      <Location>{location}</Location>
-    </TextContainer>
-    <DateMarker>{date.getFullYear()}</DateMarker>
+    <Header>
+      <Logo src={logo} />
+      <TextContainer>
+        <Title>{title}</Title>
+        <SubTitle>
+          <CompanyLink href={link} target="_blank" rel="noopener noreferrer">
+            {subtitle} |
+          </CompanyLink>
+          <Location>{location}</Location>
+        </SubTitle>
+      </TextContainer>
+    </Header>
+    <Description>{description}</Description>
   </Container>
 )
 
 Entry.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  location: PropTypes.string,
-  date: PropTypes.instanceOf(Date)
+  logo: PropTypes.node,
+  link: PropTypes.string,
+  description: PropTypes.string,
+  location: PropTypes.string
 }
 
 export default Entry
