@@ -4,6 +4,7 @@ import Routes from './Routes'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { NavigationProvider } from './Context/NavigationContext'
 import { mainTheme } from './theme'
+import useLocalStorage from './Hooks/useLocalStorage'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -40,6 +41,15 @@ function generateTheme(hue) {
 const App = () => {
   const [colorTheme, setColorTheme] = useState(mainTheme.colors)
   const [selectedHue, setSelectedHue] = useState('')
+  const [visits, setVisits] = useLocalStorage('visits')
+
+  useEffect(() => {
+    if (!visits) {
+      setVisits(1)
+    } else {
+      setVisits(+visits + 1)
+    }
+  }, [])
 
   useEffect(() => {
     if (selectedHue) {
