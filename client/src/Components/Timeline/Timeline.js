@@ -73,13 +73,13 @@ const TimelineColumn = styled.div`
 const TimelineRow = styled.div`
   overflow: hidden;
   max-width: 100%;
-  padding: ${props => props.theme.padding.horizontal.medium};
+  padding: 5em ${props => props.theme.padding.horizontal.medium};
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 0;
-  margin-bottom: 100px;
+  margin-bottom: 1em;
   &:first-of-type {
     margin-top: 70px;
   }
