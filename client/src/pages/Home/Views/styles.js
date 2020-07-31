@@ -3,41 +3,62 @@ import styled from 'styled-components'
 export const Container = styled.section`
   width: 100vw;
   height: 100vh;
-`
-
-export const TextWrapper = styled.div`
-  width: 80%;
-  padding: 1.5em 2.5em;
-  margin-bottom: 3em;
-  z-index: 1;
-`
-
-export const TextContainer = styled.div`
   position: relative;
 `
 
-export const Heading = styled.h1`
-  font-size: 8em;
-  line-height: 1.4;
-  display: inline;
+export const TextWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  padding: 4em;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `
 
-export const Hidden = styled.p`
+export const DescriptionContainer = styled.div`
+  position: relative;
   font-size: 1.8em;
   line-height: 1.4em;
+`
+
+export const HeadingContainer = styled.div`
+  position: relative;
+  margin-bottom: 0.5em;
+  font-size: 3em;
+`
+
+export const Heading = styled.h1`
+  display: block;
+  margin: 0;
+  position: ${props => (props.absolute ? 'absolute' : 'static')};
+  top: 0;
+  left: 0;
+  color: ${props => props.color || 'black'};
+`
+
+export const HiddenHeading = styled.h1`
+  display: block;
+  margin: 0;
+  visibility: hidden;
+`
+
+export const HiddenDescription = styled.p`
   visibility: hidden;
 `
 
 export const Description = styled.p`
-  position: absolute;
+  position: ${props => (props.absolute ? 'absolute' : 'static')};
   top: 0;
   left: 0;
-  font-size: 1.8em;
-  line-height: 1.4em;
+  color: ${props => props.color || 'black'};
 `
 
 export const TypeMarker = styled.span`
-  display: ${props => (props.hide ? 'none' : 'inline')};
+  visibility: ${props => (props.hide ? 'hidden' : 'visible')};
   position: relative;
   &::before {
     content: '|';
@@ -56,40 +77,6 @@ export const TypeMarker = styled.span`
     }
     100% {
       visibility: visible;
-    }
-  }
-`
-
-export const BackDropFront = styled.div`
-  width: 100%;
-  height: 350px;
-  clip-path: polygon(100% 100%, 0% 0%, 0% 100%);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-color: ${props => props.theme.colors.secondaryDark};
-  transform: translateX(-100%);
-  animation: slideIn 1.2s ease-in-out forwards 0.1s;
-  @keyframes slideIn {
-    to {
-      transform: translateX(0);
-    }
-  }
-`
-
-export const BackDropBack = styled.div`
-  width: 40%;
-  height: 180px;
-  clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background-color: ${props => props.theme.colors.primaryDark};
-  transform: translateX(100%);
-  animation: slideIn 1.2s ease-in-out forwards 0.3s;
-  @keyframes slideIn {
-    to {
-      transform: translateX(0);
     }
   }
 `

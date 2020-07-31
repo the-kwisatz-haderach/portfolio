@@ -45,7 +45,7 @@ const TimeUnitContainer = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
-      animation: ${pulseOpacity} 1.2s ease-in-out infinite;
+      animation: ${pulseOpacity} 2s ease-in-out infinite;
     }
   }
 `

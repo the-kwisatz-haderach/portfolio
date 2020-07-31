@@ -1,19 +1,41 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 import HeroImage from '../../../components/HeroImage'
 import useTypedMessage from '../../../Hooks/useTypedMessage'
-import profilePhoto from '../../../assets/images/portrait.jpg'
+import bear from '../../../assets/images/bear.jpg'
 import {
   Container,
-  Hidden,
   Heading,
+  HiddenHeading,
   Description,
-  TextContainer,
+  HiddenDescription,
+  DescriptionContainer,
+  HeadingContainer,
   TypeMarker,
   TextWrapper
 } from './styles'
 import useElementScrollTop from '../../../Hooks/useElementScrollTop'
+import useLocalStorage from '../../../Hooks/useLocalStorage'
+import useThrottled from '../../../Hooks/useThrottled'
 
-const title = 'Hi. Welcome.'
+const TopLayer = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: ${props => props.theme.colors.secondary};
+`
+
+const BottomLayer = styled.div`
+  width: 100%;
+  cursor: none;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  clip-path: ellipse(0px 0px);
+  background-color: black;
+`
+
 const description =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.'
 
@@ -21,9 +43,12 @@ export default function PageHeader() {
   const [headerRef, headerIsVisible] = useElementScrollTop()
   const [canHeaderStart, setCanHeaderStart] = useState(false)
   const [headerIsDone, setHeaderIsDone] = useState(false)
+  const [visits] = useLocalStorage('visits')
+
+  const heading = +visits > 0 ? 'Welcome Back.' : 'Welcome.'
 
   const [slowlyTypedHeading, isDoneTypingHeading] = useTypedMessage(
-    title,
+    heading,
     70,
     canHeaderStart
   )
@@ -33,6 +58,21 @@ export default function PageHeader() {
     60,
     headerIsDone
   )
+
+  const onMouseMove = useThrottled(e => {
+    const xCoord = e.pageX
+    const yCoord = e.pageY
+    requestAnimationFrame(() => {
+      const bottomLayerDiv = headerRef.current.children[1]
+      bottomLayerDiv.style.clipPath = `ellipse(75px 75px at ${xCoord}px ${yCoord}px)`
+    })
+  }, 30)
+
+  useEffect(() => {
+    if (headerRef.current) {
+      headerRef.current.addEventListener('mousemove', onMouseMove.current)
+    }
+  }, [headerRef])
 
   useEffect(() => {
     let timer
@@ -60,27 +100,44 @@ export default function PageHeader() {
 
   return (
     <Container ref={headerRef}>
-      <HeroImage image={profilePhoto}>
+      <TopLayer>
         <TextWrapper>
-          <Heading>
-            {slowlyTypedHeading}
-            <TypeMarker
-              hide={headerIsDone || !canHeaderStart}
-              blink={isDoneTypingHeading}
-            />
-          </Heading>
-          <TextContainer>
-            <Description>
+          <HeadingContainer>
+            <HiddenHeading>{heading}</HiddenHeading>
+            <Heading absolute>
+              {slowlyTypedHeading}
+              <TypeMarker
+                hide={headerIsDone || !canHeaderStart}
+                blink={!headerIsDone && isDoneTypingHeading}
+              />
+            </Heading>
+          </HeadingContainer>
+          <DescriptionContainer>
+            <HiddenDescription>{description}</HiddenDescription>
+            <Description absolute>
               {slowlyTypedDescription}
               <TypeMarker
                 hide={!headerIsDone}
                 blink={isDoneTypingDescription}
               />
             </Description>
-            <Hidden>{description}</Hidden>
-          </TextContainer>
+          </DescriptionContainer>
         </TextWrapper>
-      </HeroImage>
+      </TopLayer>
+      <BottomLayer>
+        <TextWrapper>
+          <HeadingContainer
+            style={{
+              marginBottom: '0.2em'
+            }}
+          >
+            <Heading color="white">Fuck you.</Heading>
+          </HeadingContainer>
+          <DescriptionContainer>
+            <Description color="white">{description}</Description>
+          </DescriptionContainer>
+        </TextWrapper>
+      </BottomLayer>
     </Container>
   )
 }
