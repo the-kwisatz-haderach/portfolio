@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import PageHeader from './Views/PageHeader'
 import Biography from './Views/Biography'
@@ -6,6 +6,7 @@ import Contact from './Views/Contact'
 import TakeOver from '../../components/TakeOver'
 import useElementScrollTop from '../../Hooks/useElementScrollTop'
 import Button from '../../components/Button'
+import useLockScroll from '../../Hooks/useLockScroll'
 
 const ButtonContainer = styled.div`
   position: fixed;
@@ -60,6 +61,7 @@ const Home = () => {
   const [contactRef, reachedContact] = useElementScrollTop(0.3, '0px', {
     stopOnReach: false
   })
+  useLockScroll(isMenuOpen)
 
   return (
     <div>

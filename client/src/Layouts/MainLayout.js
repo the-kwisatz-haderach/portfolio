@@ -12,8 +12,8 @@ const Main = styled.main`
 
 const ButtonContainer = styled.div`
   position: fixed;
-  right: ${(props) => (props.reachedBreakpoint ? 390 : 40)}px;
-  bottom: ${(props) => (props.reachedBreakpoint ? 170 : 18)}px;
+  right: ${props => (props.reachedBreakpoint ? 390 : 40)}px;
+  bottom: ${props => (props.reachedBreakpoint ? 170 : 18)}px;
   z-index: 10;
   transition: all 0.5s ease-in-out;
 `
@@ -28,9 +28,9 @@ const ContactMeButton = styled(Link)`
   font-size: 18px;
   letter-spacing: 2px;
   text-transform: capitalize;
-  font-family: ${(props) => props.theme.fonts.primary};
-  color: ${(props) => (props.colored ? '#000' : '#fff')};
-  background-color: ${(props) =>
+  font-family: ${props => props.theme.fonts.primary};
+  color: ${props => (props.colored ? '#000' : '#fff')};
+  background-color: ${props =>
     props.colored ? props.theme.colors.secondary : '#000'};
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -68,7 +68,7 @@ function MainLayout({ children }) {
 
 MainLayout.propTypes = {
   children: PropTypes.node,
-  backgroundColor: PropTypes.string,
+  backgroundColor: PropTypes.string
 }
 
 export default MainLayout
