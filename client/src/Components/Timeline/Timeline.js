@@ -114,7 +114,7 @@ const TimelineStart = styled.div`
 `
 
 const TimelineSticky = styled.i`
-  font-size: 3em;
+  font-size: 5em;
   position: relative;
   top: 8px;
 `
@@ -162,13 +162,11 @@ export default function Timeline({
       : 'fas fa-baby animate__animated animate__bounce animate__infinite'
 
   useEffect(() => {
-    const timelineMarker = document.querySelector(
-      '.' + timelineMarkerClass.split(/\s+/g)[1]
-    )
     if (furthestRowReached !== null) {
       requestAnimationFrame(() => {
         setImmediate(() => {
-          timelineMarker.classList.add('swell')
+          stickyRef.current.classList.add('swell')
+          stickyRef.current.style.fontSize = '3em'
         })
       })
     }
