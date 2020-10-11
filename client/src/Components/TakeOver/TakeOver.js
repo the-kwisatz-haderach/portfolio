@@ -14,7 +14,6 @@ const Container = styled.div`
   align-items: center;
   background-color: ${props => props.theme.colors.primary};
   clip-path: inset(0% 100% 0% 0%);
-  transition: clip-path 0.3s ease-in-out;
 `
 
 const getInset = index => {
@@ -31,6 +30,7 @@ function TakeOver({ trigger, children, open = false }) {
     if (menuRef.current) {
       requestAnimationFrame(() => {
         if (open) {
+          menuRef.current.style.transition = 'clip-path 0.3s ease-in-out'
           menuRef.current.style.clipPath = 'inset(0% 0% 0% 0%)'
         } else {
           menuRef.current.style.clipPath = `inset(${getInset(

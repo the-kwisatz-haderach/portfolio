@@ -58,7 +58,7 @@ const MenuTrigger = ({ hide, active, onClick }) => {
 
 const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [contactRef, reachedContact] = useElementScrollTop(0.3, '0px', {
+  const [contactRef, reachedContact] = useElementScrollTop(0.5, '0px', {
     stopOnReach: false
   })
   useLockScroll(isMenuOpen)

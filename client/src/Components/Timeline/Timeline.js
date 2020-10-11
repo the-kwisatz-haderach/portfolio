@@ -73,7 +73,7 @@ const TimelineColumn = styled.div`
 const TimelineRow = styled.div`
   overflow: hidden;
   width: 100%;
-  padding: 5em ${props => props.theme.padding.horizontal.medium};
+  padding: 7em ${props => props.theme.padding.horizontal.medium};
   display: flex;
   justify-content: space-between;
   align-items: center;
