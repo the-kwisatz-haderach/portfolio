@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import HeroImage from '../../../components/HeroImage'
 import useTypedMessage from '../../../Hooks/useTypedMessage'
-import bear from '../../../assets/images/bear.jpg'
 import {
   Container,
   Heading,
@@ -16,25 +13,6 @@ import {
 } from './styles'
 import useElementScrollTop from '../../../Hooks/useElementScrollTop'
 import useLocalStorage from '../../../Hooks/useLocalStorage'
-import useThrottled from '../../../Hooks/useThrottled'
-
-const TopLayer = styled.div`
-  width: 100%;
-  height: 100vh;
-  background-color: ${props => props.theme.colors.secondary};
-`
-
-const BottomLayer = styled.div`
-  width: 100%;
-  cursor: none;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  clip-path: ellipse(0px 0px);
-  background-color: black;
-`
 
 const description =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.'
@@ -58,21 +36,6 @@ export default function PageHeader() {
     60,
     headerIsDone
   )
-
-  const onMouseMove = useThrottled(e => {
-    const xCoord = e.pageX
-    const yCoord = e.pageY
-    requestAnimationFrame(() => {
-      const bottomLayerDiv = headerRef.current.children[1]
-      bottomLayerDiv.style.clipPath = `ellipse(75px 75px at ${xCoord}px ${yCoord}px)`
-    })
-  }, 30)
-
-  useEffect(() => {
-    if (headerRef.current) {
-      headerRef.current.addEventListener('mousemove', onMouseMove.current)
-    }
-  }, [headerRef])
 
   useEffect(() => {
     let timer
@@ -100,44 +63,110 @@ export default function PageHeader() {
 
   return (
     <Container ref={headerRef}>
-      <TopLayer>
-        <TextWrapper>
-          <HeadingContainer>
-            <HiddenHeading>{heading}</HiddenHeading>
-            <Heading absolute>
-              {slowlyTypedHeading}
-              <TypeMarker
-                hide={headerIsDone || !canHeaderStart}
-                blink={!headerIsDone && isDoneTypingHeading}
-              />
-            </Heading>
-          </HeadingContainer>
-          <DescriptionContainer>
-            <HiddenDescription>{description}</HiddenDescription>
-            <Description absolute>
-              {slowlyTypedDescription}
-              <TypeMarker
-                hide={!headerIsDone}
-                blink={isDoneTypingDescription}
-              />
-            </Description>
-          </DescriptionContainer>
-        </TextWrapper>
-      </TopLayer>
-      <BottomLayer>
-        <TextWrapper>
-          <HeadingContainer
-            style={{
-              marginBottom: '0.2em'
-            }}
-          >
-            <Heading color="white">Fuck you.</Heading>
-          </HeadingContainer>
-          <DescriptionContainer>
-            <Description color="white">{description}</Description>
-          </DescriptionContainer>
-        </TextWrapper>
-      </BottomLayer>
+      <svg width="1600" height="800" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <title>background</title>
+          <rect
+            fill="#ffffff"
+            id="canvas_background"
+            height="802"
+            width="1602"
+            y="-1"
+            x="-1"
+          />
+        </g>
+        <g>
+          <title>Layer 1</title>
+          <line
+            stroke-linecap="undefined"
+            stroke-linejoin="undefined"
+            id="svg_1"
+            y2="277.90556"
+            x2="313.99998"
+            y1="277.90556"
+            x1="0.99835"
+            fill-opacity="null"
+            stroke-opacity="null"
+            stroke-width="4"
+            stroke="#000"
+            fill="none"
+          />
+          <line
+            stroke-linecap="undefined"
+            stroke-linejoin="undefined"
+            id="svg_2"
+            y2="301.905"
+            x2="313.99998"
+            y1="301.905"
+            x1="0.99835"
+            fill-opacity="null"
+            stroke-opacity="null"
+            stroke-width="4"
+            stroke="#000"
+            fill="none"
+          />
+          <line
+            stroke-linecap="undefined"
+            stroke-linejoin="undefined"
+            id="svg_3"
+            y2="313.90472"
+            x2="313.99998"
+            y1="313.90472"
+            x1="0.99835"
+            fill-opacity="null"
+            stroke-opacity="null"
+            stroke-width="4"
+            stroke="#000"
+            fill="none"
+          />
+          <line
+            stroke-linecap="undefined"
+            stroke-linejoin="undefined"
+            id="svg_4"
+            y2="289.90528"
+            x2="313.99998"
+            y1="289.90528"
+            x1="0.99835"
+            fill-opacity="null"
+            stroke-opacity="null"
+            stroke-width="4"
+            stroke="#000"
+            fill="none"
+          />
+          <rect
+            stroke="#000"
+            rx="5"
+            id="svg_5"
+            height="133.99688"
+            width="43.99898"
+            y="227.99469"
+            x="316.01126"
+            fill-opacity="null"
+            stroke-opacity="null"
+            stroke-width="4"
+            fill="none"
+          />
+        </g>
+      </svg>
+      <TextWrapper>
+        <HeadingContainer>
+          <HiddenHeading>{heading}</HiddenHeading>
+          <Heading absolute>
+            {slowlyTypedHeading}
+            <TypeMarker
+              hide={headerIsDone || !canHeaderStart}
+              blink={!headerIsDone && isDoneTypingHeading}
+            />
+          </Heading>
+        </HeadingContainer>
+        <DescriptionContainer>
+          <HiddenDescription>{description}</HiddenDescription>
+          <Description absolute>
+            {slowlyTypedDescription}
+            <TypeMarker hide={!headerIsDone} blink={isDoneTypingDescription} />
+          </Description>
+        </DescriptionContainer>
+      </TextWrapper>
     </Container>
   )
 }

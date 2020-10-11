@@ -1,9 +1,22 @@
 import styled from 'styled-components'
+import texture from '../../../assets/images/circuit.jpg'
 
 export const Container = styled.section`
   width: 100vw;
   height: 100vh;
   position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background-image: url(${texture});
+    background-size: cover;
+    opacity: 0.1;
+  }
 `
 
 export const TextWrapper = styled.div`
@@ -17,6 +30,8 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  background-color: ${props => props.theme.colors.primary};
+  clip-path: polygon(0% 40%, 250% 100%, 0% 100%);
 `
 
 export const DescriptionContainer = styled.div`
@@ -37,7 +52,6 @@ export const Heading = styled.h1`
   position: ${props => (props.absolute ? 'absolute' : 'static')};
   top: 0;
   left: 0;
-  color: ${props => props.color || 'black'};
 `
 
 export const HiddenHeading = styled.h1`
@@ -54,7 +68,6 @@ export const Description = styled.p`
   position: ${props => (props.absolute ? 'absolute' : 'static')};
   top: 0;
   left: 0;
-  color: ${props => props.color || 'black'};
 `
 
 export const TypeMarker = styled.span`

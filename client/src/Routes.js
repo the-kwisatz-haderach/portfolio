@@ -2,13 +2,9 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import Home from './Pages/Home'
-import Contact from './Pages/Contact/Contact'
 import './styles/transition.css'
 
-const routes = [
-  { path: '/', Component: Home },
-  { path: '/contact', Component: Contact },
-]
+const routes = [{ path: '/', Component: Home }]
 
 const Routes = () => {
   return (

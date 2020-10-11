@@ -2,25 +2,25 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import styled from 'styled-components'
 import useInterval from '../../Hooks/useInterval'
-import { pulseOpacity } from '../../styles/keyframes'
 
 const Container = styled.div`
-  padding: ${props => props.theme.padding.horizontal.high};
+  padding: 0 ${props => props.theme.padding.horizontal.high};
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  background-color: ${props => props.theme.colors.black};
-  color: white;
+  background-color: white;
+  color: black;
   position: relative;
   z-index: 0;
   overflow-x: hidden;
+  margin-bottom: 8em;
 `
 
 const Heading = styled.h3`
   text-align: center;
   text-transform: capitalize;
-  font-size: 2.5em;
+  font-size: 3em;
 `
 
 const DurationContainer = styled.div`
@@ -29,29 +29,19 @@ const DurationContainer = styled.div`
 `
 
 const TimeUnitContainer = styled.div`
-  padding: 1.5em 2em;
+  padding: 1em;
+  width: 100px;
   flex-direction: column;
-  width: 100%;
   align-items: center;
+  text-align: right;
   display: ${props => (props.hide ? 'none' : 'flex')};
-  position: relative;
   &:not(:last-child) {
-    &::before {
-      content: '';
-      border-right: 2px solid #1d1d1d;
-      opacity: 1;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      animation: ${pulseOpacity} 2s ease-in-out infinite;
-    }
+    margin-right: 2em;
   }
 `
 
 const Number = styled.p`
-  font-size: 3.5em;
+  font-size: 5em;
   width: 100%;
   font-family: 'calculator', sans-serif;
   line-height: 1;
@@ -59,6 +49,7 @@ const Number = styled.p`
 
 const TimeLabel = styled.p`
   width: 100%;
+  font-size: 1.2em;
 `
 
 const momentOfBirth = moment('1990-01-20')
