@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import texture from '../../../assets/images/circuit.jpg'
+import texture from '../../../../assets/images/circuit.jpg'
 
 export const Container = styled.section`
   width: 100vw;

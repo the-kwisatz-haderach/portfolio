@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import useTypedMessage from '../../../Hooks/useTypedMessage'
+import useTypedMessage from '../../../../Hooks/useTypedMessage'
 import {
   Container,
   Heading,
@@ -10,9 +10,9 @@ import {
   HeadingContainer,
   TypeMarker,
   TextWrapper
-} from './styles'
-import useElementScrollTop from '../../../Hooks/useElementScrollTop'
-import useLocalStorage from '../../../Hooks/useLocalStorage'
+} from './style'
+import useElementScrollTop from '../../../../Hooks/useElementScrollTop'
+import useLocalStorage from '../../../../Hooks/useLocalStorage'
 
 const description =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.'

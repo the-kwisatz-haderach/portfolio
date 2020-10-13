@@ -1,7 +1,7 @@
-import kthLogo from '../../../assets/images/kth-logo.png'
-import bombayworksLogo from '../../../assets/images/bombayworks-logo.jpeg'
-import reactLogo from '../../../assets/images/react-logo.png'
-import systeconLogo from '../../../assets/images/systecon-logo.png'
+import kthLogo from '../../../../assets/images/kth-logo.png'
+import bombayworksLogo from '../../../../assets/images/bombayworks-logo.jpeg'
+import reactLogo from '../../../../assets/images/react-logo.png'
+import systeconLogo from '../../../../assets/images/systecon-logo.png'
 
 const timeLineEntries = [
   {

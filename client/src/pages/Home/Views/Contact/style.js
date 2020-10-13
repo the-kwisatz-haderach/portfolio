@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
 
-const ContentContainer = styled.div`
+export const ContentContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${props => props.theme.colors.primary};
@@ -11,12 +10,12 @@ const ContentContainer = styled.div`
   align-items: center;
 `
 
-const StyledIcon = styled.i`
+export const StyledIcon = styled.i`
   font-size: 5em;
   margin-bottom: 0.4em;
 `
 
-const Block = styled.div`
+export const Block = styled.div`
   flex: 1;
   display: flex;
   height: 100%;
@@ -30,7 +29,7 @@ const Block = styled.div`
   }
 `
 
-const Clickable = styled.a`
+export const Clickable = styled.a`
   display: block;
   height: 30vh;
   width: 30vh;
@@ -43,7 +42,7 @@ const Clickable = styled.a`
   color: inherit;
 `
 
-const LabelContainer = styled.div`
+export const LabelContainer = styled.div`
   position: relative;
   font-size: 3em;
   &::before {
@@ -70,45 +69,10 @@ const LabelContainer = styled.div`
   }
 `
 
-const StyledLabel = styled.h3`
+export const StyledLabel = styled.h3`
   margin: 0;
   transition: transform 0.2s ease-in-out;
   ${Clickable}:hover & {
     transform: translateX(-20px);
   }
 `
-
-const ClickableBlock = ({ label, url, icon, external = false }) => (
-  <Block>
-    <Clickable
-      href={url}
-      target={external ? '_blank' : undefined}
-      rel={external ? 'noreferrer noopener' : undefined}
-    >
-      <StyledIcon className={icon} />
-      <LabelContainer>
-        <StyledLabel>{label}</StyledLabel>
-      </LabelContainer>
-    </Clickable>
-  </Block>
-)
-
-function Contact() {
-  return (
-    <ContentContainer>
-      <ClickableBlock
-        label="LinkedIn"
-        external
-        url="https://www.linkedin.com/in/gustaf-lundstr%C3%B6m/"
-        icon="fab fa-linkedin-in"
-      />
-      <ClickableBlock
-        label="Email"
-        url="mailto:gustaf.lundstrom90@gmail.com"
-        icon="fas fa-envelope"
-      />
-    </ContentContainer>
-  )
-}
-
-export default Contact
