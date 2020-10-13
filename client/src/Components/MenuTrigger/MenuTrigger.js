@@ -7,9 +7,15 @@ const MenuTrigger = ({ hide, active, onClick }) => {
 
   const addAnimation = e => {
     e.persist()
-    e.target.children[0].classList.remove(animation[0], animation[1])
+    setTimeout(() => {
+      if (e.target.children[0]) {
+        e.target.children[0].classList.remove(animation[0], animation[1])
+      }
+    }, 500)
     requestAnimationFrame(() => {
-      e.target.children[0].classList.add(animation[0], animation[1])
+      if (e.target.children[0]) {
+        e.target.children[0].classList.add(animation[0], animation[1])
+      }
     })
   }
 
