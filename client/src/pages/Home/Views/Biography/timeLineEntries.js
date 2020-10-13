@@ -12,7 +12,7 @@ const timeLineEntries = [
     description:
       'The programme combines media technology, with intercultural communication, business management, project management and business development.',
     logo: kthLogo,
-    date: '2008-2014',
+    date: '2008',
     location: 'Stockholm',
     timelineMarker: 'fas fa-user-graduate',
     skills: [
@@ -37,7 +37,7 @@ const timeLineEntries = [
     description:
       'Managed digital projects, making sure they were delivered within time and budget constraints. Teams consisted of web designers, web developers and testers based in both Sweden and India.',
     logo: bombayworksLogo,
-    date: '2014-2016',
+    date: '2014',
     location: 'Stockholm',
     timelineMarker: 'fas fa-user-alt',
     skills: [
@@ -54,7 +54,7 @@ const timeLineEntries = [
     description:
       'I had the main responsibility for the performance and conduct of the subsidiary office (~13 employees). Also got the opportunity to drive the shift to a new office space.',
     logo: bombayworksLogo,
-    date: '2016-2018',
+    date: '2016',
     location: 'Mumbai',
     timelineMarker: 'fas fa-user-astronaut',
     skills: [
@@ -78,7 +78,7 @@ const timeLineEntries = [
     link: 'https://www.bombayworks.com/',
     description: '',
     logo: bombayworksLogo,
-    date: '2018-2019',
+    date: '2018',
     location: 'Stockholm',
     timelineMarker: 'fas fa-user-tie',
     skills: [
@@ -103,7 +103,7 @@ const timeLineEntries = [
     description:
       'Highly paced and very intense training program at Epicenter in Stockholm. Turning hobby coders into productive full-stack developers. Program includes: JavaScript, Node, React, HTML5, CSS3, MongoDB, TDD, Git, Agile & mob-programming.',
     logo: saltLogo,
-    date: '2019-',
+    date: '2019',
     location: 'Stockholm',
     timelineMarker: 'fas fa-user-ninja',
     skills: [
@@ -123,7 +123,7 @@ const timeLineEntries = [
     link: 'https://www.systecongroup.com/se/',
     description: '',
     logo: systeconLogo,
-    date: '2019-',
+    date: '2020',
     location: 'Stockholm',
     timelineMarker: 'fas fa-user-secret',
     skills: [
