@@ -2,6 +2,8 @@ import React from 'react'
 import moment from 'moment'
 import styled from 'styled-components'
 import Timeline from '../../../components/Timeline'
+import kthLogo from '../../../assets/images/kth-logo.png'
+import bombayworksLogo from '../../../assets/images/bombayworks-logo.jpeg'
 import reactLogo from '../../../assets/images/react-logo.png'
 import systeconLogo from '../../../assets/images/systecon-logo.png'
 import TotalExperience from '../../../components/TotalExperience/TotalExperience'
@@ -36,19 +38,20 @@ const TimelineStartLabel = styled.p`
 
 const testEntries = [
   {
-    title: 'Software Developer',
-    subtitle: 'Systecon Group',
-    link: 'https://www.systecongroup.com/se/',
+    title: 'Master of Science, Media Management',
+    subtitle: 'Royal School of Technology',
+    link:
+      'https://www.kth.se/en/studies/master/mediamanagement/msc-media-management-1.8554',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.',
-    logo: systeconLogo,
-    date: new Date(),
+      'The programme combines media technology, with intercultural communication, business management, project management and business development.',
+    logo: kthLogo,
+    date: '2008-2014',
     location: 'Stockholm',
     timelineMarker: 'fas fa-user-graduate',
     skills: [
       {
-        icon: 'fas fa-robot',
-        label: 'Software Development'
+        icon: 'fas fa-cogs',
+        label: 'Engineering'
       },
       {
         icon: 'fas fa-tasks',
@@ -57,19 +60,19 @@ const testEntries = [
     ]
   },
   {
-    title: 'Full-Stack JavaScript Developer',
-    subtitle: 'School of Applied Technology </salt>',
-    link: 'https://www.systecongroup.com/se/',
+    title: 'Digital Producer',
+    subtitle: 'Bombayworks',
+    link: 'https://www.bombayworks.com/',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.',
-    logo: reactLogo,
-    date: new Date('2019'),
+      'Managed digital projects, making sure they were delivered within time and budget constraints. Teams consisted of web designers, web developers and testers based in both Sweden and India.',
+    logo: bombayworksLogo,
+    date: '2014-2016',
     location: 'Stockholm',
-    timelineMarker: 'fas fa-briefcase',
+    timelineMarker: 'fas fa-hat-wizard',
     skills: [
       {
-        icon: 'fas fa-medal',
-        label: 'Software Development'
+        icon: 'fas fa-heartbeat',
+        label: 'Leadership'
       },
       {
         icon: 'fas fa-tasks',
@@ -82,19 +85,44 @@ const testEntries = [
     ]
   },
   {
-    title: 'Software Developer',
-    subtitle: 'Systecon Group',
-    link: 'https://www.systecongroup.com/se/',
+    title: 'Managing Director',
+    subtitle: 'Bombayworks',
+    link: 'https://www.bombayworks.com/',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.',
-    logo: reactLogo,
-    date: new Date(),
-    location: 'Stockholm',
+      'Managed digital projects, making sure they were delivered within time and budget constraints. Teams consisted of web designers, web developers and testers based in both Sweden and India.',
+    logo: bombayworksLogo,
+    date: '2016-2018',
+    location: 'Mumbai',
     timelineMarker: 'fas fa-hat-wizard',
     skills: [
       {
         icon: 'fas fa-heartbeat',
         label: 'Leadership'
+      },
+      {
+        icon: 'fas fa-tasks',
+        label: 'Management'
+      },
+      {
+        icon: 'fas fa-chart-line',
+        label: 'Analytics'
+      }
+    ]
+  },
+  {
+    title: 'Full-Stack JavaScript Developer',
+    subtitle: 'School of Applied Technology </salt>',
+    link: 'https://www.systecongroup.com/se/',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.',
+    logo: reactLogo,
+    date: '2019-2020',
+    location: 'Stockholm',
+    timelineMarker: 'fas fa-briefcase',
+    skills: [
+      {
+        icon: 'fas fa-medal',
+        label: 'Software Development'
       },
       {
         icon: 'fas fa-tasks',

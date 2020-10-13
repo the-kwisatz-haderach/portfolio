@@ -204,7 +204,7 @@ export default function Timeline({
               <DateMarker
                 className={getAnimationClassname('flipInY', rowRefStatus[i])}
               >
-                {entry.date.getFullYear()}
+                {entry.date}
               </DateMarker>
             </TimelineColumn>
             <TimelineColumn>
