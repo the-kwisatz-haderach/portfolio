@@ -6,6 +6,7 @@ import useElementScrollTop from '../../Hooks/useElementScrollTop'
 import DefaultDateMarker from './DateMarker'
 import Skill from './Skill'
 import getAnimationClassname from '../../utils/getAnimationClassname'
+import { Header } from './Entry'
 
 const Container = styled.div`
   width: 100%;
@@ -93,6 +94,9 @@ const TimelineRow = styled.div`
       left: -50px;
       right: unset;
       transform-origin: left;
+    }
+    & ${Header} {
+      justify-content: flex-end;
     }
     & ${TimelineColumn} {
       & img {

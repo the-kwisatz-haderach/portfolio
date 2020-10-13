@@ -32,7 +32,7 @@ const SubTitle = styled.p`
   margin-bottom: 1em;
 `
 
-const Header = styled.div`
+export const Header = styled.div`
   display: flex;
 `
 
