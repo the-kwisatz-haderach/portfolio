@@ -1,6 +1,6 @@
 import kthLogo from '../../../../assets/images/kth-logo.png'
 import bombayworksLogo from '../../../../assets/images/bombayworks-logo.jpeg'
-import reactLogo from '../../../../assets/images/react-logo.png'
+import saltLogo from '../../../../assets/images/salt-logo.png'
 import systeconLogo from '../../../../assets/images/systecon-logo.png'
 
 const timeLineEntries = [
@@ -22,7 +22,11 @@ const timeLineEntries = [
       },
       {
         icon: 'fas fa-tasks',
-        label: 'Management'
+        label: 'Management Theory'
+      },
+      {
+        icon: 'fas fa-robot',
+        label: 'Human-Computer Interaction'
       }
     ]
   },
@@ -35,19 +39,11 @@ const timeLineEntries = [
     logo: bombayworksLogo,
     date: '2014-2016',
     location: 'Stockholm',
-    timelineMarker: 'fas fa-hat-wizard',
+    timelineMarker: 'fas fa-user-alt',
     skills: [
       {
-        icon: 'fas fa-heartbeat',
-        label: 'Leadership'
-      },
-      {
         icon: 'fas fa-tasks',
-        label: 'Management'
-      },
-      {
-        icon: 'fas fa-chart-line',
-        label: 'Analytics'
+        label: 'Project Management'
       }
     ]
   },
@@ -56,11 +52,35 @@ const timeLineEntries = [
     subtitle: 'Bombayworks',
     link: 'https://www.bombayworks.com/',
     description:
-      'Managed digital projects, making sure they were delivered within time and budget constraints. Teams consisted of web designers, web developers and testers based in both Sweden and India.',
+      'I had the main responsibility for the performance and conduct of the subsidiary office (~13 employees). Also got the opportunity to drive the shift to a new office space.',
     logo: bombayworksLogo,
     date: '2016-2018',
     location: 'Mumbai',
-    timelineMarker: 'fas fa-hat-wizard',
+    timelineMarker: 'fas fa-user-astronaut',
+    skills: [
+      {
+        icon: 'fas fa-hands-helping',
+        label: 'Leadership'
+      },
+      {
+        icon: 'fas fa-tasks',
+        label: 'Office Management'
+      },
+      {
+        icon: 'fas fa-heartbeat',
+        label: 'Employee Engagement'
+      }
+    ]
+  },
+  {
+    title: 'Head of Insights',
+    subtitle: 'Bombayworks',
+    link: 'https://www.bombayworks.com/',
+    description: '',
+    logo: bombayworksLogo,
+    date: '2018-2019',
+    location: 'Stockholm',
+    timelineMarker: 'fas fa-user-tie',
     skills: [
       {
         icon: 'fas fa-heartbeat',
@@ -72,32 +92,44 @@ const timeLineEntries = [
       },
       {
         icon: 'fas fa-chart-line',
-        label: 'Analytics'
+        label: 'Digital Analytics'
       }
     ]
   },
   {
     title: 'Full-Stack JavaScript Developer',
     subtitle: 'School of Applied Technology </salt>',
-    link: 'https://www.systecongroup.com/se/',
+    link: 'https://salt.dev/',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.',
-    logo: reactLogo,
-    date: '2019-2020',
+      'Highly paced and very intense training program at Epicenter in Stockholm. Turning hobby coders into productive full-stack developers. Program includes: JavaScript, Node, React, HTML5, CSS3, MongoDB, TDD, Git, Agile & mob-programming.',
+    logo: saltLogo,
+    date: '2019-',
     location: 'Stockholm',
-    timelineMarker: 'fas fa-briefcase',
+    timelineMarker: 'fas fa-user-ninja',
     skills: [
       {
-        icon: 'fas fa-medal',
+        icon: 'fas fa-laptop-code',
         label: 'Software Development'
       },
       {
-        icon: 'fas fa-tasks',
-        label: 'Management'
-      },
+        icon: 'fas fa-redo-alt',
+        label: 'Agile Methodologies'
+      }
+    ]
+  },
+  {
+    title: 'Software Developer',
+    subtitle: 'Systecon Group',
+    link: 'https://www.systecongroup.com/se/',
+    description: '',
+    logo: systeconLogo,
+    date: '2019-',
+    location: 'Stockholm',
+    timelineMarker: 'fas fa-user-secret',
+    skills: [
       {
-        icon: 'fas fa-chart-line',
-        label: 'Analytics'
+        icon: 'fas fa-laptop-code',
+        label: 'Software Development'
       }
     ]
   }
