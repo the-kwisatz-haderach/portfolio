@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   width: 100%;
-  padding: 25px;
+  padding: 2.7em;
   border: 1px solid #0000001f;
   border-radius: 3px;
   box-shadow: 3px 3px 14px 3px #0000000d;
@@ -38,18 +38,8 @@ export const Header = styled.div`
 
 const Description = styled.p`
   max-height: 4em;
-  overflow-y: hidden;
   display: inline-block;
   position: relative;
-  &::after {
-    content: '';
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1.2em;
-    background-image: linear-gradient(45deg, transparent, white 85%);
-  }
 `
 
 const CompanyLink = styled.a`

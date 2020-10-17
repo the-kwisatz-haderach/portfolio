@@ -57,6 +57,7 @@ export const SkillsList = styled.div`
 export const TimelineColumn = styled.div`
   position: relative;
   flex: 1;
+  text-align: justify;
   &:nth-child(2) {
     flex: none;
     width: 100px;
@@ -103,9 +104,6 @@ export const TimeLineContent = styled.div`
     & ${TimelineColumn} {
       & img {
         order: 1;
-      }
-      & * {
-        text-align: right;
       }
     }
   }
