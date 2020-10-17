@@ -65,15 +65,22 @@ export const TimelineColumn = styled.div`
 `
 
 export const TimelineRow = styled.div`
-  overflow: hidden;
   width: 100%;
-  padding: 7em ${props => props.theme.padding.horizontal.medium};
+  max-width: 1600px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 0;
   margin-bottom: 1em;
+`
+
+export const TimeLineContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7em ${props => props.theme.padding.horizontal.low};
   &:first-of-type {
     margin-top: 70px;
   }
@@ -81,8 +88,10 @@ export const TimelineRow = styled.div`
     margin-bottom: 70px;
   }
   &:nth-child(odd) {
-    flex-direction: row-reverse;
     background-color: ${props => props.theme.colors.grey};
+    & ${TimelineRow} {
+      flex-direction: row-reverse;
+    }
     & ${ConnectingLine} {
       left: -50px;
       right: unset;

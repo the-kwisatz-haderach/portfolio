@@ -8,6 +8,7 @@ import getAnimationClassname from '../../utils/getAnimationClassname'
 import {
   TimelineColumn,
   TimelineRow,
+  TimeLineContent,
   TimelineStart,
   TimelineSticky,
   ConnectingLine,
@@ -99,48 +100,50 @@ export default function Timeline({
       <Container>
         <Line />
         {entries.map((entry, i) => (
-          <TimelineRow ref={rowRefs[i]} key={i}>
-            <TimelineColumn>
-              <ConnectingLine className={rowRefStatus[i] && 'widen'} />
-              <div
-                className={getAnimationClassname(
-                  `fadeIn${i % 2 === 0 ? 'Left' : 'Right'}Big`,
-                  rowRefStatus[i],
-                  { delay: 1 }
-                )}
-              >
-                <Entry
-                  title={entry.title}
-                  subtitle={entry.subtitle}
-                  logo={entry.logo}
-                  link={entry.link}
-                  description={entry.description}
-                  location={entry.location}
-                />
-              </div>
-            </TimelineColumn>
-            <TimelineColumn>
-              <DateMarker
-                className={getAnimationClassname('flipInY', rowRefStatus[i])}
-              >
-                {entry.date}
-              </DateMarker>
-            </TimelineColumn>
-            <TimelineColumn>
-              <SkillsList>
-                {entry.skills.map((skill, j) => (
-                  <Skill
-                    key={j}
-                    skill={skill}
-                    animate={rowRefStatus[i]}
-                    animationDelayFactor={
-                      i % 2 === 0 ? j : entry.skills.length - 1 - j
-                    }
+          <TimeLineContent key={i}>
+            <TimelineRow ref={rowRefs[i]}>
+              <TimelineColumn>
+                <ConnectingLine className={rowRefStatus[i] && 'widen'} />
+                <div
+                  className={getAnimationClassname(
+                    `fadeIn${i % 2 === 0 ? 'Left' : 'Right'}Big`,
+                    rowRefStatus[i],
+                    { delay: 1 }
+                  )}
+                >
+                  <Entry
+                    title={entry.title}
+                    subtitle={entry.subtitle}
+                    logo={entry.logo}
+                    link={entry.link}
+                    description={entry.description}
+                    location={entry.location}
                   />
-                ))}
-              </SkillsList>
-            </TimelineColumn>
-          </TimelineRow>
+                </div>
+              </TimelineColumn>
+              <TimelineColumn>
+                <DateMarker
+                  className={getAnimationClassname('flipInY', rowRefStatus[i])}
+                >
+                  {entry.date}
+                </DateMarker>
+              </TimelineColumn>
+              <TimelineColumn>
+                <SkillsList>
+                  {entry.skills.map((skill, j) => (
+                    <Skill
+                      key={j}
+                      skill={skill}
+                      animate={rowRefStatus[i]}
+                      animationDelayFactor={
+                        i % 2 === 0 ? j : entry.skills.length - 1 - j
+                      }
+                    />
+                  ))}
+                </SkillsList>
+              </TimelineColumn>
+            </TimelineRow>
+          </TimeLineContent>
         ))}
       </Container>
     </>
