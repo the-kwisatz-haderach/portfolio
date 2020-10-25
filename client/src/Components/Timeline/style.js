@@ -69,11 +69,15 @@ export const TimelineRow = styled.div`
   width: 100%;
   max-width: 1600px;
   display: flex;
+  flex-flow: column;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 0;
   margin-bottom: 1em;
+  @media screen and (min-width: 800px) {
+    flex-flow: row;
+  }
 `
 
 export const TimeLineContent = styled.div`

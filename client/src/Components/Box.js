@@ -53,12 +53,12 @@ const DoorFrontBack = styled(Door)`
 `
 
 const DoorFront = styled(DoorFrontBack)`
-  transform: rotateY(  0deg) translateZ( 50px);
+  transform: rotateY(0deg) translateZ(50px);
   background-color: red;
 `
 
 const DoorBack = styled(DoorFrontBack)`
-  transform: rotateY(180deg) translateZ( 50px);
+  transform: rotateY(180deg) translateZ(50px);
   background-color: yellow;
 `
 
@@ -74,7 +74,7 @@ const DoorBottom = styled(DoorTopBottom)`
 `
 
 const DoorTop = styled(DoorTopBottom)`
-  transform: rotateX( 90deg) translateZ(100px);
+  transform: rotateX(90deg) translateZ(100px);
   background-color: green;
   top: 60px;
 `
@@ -91,7 +91,7 @@ const DoorLeft = styled(DoorLeftRight)`
 `
 
 const DoorRight = styled(DoorLeftRight)`
-  transform: rotateY( 90deg) translateZ(150px);
+  transform: rotateY(90deg) translateZ(150px);
   background-color: cyan;
   right: 90px;
 `

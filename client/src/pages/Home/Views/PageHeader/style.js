@@ -22,7 +22,7 @@ export const Container = styled.section`
 export const TextWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  padding: 4em;
+  padding: 2em;
   z-index: 1;
   position: absolute;
   top: 0;
@@ -31,19 +31,38 @@ export const TextWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   background-color: ${props => props.theme.colors.primary};
-  clip-path: polygon(0% 40%, 250% 100%, 0% 100%);
+  clip-path: polygon(0% 60%, 720% 100%, 0% 100%);
+  @media only screen and (min-width: 768px) {
+    padding: 4em;
+    clip-path: polygon(0% 40%, 250% 100%, 0% 100%);
+  }
 `
 
 export const DescriptionContainer = styled.div`
   position: relative;
-  font-size: 1.8em;
-  line-height: 1.4em;
+  font-size: 1em;
+  line-height: 1em;
+  @media only screen and (min-width: 768px) {
+    font-size: 1.4em;
+    line-height: 1.4em;
+  }
+  @media only screen and (min-width: 1200px) {
+    font-size: 1.8em;
+    line-height: 1.4em;
+  }
 `
 
 export const HeadingContainer = styled.div`
   position: relative;
-  margin-bottom: 0.5em;
-  font-size: 3em;
+  margin-bottom: 0.7em;
+  font-size: 1.2em;
+  @media only screen and (min-width: 768px) {
+    font-size: 2em;
+  }
+  @media only screen and (min-width: 1200px) {
+    margin-bottom: 0.5em;
+    font-size: 3em;
+  }
 `
 
 export const Heading = styled.h1`
