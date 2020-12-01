@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import Routes from './Routes'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
-import { NavigationProvider } from './Context/NavigationContext'
+import Routes from './Routes'
 import { mainTheme } from './theme'
 import useLocalStorage from './Hooks/useLocalStorage'
 
@@ -60,17 +59,15 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <NavigationProvider>
-        <ThemeProvider
-          theme={{
-            ...mainTheme,
-            colors: colorTheme
-          }}
-        >
-          <GlobalStyle />
-          <Routes />
-        </ThemeProvider>
-      </NavigationProvider>
+      <ThemeProvider
+        theme={{
+          ...mainTheme,
+          colors: colorTheme
+        }}
+      >
+        <GlobalStyle />
+        <Routes />
+      </ThemeProvider>
     </BrowserRouter>
   )
 }
