@@ -8,7 +8,7 @@ export const ContentContainer = styled.div`
   flex-flow: column wrap;
   justify-content: space-between;
   align-items: center;
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1024px) {
     flex-flow: row nowrap;
   }
 `
@@ -19,7 +19,7 @@ export const StyledIcon = styled.i`
   @media only screen and (min-width: 768px) {
     font-size: 4em;
   }
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1024px) {
     font-size: 5em;
   }
 `
@@ -50,7 +50,7 @@ export const Clickable = styled.a`
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1024px) {
     height: 30vh;
     width: 30vh;
   }
@@ -82,7 +82,7 @@ export const LabelContainer = styled.div`
   @media only screen and (min-width: 768px) {
     font-size: 2.5em;
   }
-  @media only screen and (min-width: 1200px) {
+  @media only screen and (min-width: 1024px) {
     font-size: 3em;
     &::before {
       animation: none;

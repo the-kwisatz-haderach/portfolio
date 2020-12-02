@@ -9,8 +9,9 @@ export const TimelineContainer = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
-  margin-top: 2em;
-  margin-bottom: 8em;
+  @media only screen and (min-width: 1024px) {
+    margin-bottom: 4em;
+  }
 `
 
 export const Heading = styled.h2`
@@ -23,7 +24,8 @@ export const Heading = styled.h2`
 
 export const TimeLineHeader = styled.header`
   text-align: center;
-  margin-bottom: 0.5em;
+  margin-top: 3em;
+  margin-bottom: 2em;
   @media screen and (min-width: 768px) {
     margin-bottom: 4em;
     padding: ${props => props.theme.padding.horizontal.medium};

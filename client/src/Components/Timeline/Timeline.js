@@ -86,7 +86,6 @@ export default function Timeline({
       requestAnimationFrame(() => {
         setImmediate(() => {
           stickyRef.current.classList.add('swell')
-          stickyRef.current.style.fontSize = '3em'
         })
       })
     }

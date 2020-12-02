@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import texture from '../../../../assets/images/circuit.jpg'
+import portrait from '../../../../assets/images/portrait.jpg'
 
 export const Container = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -10,12 +10,21 @@ export const Container = styled.section`
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: 20%;
     width: 100%;
-    height: 80%;
-    background-image: url(${texture});
+    height: 100%;
+    background: url(${portrait});
+    background-position: right;
     background-size: cover;
-    opacity: 0.1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, black 50%, transparent);
   }
 `
 
@@ -29,12 +38,14 @@ export const TextWrapper = styled.div`
   left: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   background-color: ${props => props.theme.colors.primary};
   clip-path: polygon(0% 60%, 720% 100%, 0% 100%);
   @media only screen and (min-width: 768px) {
     padding: 4em;
-    clip-path: polygon(0% 40%, 250% 100%, 0% 100%);
+    clip-path: polygon(50% 0%, 0% 320%, 0% 0%);
+  }
+  & div {
+    width: 40%;
   }
 `
 

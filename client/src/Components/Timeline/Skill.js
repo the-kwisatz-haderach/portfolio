@@ -5,19 +5,36 @@ import getAnimationClassname from '../../utils/getAnimationClassname'
 
 const SkillContainer = styled.div`
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   align-items: center;
   animation-delay: ${props => 2 + props.animationDelayFactor * 0.4}s;
+  @media only screen and (min-width: 425px) {
+    flex-flow: column wrap;
+  }
+  @media only screen and (min-width: 1024px) {
+    text-align: center;
+  }
 `
 
 const SkillIcon = styled.i`
-  font-size: 3.2em;
-  margin-bottom: 0.2em;
+  font-size: 1.2em;
+  margin-right: 0.4em;
+  @media only screen and (min-width: 425px) {
+    margin-right: 0;
+    margin-bottom: 0.2em;
+    font-size: 2.2em;
+  }
+  @media only screen and (min-width: 768px) {
+    font-size: 3.2em;
+  }
 `
 
 const SkillName = styled.p`
   font-weight: 600;
-  font-size: 0.9em;
+  font-size: 0.6em;
+  @media only screen and (min-width: 768px) {
+    font-size: 0.9em;
+  }
 `
 
 function Skill({ skill, animationDelayFactor, animate }) {

@@ -15,7 +15,7 @@ const Container = styled.div`
   z-index: 0;
   margin-bottom: 3em;
   @media only screen and (min-width: 768px) {
-    margin-bottom: 6em;
+    margin-bottom: 4em;
   }
   @media only screen and (min-width: 1024px) {
     margin-bottom: 8em;
@@ -26,6 +26,7 @@ const Heading = styled.h3`
   text-align: center;
   text-transform: capitalize;
   font-size: 2em;
+  margin-bottom: 0.5em;
   @media only screen and (min-width: 768px) {
     font-size: 3em;
   }
@@ -36,7 +37,7 @@ const DurationContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   @media only screen and (min-width: 768px) {
-    flex-direction: row;
+    flex-flow: row wrap;
   }
 `
 

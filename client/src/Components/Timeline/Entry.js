@@ -4,32 +4,48 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   width: 100%;
-  padding: 2.7em;
-  border: 1px solid #0000001f;
-  border-radius: 3px;
-  box-shadow: 3px 3px 14px 3px #0000000d;
   position: relative;
-  background-color: white;
+  padding: 1.5em;
+  @media only screen and (min-width: 768px) {
+    background-color: white;
+    border: 1px solid #0000001f;
+    border-radius: 3px;
+    box-shadow: 3px 3px 14px 3px #0000000d;
+    padding: 2.5em;
+  }
 `
 
 const TextContainer = styled.div`
-  padding: 0 20px;
+  margin: 0 10px;
+  @media only screen and (min-width: 768px) {
+    margin: 0 20px;
+  }
 `
 const Logo = styled.img`
   width: 50px;
   height: 50px;
+  @media only screen and (min-width: 768px) {
+    position: relative;
+    top: 4px;
+  }
 `
 
 const Title = styled.h3`
   margin: 0;
-  font-size: 1.4em;
+  font-size: 1em;
   margin-bottom: 0.4em;
+  @media only screen and (min-width: 768px) {
+    font-size: 1.5em;
+  }
 `
 
 const SubTitle = styled.p`
   color: #737373;
-  font-size: 0.9em;
-  margin-bottom: 1em;
+  font-size: 0.7em;
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 1em;
+    font-size: 0.9em;
+  }
 `
 
 export const Header = styled.div`
@@ -37,9 +53,19 @@ export const Header = styled.div`
 `
 
 const Description = styled.p`
-  max-height: 4em;
   display: inline-block;
   position: relative;
+  font-size: 0.8em;
+  margin-top: 1em;
+  @media only screen and (min-width: 768px) {
+    margin-top: 0;
+    max-height: 4em;
+    font-size: 0.9em;
+    text-align: justify;
+  }
+  @media only screen and (min-width: 1024px) {
+    font-size: 1em;
+  }
 `
 
 const CompanyLink = styled.a`

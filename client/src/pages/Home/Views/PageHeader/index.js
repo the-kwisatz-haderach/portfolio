@@ -1,3 +1,3 @@
-import PageHeader from './PageHeader'
+import PageHeaderContainer from './PageHeaderContainer'
 
-export default PageHeader
+export default PageHeaderContainer

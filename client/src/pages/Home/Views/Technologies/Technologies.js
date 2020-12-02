@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Flippable from '../../../components/Flippable'
+import Flippable from '../../../../components/Flippable'
 import reactLogo from '../../../assets/images/react-logo.png'
 import nodeJsLogo from '../../../assets/images/nodejs-logo.png'
 
