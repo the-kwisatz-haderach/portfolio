@@ -76,7 +76,8 @@ const timeLineEntries = [
     title: 'Head of Insights',
     subtitle: 'Bombayworks',
     link: 'https://www.bombayworks.com/',
-    description: '',
+    description:
+      'Led team of analysts and developed company offering within digital analytics. Quantitative & semi-qualitative analysis, A/B-testing & optimisation, data visualisation.',
     logo: bombayworksLogo,
     date: '2018',
     location: 'Stockholm',
@@ -121,7 +122,8 @@ const timeLineEntries = [
     title: 'Software Developer',
     subtitle: 'Systecon Group',
     link: 'https://www.systecongroup.com/se/',
-    description: '',
+    description:
+      "Alongside the rest of the Customised Solutions team I'm developing multiple applications, all with an explicit focus on performance and usability. The tech stack varies but my work usually revolves around NodeJS, Typescript, React and the Electron framework on a daily basis.",
     logo: systeconLogo,
     date: '2020',
     location: 'Stockholm',
@@ -130,6 +132,10 @@ const timeLineEntries = [
       {
         icon: 'fas fa-laptop-code',
         label: 'Software Development'
+      },
+      {
+        icon: 'fas fa-redo-alt',
+        label: 'Agile Methodologies'
       }
     ]
   }

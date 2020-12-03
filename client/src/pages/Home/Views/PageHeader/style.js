@@ -85,7 +85,7 @@ export const DescriptionContainer = styled.div`
 
 export const HeadingContainer = styled.div`
   position: relative;
-  margin-bottom: 0.7em;
+  margin-bottom: 1em;
   font-size: 1.2em;
   @media only screen and (min-width: 500px) {
     font-size: 1.7em;
@@ -94,7 +94,6 @@ export const HeadingContainer = styled.div`
     font-size: 2em;
   }
   @media only screen and (min-width: 1400px) {
-    margin-bottom: 0.5em;
     font-size: 3em;
   }
 `
