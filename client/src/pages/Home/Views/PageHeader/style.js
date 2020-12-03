@@ -10,21 +10,33 @@ export const Container = styled.section`
     content: '';
     position: absolute;
     top: 0;
-    left: 20%;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: 70%;
     background: url(${portrait});
-    background-position: right;
+    background-position: top;
     background-size: cover;
   }
   &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: -20%;
-    width: 100%;
+    top: 12%;
+    left: 0;
     height: 100%;
-    background: linear-gradient(90deg, black 50%, transparent);
+    width: 100%;
+    background: linear-gradient(0deg, black 0%, transparent);
+  }
+  @media only screen and (min-width: 1024px) {
+    &::before {
+      left: 20%;
+      height: 100%;
+      background-position: center;
+    }
+    &::after {
+      top: 0%;
+      left: -20%;
+      background: linear-gradient(90deg, black 50%, transparent);
+    }
   }
 `
 
@@ -40,12 +52,20 @@ export const TextWrapper = styled.div`
   flex-direction: column;
   background-color: ${props => props.theme.colors.primary};
   clip-path: polygon(0% 60%, 720% 100%, 0% 100%);
-  @media only screen and (min-width: 768px) {
-    padding: 4em;
-    clip-path: polygon(50% 0%, 0% 320%, 0% 0%);
-  }
+  justify-content: flex-end;
   & div {
-    width: 40%;
+    width: 100%;
+  }
+  @media only screen and (min-width: 768px) {
+    padding: 3em;
+  }
+  @media only screen and (min-width: 1024px) {
+    justify-content: flex-start;
+    padding: 4em;
+    clip-path: polygon(50% 0%, 0% 720%, 0% 0%);
+    & div {
+      width: 42%;
+    }
   }
 `
 
@@ -53,8 +73,8 @@ export const DescriptionContainer = styled.div`
   position: relative;
   font-size: 1em;
   line-height: 1em;
-  @media only screen and (min-width: 768px) {
-    font-size: 1.4em;
+  @media only screen and (min-width: 500px) {
+    font-size: 1.3em;
     line-height: 1.4em;
   }
   @media only screen and (min-width: 1200px) {
@@ -67,10 +87,13 @@ export const HeadingContainer = styled.div`
   position: relative;
   margin-bottom: 0.7em;
   font-size: 1.2em;
-  @media only screen and (min-width: 768px) {
-    font-size: 2em;
+  @media only screen and (min-width: 500px) {
+    font-size: 1.7em;
   }
   @media only screen and (min-width: 1200px) {
+    font-size: 2em;
+  }
+  @media only screen and (min-width: 1400px) {
     margin-bottom: 0.5em;
     font-size: 3em;
   }
