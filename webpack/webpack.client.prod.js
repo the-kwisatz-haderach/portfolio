@@ -10,14 +10,14 @@ module.exports = {
   output: {
     path: path.resolve('client', 'build'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         use: ['babel-loader'],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|svg|jpe?g|gif)$/i,
@@ -26,10 +26,9 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: path.join('assets', 'images')
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       {
         test: /\.ico$/i,
@@ -38,10 +37,10 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: '/'
-            }
-          }
-        ]
+              outputPath: '/',
+            },
+          },
+        ],
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -50,24 +49,23 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: path.join('assets', 'fonts')
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
       {
         test: /\.s?css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      }
-    ]
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve('client', 'public', 'index.html')
-    })
-  ]
+      template: path.resolve('client', 'public', 'index.html'),
+    }),
+  ],
 }
