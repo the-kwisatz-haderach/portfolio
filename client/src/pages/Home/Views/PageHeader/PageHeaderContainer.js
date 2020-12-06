@@ -4,8 +4,10 @@ import useElementScrollTop from '../../../../Hooks/useElementScrollTop'
 import useLocalStorage from '../../../../Hooks/useLocalStorage'
 import PageHeader from './PageHeader'
 
-const description =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores magni omnis nobis quae obcaecati sit aliquid corrupti harum sequi doloremque.'
+const description = isReturnVisit =>
+  `You found my personal website ${
+    isReturnVisit ? '(again)' : ''
+  }! That means Google's probably having a bad day. Or you're actually looking for information about me. In that case, you'll find some of that further down.`
 
 export default function PageHeaderContainer() {
   const [headerRef, headerIsVisible] = useElementScrollTop()
@@ -22,7 +24,7 @@ export default function PageHeaderContainer() {
   )
 
   const [slowlyTypedDescription, isDoneTypingDescription] = useTypedMessage(
-    description,
+    description(+visits > 0),
     60,
     headerIsDone
   )

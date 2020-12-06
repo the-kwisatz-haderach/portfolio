@@ -54,4 +54,6 @@ const PageHeader = forwardRef(
   }
 )
 
+PageHeader.displayName = 'PageHeader'
+
 export default React.memo(PageHeader)
