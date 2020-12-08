@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
+import Home from './pages/Home'
 import './styles/transition.css'
 
 const routes = [{ path: '/', Component: Home }]
