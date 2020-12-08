@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
-import Timeline from '../../../../components/Timeline'
-import TotalExperience from '../../../../components/TotalExperience/TotalExperience'
+import Timeline from '../../../../Components/Timeline'
+import TotalExperience from '../../../../Components/TotalExperience/TotalExperience'
 import timeLineEntries from './timeLineEntries'
 import {
   BiographyContainer,
