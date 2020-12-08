@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": "./server/build",
+    "outDir": "./build",
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "es5",
     "allowJs": true,
-    "jsx": "react",
     "sourceMap": true,
     "esModuleInterop": true,
     "downlevelIteration": true,

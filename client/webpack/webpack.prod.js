@@ -6,18 +6,18 @@ module.exports = {
   target: 'web',
   mode: 'production',
   devtool: 'source-map',
-  entry: path.resolve('client', 'src', 'index.js'),
+  entry: path.resolve('src', 'index.js'),
   output: {
-    path: path.resolve('client', 'build'),
+    path: path.resolve('build'),
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         use: ['babel-loader'],
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.(png|svg|jpe?g|gif)$/i,
@@ -25,10 +25,10 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
-            },
-          },
-        ],
+              name: '[name].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.ico$/i,
@@ -37,10 +37,10 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: '/',
-            },
-          },
-        ],
+              outputPath: '/'
+            }
+          }
+        ]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -48,24 +48,24 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
-            },
-          },
-        ],
+              name: '[name].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.s?css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
-    ],
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve('client', 'public', 'index.html'),
-    }),
-  ],
+      template: path.resolve('public', 'index.html')
+    })
+  ]
 }
