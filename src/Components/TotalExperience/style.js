@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding: 0 ${props => props.theme.padding.horizontal.high};
+  padding: 0 4em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  background-color: white;
-  color: black;
+  background-color: ${props => props.theme.colors.foundation};
+  color: ${props => props.theme.colors.text};
   position: relative;
   z-index: 0;
   margin-bottom: 3em;
@@ -62,6 +62,7 @@ export const Number = styled.p`
   font-family: 'calculator', sans-serif;
   line-height: 1;
   margin-right: 0.5em;
+  color: ${props => props.theme.colors.link};
   @media only screen and (min-width: 768px) {
     margin-right: 0;
     font-size: 4em;

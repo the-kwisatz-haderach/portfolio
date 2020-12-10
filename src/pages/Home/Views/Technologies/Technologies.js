@@ -8,8 +8,8 @@ const Wrapper = styled.section`
   min-height: 500px;
   display: flex;
   justify-content: center;
-  background-color: white;
-  padding: 60px ${props => props.theme.padding.horizontal.medium};
+  background-color: ${props => props.theme.colors.foundation};
+  padding: 60px 3em;
 `
 
 const ContentContainer = styled.div`

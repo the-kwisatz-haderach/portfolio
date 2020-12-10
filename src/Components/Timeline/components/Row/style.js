@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import { Header } from '../Entry/style'
+import { Header, Container } from '../Entry/style'
 
 export const DateMarker = styled.div`
   width: 100%;
   height: 60px;
-  background-color: black;
+  background-color: ${props => props.theme.colors.text};
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: ${props => props.theme.colors.foundation};
   @media only screen and (min-width: 1024px) {
     clip-path: polygon(50% 100%, 100% 50%, 50% 0%, 0% 50%, 50% 100%);
     width: 100px;
@@ -24,7 +24,7 @@ export const ConnectingLine = styled.div`
   left: unset;
   z-index: -1;
   height: 50%;
-  border-top: 4px solid #0000001f;
+  border-top: 4px solid ${props => props.theme.colors.foundationDetail};
   width: 0px;
   transform-origin: right;
   @media only screen and (min-width: 1024px) {
@@ -98,11 +98,14 @@ export const TimeLineContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  &:nth-child(odd) {
-    background-color: ${props => props.theme.colors.grey};
-  }
   @media only screen and (min-width: 1024px) {
-    padding: 7em ${props => props.theme.padding.horizontal.low};
+    &:nth-child(odd) {
+      background-color: ${props => props.theme.colors.tertiaryFoundation};
+    }
+    padding: 7em 2em;
+    & ${Container} {
+      background-color: ${props => props.theme.colors.secondaryFoundation};
+    }
     &:nth-child(odd) {
       & ${TimelineRow} {
         flex-direction: row-reverse;
@@ -120,6 +123,9 @@ export const TimeLineContent = styled.div`
         & img {
           order: 1;
         }
+      }
+      & ${Container} {
+        background-color: ${props => props.theme.colors.foundation};
       }
     }
     &:first-of-type {

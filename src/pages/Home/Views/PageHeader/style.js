@@ -49,6 +49,7 @@ export const TextWrapper = styled.div`
   left: 0px;
   display: flex;
   flex-direction: column;
+  color: ${props => props.theme.colors.text};
   background-color: ${props => props.theme.colors.primary};
   clip-path: inset(0% 0%);
   justify-content: flex-start;

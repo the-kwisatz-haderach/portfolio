@@ -9,7 +9,8 @@ import {
   Title,
   SubTitle,
   CompanyLink,
-  Location
+  Location,
+  LinkDivider
 } from './style'
 
 const Entry = ({ title, subtitle, description, location, logo, link }) => (
@@ -20,8 +21,9 @@ const Entry = ({ title, subtitle, description, location, logo, link }) => (
         <Title>{title}</Title>
         <SubTitle>
           <CompanyLink href={link} target="_blank" rel="noopener noreferrer">
-            {subtitle} |
+            {subtitle}
           </CompanyLink>
+          <LinkDivider />
           <Location>{location}</Location>
         </SubTitle>
       </TextContainer>

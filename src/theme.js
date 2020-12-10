@@ -1,23 +1,32 @@
 export const mainTheme = {
   colors: {
     primary: '#ffe42a',
-    primaryDark: '#ffc800',
-    primaryLight: '#ffec69',
     secondary: '#34ff98',
-    secondaryDark: '#26945c',
-    secondaryLight: '#ffe42a',
     accent: '#ffe42a',
-    accentDark: '#ffe42a',
-    accentLight: '#ffe42a',
-    grey: '#f5f5f5',
-    black: '#171717'
+    foundation: 'white',
+    secondaryFoundation: 'white',
+    tertiaryFoundation: '#f5f5f5',
+    foundationDetail: '#bbbbbb',
+    text: 'black',
+    link: 'black'
   },
-  padding: {
-    horizontal: {
-      high: '4em',
-      medium: '3em',
-      low: '2em'
-    }
+  fonts: {
+    primary: 'Inconsolata, monospace',
+    secondary: 'Montserrat, sans-serif'
+  }
+}
+
+export const darkTheme = {
+  colors: {
+    primary: '#212121',
+    secondary: '#34ff98',
+    accent: '#ffe42a',
+    foundation: 'black',
+    secondaryFoundation: '#212121',
+    tertiaryFoundation: '#212121',
+    foundationDetail: '#bbbbbb',
+    text: 'white',
+    link: '#96ff36'
   },
   fonts: {
     primary: 'Inconsolata, monospace',

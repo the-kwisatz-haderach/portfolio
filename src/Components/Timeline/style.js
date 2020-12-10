@@ -11,10 +11,10 @@ export const Line = styled.span`
   display: none;
   width: 2px;
   height: 100%;
-  background-color: #0000001f;
+  background-color: ${props => props.theme.colors.foundationDetail};
   position: absolute;
   top: 0;
-  z-index: 1;
+  z-index: 0;
   left: 50px;
   &::before,
   &::after {
@@ -23,7 +23,7 @@ export const Line = styled.span`
     left: calc(50% - 10px);
     width: 20px;
     height: 3px;
-    background-color: #0000001f;
+    background-color: ${props => props.theme.colors.foundationDetail};
   }
   &::before {
     top: -3px;

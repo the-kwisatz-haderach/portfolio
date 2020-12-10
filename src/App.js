@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import Routes from './Routes'
-import { mainTheme } from './theme'
+import { mainTheme, darkTheme } from './theme'
 import useLocalStorage from './Hooks/useLocalStorage'
 
 const GlobalStyle = createGlobalStyle`
@@ -23,24 +23,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-function generateTheme(hue) {
-  return {
-    primary: 'green',
-    primaryDark: 'green',
-    primaryLight: 'green',
-    seconday: 'green',
-    secondaryDark: 'green',
-    secondaryLight: 'green',
-    accent: 'green',
-    accentDark: 'green',
-    accentLight: 'green'
-  }
+const themes = {
+  mainTheme,
+  darkTheme
 }
 
 const App = () => {
-  const [colorTheme, setColorTheme] = useState(mainTheme.colors)
-  const [selectedHue, setSelectedHue] = useState('')
   const [visits, setVisits] = useLocalStorage('visits')
+  const [theme, setTheme] = useState('mainTheme')
 
   useEffect(() => {
     if (!visits) {
@@ -50,23 +40,30 @@ const App = () => {
     }
   }, [])
 
-  useEffect(() => {
-    if (selectedHue) {
-      const newColorTheme = generateTheme(selectedHue)
-      setColorTheme(newColorTheme)
-    }
-  }, [selectedHue])
-
   return (
     <BrowserRouter>
-      <ThemeProvider
-        theme={{
-          ...mainTheme,
-          colors: colorTheme
-        }}
-      >
+      <ThemeProvider theme={themes[theme]}>
         <GlobalStyle />
         <Routes />
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            right: 200
+          }}
+        >
+          <button
+            onClick={() => {
+              if (theme === 'mainTheme') {
+                setTheme('darkTheme')
+              } else {
+                setTheme('mainTheme')
+              }
+            }}
+          >
+            Switch theme
+          </button>
+        </div>
       </ThemeProvider>
     </BrowserRouter>
   )

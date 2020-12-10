@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const BiographyContainer = styled.div`
   width: 100%;
-  background-color: white;
+  background-color: ${props => props.theme.colors.foundation};
+  color: ${props => props.theme.colors.text};
 `
 
 export const TimelineContainer = styled.div`
@@ -28,7 +29,7 @@ export const TimeLineHeader = styled.header`
   margin-bottom: 2em;
   @media screen and (min-width: 768px) {
     margin-bottom: 4em;
-    padding: ${props => props.theme.padding.horizontal.medium};
+    padding: 3em;
   }
 `
 

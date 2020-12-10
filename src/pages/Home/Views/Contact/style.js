@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const ContentContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: ${props => props.theme.colors.primary};
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
@@ -33,9 +32,11 @@ export const Block = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease-in-out;
+  background-color: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.link};
   &:first-child {
     color: white;
-    background-color: ${props => props.theme.colors.black};
+    background-color: black;
   }
 `
 
