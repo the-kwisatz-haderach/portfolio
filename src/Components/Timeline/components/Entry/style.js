@@ -1,8 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 100%;
   position: relative;
   padding: 1.5em;
@@ -15,13 +13,13 @@ const Container = styled.div`
   }
 `
 
-const TextContainer = styled.div`
+export const TextContainer = styled.div`
   margin: 0 10px;
   @media only screen and (min-width: 768px) {
     margin: 0 20px;
   }
 `
-const Logo = styled.img`
+export const Logo = styled.img`
   width: 50px;
   height: 50px;
   @media only screen and (min-width: 768px) {
@@ -30,7 +28,7 @@ const Logo = styled.img`
   }
 `
 
-const Title = styled.h3`
+export const Title = styled.h3`
   margin: 0;
   font-size: 1em;
   margin-bottom: 0.4em;
@@ -39,7 +37,7 @@ const Title = styled.h3`
   }
 `
 
-const SubTitle = styled.p`
+export const SubTitle = styled.p`
   color: #737373;
   font-size: 0.7em;
   @media only screen and (min-width: 768px) {
@@ -52,7 +50,7 @@ export const Header = styled.div`
   display: flex;
 `
 
-const Description = styled.p`
+export const Description = styled.p`
   display: inline-block;
   position: relative;
   font-size: 0.8em;
@@ -68,7 +66,7 @@ const Description = styled.p`
   }
 `
 
-const CompanyLink = styled.a`
+export const CompanyLink = styled.a`
   color: #737373;
   text-decoration: none;
   margin-right: 8px;
@@ -83,7 +81,7 @@ const CompanyLink = styled.a`
   }
 `
 
-const Location = styled.span`
+export const Location = styled.span`
   &::before {
     content: '\f3c5';
     font-weight: 600;
@@ -91,32 +89,3 @@ const Location = styled.span`
     font-family: 'Font Awesome 5 Free';
   }
 `
-
-const Entry = ({ title, subtitle, description, location, logo, link }) => (
-  <Container>
-    <Header>
-      <Logo src={logo} />
-      <TextContainer>
-        <Title>{title}</Title>
-        <SubTitle>
-          <CompanyLink href={link} target="_blank" rel="noopener noreferrer">
-            {subtitle} |
-          </CompanyLink>
-          <Location>{location}</Location>
-        </SubTitle>
-      </TextContainer>
-    </Header>
-    <Description>{description}</Description>
-  </Container>
-)
-
-Entry.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  logo: PropTypes.node,
-  link: PropTypes.string,
-  description: PropTypes.string,
-  location: PropTypes.string
-}
-
-export default Entry

@@ -27,7 +27,7 @@ const PageHeader = forwardRef(
   ) => {
     return (
       <Container ref={headerRef}>
-        <TextWrapper className="animate__animated animate__slideInLeft">
+        <TextWrapper>
           <HeadingContainer>
             <HiddenHeading>{heading}</HiddenHeading>
             <Heading absolute>

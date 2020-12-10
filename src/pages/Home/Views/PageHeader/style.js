@@ -14,7 +14,7 @@ export const Container = styled.section`
     width: 100%;
     height: 70%;
     background: url(${portrait});
-    background-position: top;
+    background-position: center;
     background-size: cover;
   }
   &::after {
@@ -30,7 +30,6 @@ export const Container = styled.section`
     &::before {
       left: 20%;
       height: 100%;
-      background-position: center;
     }
     &::after {
       top: 0%;
@@ -42,17 +41,17 @@ export const Container = styled.section`
 
 export const TextWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 40%;
   padding: 2em;
   z-index: 1;
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 0px;
+  left: 0px;
   display: flex;
   flex-direction: column;
   background-color: ${props => props.theme.colors.primary};
-  clip-path: polygon(0% 60%, 720% 100%, 0% 100%);
-  justify-content: flex-end;
+  clip-path: inset(0% 0%);
+  justify-content: flex-start;
   & div {
     width: 100%;
   }
@@ -60,12 +59,10 @@ export const TextWrapper = styled.div`
     padding: 3em;
   }
   @media only screen and (min-width: 1024px) {
-    justify-content: flex-start;
+    height: 100%;
+    width: 45%;
     padding: 4em;
-    clip-path: polygon(50% 0%, 0% 720%, 0% 0%);
-    & div {
-      width: 42%;
-    }
+    clip-path: inset(0% 0%);
   }
 `
 
@@ -85,7 +82,7 @@ export const DescriptionContainer = styled.div`
 
 export const HeadingContainer = styled.div`
   position: relative;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   font-size: 1.2em;
   @media only screen and (min-width: 500px) {
     font-size: 1.7em;
@@ -104,12 +101,14 @@ export const Heading = styled.h1`
   position: ${props => (props.absolute ? 'absolute' : 'static')};
   top: 0;
   left: 0;
+  line-height: 0.5;
 `
 
 export const HiddenHeading = styled.h1`
   display: block;
   margin: 0;
   visibility: hidden;
+  line-height: 0.5;
 `
 
 export const HiddenDescription = styled.p`
@@ -125,6 +124,8 @@ export const Description = styled.p`
 export const TypeMarker = styled.span`
   visibility: ${props => (props.hide ? 'hidden' : 'visible')};
   position: relative;
+  width: 0;
+  height: 0;
   &::before {
     content: '|';
     position: absolute;

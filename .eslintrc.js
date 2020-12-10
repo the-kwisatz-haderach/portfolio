@@ -10,7 +10,6 @@ module.exports = {
     'prettier-standard'
   ],
   plugins: ['jest', 'react'],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -18,6 +17,7 @@ module.exports = {
   },
   rules: {
     'react/jsx-filename-extension': 'off',
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'react/prop-types': 'off'
   }
 }
