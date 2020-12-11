@@ -32,7 +32,7 @@ const Home = () => {
       <Biography />
       <div
         style={{
-          height: '100%'
+          height: '100vh'
         }}
         ref={contactRef}
       >

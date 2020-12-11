@@ -6,7 +6,7 @@ export const mainTheme = {
     foundation: 'white',
     secondaryFoundation: 'white',
     tertiaryFoundation: '#f5f5f5',
-    foundationDetail: '#bbbbbb',
+    foundationDetail: '#989898',
     text: 'black',
     link: 'black'
   },
@@ -17,6 +17,7 @@ export const mainTheme = {
 }
 
 export const darkTheme = {
+  isDark: true,
   colors: {
     primary: '#212121',
     secondary: '#34ff98',

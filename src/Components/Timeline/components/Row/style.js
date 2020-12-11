@@ -4,7 +4,7 @@ import { Header, Container } from '../Entry/style'
 export const DateMarker = styled.div`
   width: 100%;
   height: 60px;
-  background-color: ${props => props.theme.colors.text};
+  background-color: ${props => props.theme.colors.foundationDetail};
   display: flex;
   justify-content: center;
   align-items: center;

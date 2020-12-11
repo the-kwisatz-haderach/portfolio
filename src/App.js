@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import Routes from './Routes'
 import { mainTheme, darkTheme } from './theme'
 import useLocalStorage from './Hooks/useLocalStorage'
+import Toggle from './Components/Toggle/Toggle'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -30,9 +31,13 @@ const themes = {
 
 const App = () => {
   const [visits, setVisits] = useLocalStorage('visits')
-  const [theme, setTheme] = useState('mainTheme')
+  const [theme, setTheme] = useLocalStorage('theme')
 
   useEffect(() => {
+    if (!theme) {
+      setTheme('mainTheme')
+    }
+
     if (!visits) {
       setVisits(1)
     } else {
@@ -42,17 +47,19 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <ThemeProvider theme={themes[theme]}>
+      <ThemeProvider theme={themes[theme || 'mainTheme']}>
         <GlobalStyle />
         <Routes />
         <div
           style={{
             position: 'fixed',
             top: 0,
-            right: 200
+            right: 200,
+            zIndex: 5
           }}
         >
-          <button
+          <Toggle
+            icon="fas fa-moon"
             onClick={() => {
               if (theme === 'mainTheme') {
                 setTheme('darkTheme')
@@ -60,9 +67,7 @@ const App = () => {
                 setTheme('mainTheme')
               }
             }}
-          >
-            Switch theme
-          </button>
+          />
         </div>
       </ThemeProvider>
     </BrowserRouter>
