@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   font-family: ${props => props.theme.fonts.secondary};
   transition: background-color 0.1s ease-in-out;
-  border: 1px solid #ffffff69;
+  border: 3px solid #69696994;
   &:hover {
     background-color: black;
     color: white;

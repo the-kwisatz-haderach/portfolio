@@ -34,7 +34,7 @@ export const Line = styled.span`
   @media only screen and (min-width: 1024px) {
     display: block;
     left: calc(50% - 2px);
-    width: 5px;
+    width: 4px;
     &::before,
     &::after {
       left: calc(50% - 15px);

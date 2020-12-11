@@ -64,7 +64,7 @@ export const Number = styled.p`
   margin-right: 0.5em;
   color: ${props => props.theme.colors.link};
   text-shadow: ${props =>
-    props.theme.isDark && `3px 3px 10px ${props.theme.colors.link}`};
+    props.theme.isDark && `2px 2px 5px ${props.theme.colors.link}`};
   @media only screen and (min-width: 768px) {
     margin-right: 0;
     font-size: 4em;

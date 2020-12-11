@@ -1,12 +1,12 @@
 export const mainTheme = {
   colors: {
-    primary: '#ffe42a',
+    primary: '#ffcb24',
     secondary: '#34ff98',
     accent: '#ffe42a',
     foundation: 'white',
     secondaryFoundation: 'white',
     tertiaryFoundation: '#f5f5f5',
-    foundationDetail: '#989898',
+    foundationDetail: '#3e3e3e',
     text: 'black',
     link: 'black'
   },
@@ -27,7 +27,7 @@ export const darkTheme = {
     tertiaryFoundation: '#212121',
     foundationDetail: '#bbbbbb',
     text: 'white',
-    link: '#96ff36'
+    link: '#36ff58'
   },
   fonts: {
     primary: 'Inconsolata, monospace',

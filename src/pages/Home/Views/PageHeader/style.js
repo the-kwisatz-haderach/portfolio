@@ -16,6 +16,7 @@ export const Container = styled.section`
     background: url(${portrait});
     background-position: center;
     background-size: cover;
+    filter: ${props => (props.theme.isDark ? 'grayscale(1)' : '')};
   }
   &::after {
     content: '';

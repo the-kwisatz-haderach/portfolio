@@ -98,8 +98,12 @@ export const LabelContainer = styled.div`
 
 export const StyledLabel = styled.h3`
   margin: 0;
-  transition: transform 0.2s ease-in-out;
-  ${Clickable}:hover & {
-    transform: translateX(-20px);
+  transform: translateX(-20px);
+  @media only screen and (min-width: 1024px) {
+    transform: translateX(0);
+    transition: transform 0.2s ease-in-out;
+    ${Clickable}:hover & {
+      transform: translateX(-20px);
+    }
   }
 `
