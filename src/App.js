@@ -5,19 +5,11 @@ import useLocalStorage from './Hooks/useLocalStorage'
 import Theme from './Contexts/Theme'
 
 const App = () => {
-  const [visits, setVisits] = useLocalStorage('visits')
-  const [storedTheme, setStoredTheme] = useLocalStorage('theme')
+  const [visits, setVisits] = useLocalStorage('visits', { initialValue: 0 })
+  const [storedTheme] = useLocalStorage('theme', { initialValue: 'main' })
 
   useEffect(() => {
-    if (!storedTheme) {
-      setStoredTheme('main')
-    }
-
-    if (!visits) {
-      setVisits(1)
-    } else {
-      setVisits(+visits + 1)
-    }
+    setVisits(+visits + 1)
   }, [])
 
   return (

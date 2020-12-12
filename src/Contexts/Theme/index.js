@@ -8,7 +8,8 @@ const ThemeContext = createContext({ setTheme: () => {}, theme: 'main' })
 export const useTheme = () => useContext(ThemeContext)
 
 const Theme = ({ theme = 'main', children }) => {
-  const [activeTheme, setActiveTheme] = useState(theme)
+  const [activeTheme, setActiveTheme] = useState(theme ?? 'main')
+
   return (
     <ThemeContext.Provider
       value={{
