@@ -1,7 +1,14 @@
 import React, { forwardRef } from 'react'
 import Toggle from '../../../../Components/Toggle/Toggle'
 import TypedText from '../../../../Components/TypedText'
-import { Container, TextWrapper } from './style'
+import {
+  Container,
+  TextWrapper,
+  DescriptionContainer,
+  HeadingContainer,
+  DarkModeContainerSelector,
+  DarkModeLabel
+} from './style'
 
 const PageHeader = forwardRef(
   (
@@ -18,23 +25,30 @@ const PageHeader = forwardRef(
     return (
       <Container ref={headerRef}>
         <TextWrapper>
-          <TypedText
-            as="h1"
-            className="page-title"
-            active={canHeaderStart}
-            onCompleteTyping={onCompleteTypingHeading}
-            markerActive={!headerIsDone}
-          >
-            {heading}
-          </TypedText>
-          <TypedText
-            className="page-description"
-            active={headerIsDone}
-            markerActive={headerIsDone}
-          >
-            {description}
-          </TypedText>
-          <Toggle icon="fas fa-moon" onClick={onSetTheme} />
+          <HeadingContainer>
+            <TypedText
+              as="h1"
+              className="page-title"
+              active={canHeaderStart}
+              onCompleteTyping={onCompleteTypingHeading}
+              markerActive={!headerIsDone}
+            >
+              {heading}
+            </TypedText>
+          </HeadingContainer>
+          <DescriptionContainer>
+            <TypedText
+              className="page-description"
+              active={headerIsDone}
+              markerActive={headerIsDone}
+            >
+              {description}
+            </TypedText>
+          </DescriptionContainer>
+          <DarkModeContainerSelector>
+            <Toggle icon="fas fa-moon" onClick={onSetTheme} />
+            <DarkModeLabel>Toggle dark mode</DarkModeLabel>
+          </DarkModeContainerSelector>
         </TextWrapper>
       </Container>
     )

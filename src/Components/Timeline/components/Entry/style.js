@@ -96,7 +96,7 @@ export const CompanyLink = styled.a`
   }
 `
 
-export const LinkDivider = styled.div`
+export const LinkDivider = styled.span`
   display: inline;
   width: 0;
   margin: 0 10px;

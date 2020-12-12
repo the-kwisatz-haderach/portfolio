@@ -20,6 +20,7 @@ export const Hidden = styled.span`
 `
 
 export const TypeMarker = styled.span`
+  visibility: ${props => (props.active ? 'visible' : 'hidden')};
   position: relative;
   width: 0;
   height: 0;

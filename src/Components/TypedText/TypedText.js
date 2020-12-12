@@ -29,7 +29,10 @@ export default function TypedText({
       {active && (
         <Text as={as}>
           {current}
-          {markerActive && <TypeMarker blink={!isTyping && isDone} />}
+          <TypeMarker
+            active={markerActive}
+            blink={markerActive && !isTyping && isDone}
+          />
         </Text>
       )}
     </Container>

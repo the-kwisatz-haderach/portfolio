@@ -65,83 +65,48 @@ export const TextWrapper = styled.div`
   }
 `
 
-export const DescriptionContainer = styled.div`
-  position: relative;
-  font-size: 1em;
-  line-height: 1em;
-  @media only screen and (min-width: 500px) {
-    font-size: 1.3em;
-    line-height: 1.4em;
-  }
-  @media only screen and (min-width: 1200px) {
-    font-size: 1.8em;
-    line-height: 1.4em;
-  }
-`
-
 export const HeadingContainer = styled.div`
-  position: relative;
-  margin-bottom: 2em;
-  font-size: 1.2em;
-  @media only screen and (min-width: 500px) {
-    font-size: 1.7em;
-  }
-  @media only screen and (min-width: 1200px) {
-    font-size: 2em;
-  }
-  @media only screen and (min-width: 1400px) {
-    font-size: 3em;
-  }
-`
-
-export const Heading = styled.h1`
-  display: block;
-  margin: 0;
-  position: ${props => (props.absolute ? 'absolute' : 'static')};
-  top: 0;
-  left: 0;
-  line-height: 0.5;
-`
-
-export const HiddenHeading = styled.h1`
-  display: block;
-  margin: 0;
-  visibility: hidden;
-  line-height: 0.5;
-`
-
-export const HiddenDescription = styled.p`
-  visibility: hidden;
-`
-
-export const Description = styled.p`
-  position: ${props => (props.absolute ? 'absolute' : 'static')};
-  top: 0;
-  left: 0;
-`
-
-export const TypeMarker = styled.span`
-  visibility: ${props => (props.hide ? 'hidden' : 'visible')};
-  position: relative;
-  width: 0;
-  height: 0;
-  &::before {
-    content: '|';
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    animation: ${props =>
-      props.blink ? 'blink 0.8s linear infinite' : 'none'};
-  }
-  @keyframes blink {
-    0% {
-      visibility: hidden;
+  margin-bottom: 1em;
+  &&& > * {
+    font-size: 1.2em;
+    @media only screen and (min-width: 500px) {
+      font-size: 1.7em;
     }
-    50% {
-      visibility: hidden;
+    @media only screen and (min-width: 1200px) {
+      font-size: 2em;
     }
-    100% {
-      visibility: visible;
+    @media only screen and (min-width: 1400px) {
+      font-size: 3em;
     }
+  }
+`
+
+export const DescriptionContainer = styled.div`
+  margin-bottom: 3em;
+  &&& > * {
+    font-size: 1em;
+    @media only screen and (min-width: 500px) {
+      font-size: 1.3em;
+    }
+    @media only screen and (min-width: 1200px) {
+      font-size: 1.8em;
+    }
+  }
+`
+
+export const DarkModeContainerSelector = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const DarkModeLabel = styled.p`
+  margin-left: 1.5em;
+  font-size: 1em;
+  font-weight: 600;
+  @media only screen and (min-width: 425px) {
+    font-size: 1.2em;
+  }
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.5em;
   }
 `
