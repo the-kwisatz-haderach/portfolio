@@ -12,6 +12,7 @@ export default function PageHeaderContainer() {
   const [canHeaderStart, setCanHeaderStart] = useState(false)
   const [headerIsDone, setHeaderIsDone] = useState(false)
   const [visits] = useLocalStorage('visits')
+  const [, setStoredTheme] = useLocalStorage('theme')
   const { setTheme, theme } = useTheme()
 
   const heading = +visits > 0 ? 'Welcome Back.' : 'Welcome.'
@@ -37,8 +38,10 @@ export default function PageHeaderContainer() {
   const onSetTheme = () => {
     if (theme === 'main') {
       setTheme('dark')
+      setStoredTheme('dark')
     } else {
       setTheme('main')
+      setStoredTheme('main')
     }
   }
 

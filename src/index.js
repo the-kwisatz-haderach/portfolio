@@ -6,11 +6,4 @@ import 'animate.css'
 import './styles/fonts.scss'
 import './favicon.ico'
 
-ReactDOM.render(
-  <App
-    style={{
-      height: '100vh'
-    }}
-  />,
-  document.getElementById('app')
-)
+ReactDOM.render(<App />, document.getElementById('app'))

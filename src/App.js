@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Theme>
+      <Theme theme={storedTheme}>
         <Routes />
       </Theme>
     </BrowserRouter>
