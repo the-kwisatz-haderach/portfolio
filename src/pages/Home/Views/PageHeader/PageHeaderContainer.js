@@ -4,12 +4,8 @@ import useElementScrollTop from '../../../../Hooks/useElementScrollTop'
 import useLocalStorage from '../../../../Hooks/useLocalStorage'
 import PageHeader from './PageHeader'
 
-const description = isReturnVisit => {
-  if (isReturnVisit) {
-    return "Looks like you've been here before."
-  }
-  return "You found my personal website! That means Google's probably having a bad day. Or you're actually looking for information about me. In that case, you'll find some of that further down."
-}
+const description =
+  "This is my personal space. There's currently not much going on here but if you're looking for information about me this is the place. More content is added sporadically."
 
 export default function PageHeaderContainer() {
   const [headerRef, headerIsVisible] = useElementScrollTop()
@@ -26,7 +22,7 @@ export default function PageHeaderContainer() {
   )
 
   const [slowlyTypedDescription, isDoneTypingDescription] = useTypedMessage(
-    description(+visits > 0),
+    description,
     60,
     headerIsDone
   )
@@ -36,7 +32,7 @@ export default function PageHeaderContainer() {
     if (headerIsVisible) {
       timer = setTimeout(() => {
         setCanHeaderStart(true)
-      }, 1500)
+      }, 1000)
     }
     return () => {
       clearTimeout(timer)
@@ -61,7 +57,7 @@ export default function PageHeaderContainer() {
       heading={heading}
       slowlyTypedHeading={slowlyTypedHeading}
       isDoneTypingHeading={isDoneTypingHeading}
-      description={description()}
+      description={description}
       slowlyTypedDescription={slowlyTypedDescription}
       isDoneTypingDescription={isDoneTypingDescription}
       headerIsDone={headerIsDone}
