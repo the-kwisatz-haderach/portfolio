@@ -13,8 +13,8 @@ export const Switch = styled.div`
   height: 50px;
   border-radius: 50%;
   position: relative;
-  bottom: 6px;
-  right: 8px;
+  bottom: 5px;
+  right: 5px;
   transition: transform 0.2s ease-in-out;
   transform: translateX(${props => (props.isActive ? 100 : 0)}%);
   background: linear-gradient(35deg, #e8e8e8, #232323);

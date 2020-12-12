@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 const useTypedMessage = (message, interval = 100, startTyping = true) => {
   const [typedMessage, setTypedMessage] = useState('')
+  const [isTyping, setIsTyping] = useState(false)
   const [isDone, setIsDone] = useState(false)
   const originalMessage = useRef(message)
   const messageIndex = useRef(0)
@@ -10,6 +11,9 @@ const useTypedMessage = (message, interval = 100, startTyping = true) => {
   useEffect(() => {
     let addIncrementally
     if (startTyping) {
+      if (!isTyping) {
+        setIsTyping(true)
+      }
       addIncrementally = setInterval(() => {
         if (messageIndex.current < characters.length) {
           setTypedMessage(
@@ -20,6 +24,7 @@ const useTypedMessage = (message, interval = 100, startTyping = true) => {
         if (messageIndex.current >= characters.length) {
           clearInterval(addIncrementally)
           setIsDone(true)
+          setIsTyping(false)
         }
       }, interval)
     }
@@ -31,7 +36,11 @@ const useTypedMessage = (message, interval = 100, startTyping = true) => {
     }
   }, [message, startTyping])
 
-  return [typedMessage, isDone]
+  return {
+    current: typedMessage,
+    isDone,
+    isTyping
+  }
 }
 
 export default useTypedMessage

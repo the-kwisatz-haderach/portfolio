@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const useLocalStorage = property => {
+const useLocalStorage = (property, options) => {
   const [localStorageValue, setLocalStorageValue] = useState(
     localStorage.getItem(property)
   )

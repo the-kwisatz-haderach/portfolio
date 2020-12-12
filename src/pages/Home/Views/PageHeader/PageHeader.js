@@ -1,53 +1,40 @@
 import React, { forwardRef } from 'react'
-import {
-  Container,
-  Heading,
-  HiddenHeading,
-  Description,
-  HiddenDescription,
-  DescriptionContainer,
-  HeadingContainer,
-  TypeMarker,
-  TextWrapper
-} from './style'
+import Toggle from '../../../../Components/Toggle/Toggle'
+import TypedText from '../../../../Components/TypedText'
+import { Container, TextWrapper } from './style'
 
 const PageHeader = forwardRef(
   (
     {
       heading,
-      slowlyTypedHeading,
-      isDoneTypingHeading,
       description,
-      slowlyTypedDescription,
-      isDoneTypingDescription,
       headerIsDone,
-      canHeaderStart
+      canHeaderStart,
+      onCompleteTypingHeading,
+      onSetTheme
     },
     headerRef
   ) => {
     return (
       <Container ref={headerRef}>
         <TextWrapper>
-          <HeadingContainer>
-            <HiddenHeading>{heading}</HiddenHeading>
-            <Heading absolute>
-              {slowlyTypedHeading}
-              <TypeMarker
-                hide={headerIsDone || !canHeaderStart}
-                blink={!headerIsDone && isDoneTypingHeading}
-              />
-            </Heading>
-          </HeadingContainer>
-          <DescriptionContainer>
-            <HiddenDescription>{description}</HiddenDescription>
-            <Description absolute>
-              {slowlyTypedDescription}
-              <TypeMarker
-                hide={!headerIsDone}
-                blink={isDoneTypingDescription}
-              />
-            </Description>
-          </DescriptionContainer>
+          <TypedText
+            as="h1"
+            className="page-title"
+            active={canHeaderStart}
+            onCompleteTyping={onCompleteTypingHeading}
+            markerActive={!headerIsDone}
+          >
+            {heading}
+          </TypedText>
+          <TypedText
+            className="page-description"
+            active={headerIsDone}
+            markerActive={headerIsDone}
+          >
+            {description}
+          </TypedText>
+          <Toggle icon="fas fa-moon" onClick={onSetTheme} />
         </TextWrapper>
       </Container>
     )

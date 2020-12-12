@@ -54,9 +54,6 @@ export const TextWrapper = styled.div`
   background-color: ${props => props.theme.colors.primary};
   clip-path: inset(0% 0%);
   justify-content: flex-start;
-  & div {
-    width: 100%;
-  }
   @media only screen and (min-width: 768px) {
     padding: 3em;
   }

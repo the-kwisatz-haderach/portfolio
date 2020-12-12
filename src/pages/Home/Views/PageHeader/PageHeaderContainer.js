@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import useTypedMessage from '../../../../Hooks/useTypedMessage'
 import useElementScrollTop from '../../../../Hooks/useElementScrollTop'
 import useLocalStorage from '../../../../Hooks/useLocalStorage'
 import PageHeader from './PageHeader'
+import { useTheme } from '../../../../Contexts/Theme'
 
 const description =
   "This is my personal space. There's currently not much going on here but if you're looking for information about me this is the place. More content is added sporadically."
@@ -12,20 +12,15 @@ export default function PageHeaderContainer() {
   const [canHeaderStart, setCanHeaderStart] = useState(false)
   const [headerIsDone, setHeaderIsDone] = useState(false)
   const [visits] = useLocalStorage('visits')
+  const { setTheme, theme } = useTheme()
 
   const heading = +visits > 0 ? 'Welcome Back.' : 'Welcome.'
 
-  const [slowlyTypedHeading, isDoneTypingHeading] = useTypedMessage(
-    heading,
-    70,
-    canHeaderStart
-  )
-
-  const [slowlyTypedDescription, isDoneTypingDescription] = useTypedMessage(
-    description,
-    60,
-    headerIsDone
-  )
+  const onCompleteTypingHeading = () => {
+    setTimeout(() => {
+      setHeaderIsDone(true)
+    }, 2000)
+  }
 
   useEffect(() => {
     let timer
@@ -39,29 +34,23 @@ export default function PageHeaderContainer() {
     }
   }, [headerIsVisible])
 
-  useEffect(() => {
-    let timer
-    if (isDoneTypingHeading) {
-      timer = setTimeout(() => {
-        setHeaderIsDone(true)
-      }, 2000)
+  const onSetTheme = () => {
+    if (theme === 'main') {
+      setTheme('dark')
+    } else {
+      setTheme('main')
     }
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [isDoneTypingHeading])
+  }
 
   return (
     <PageHeader
       ref={headerRef}
       heading={heading}
-      slowlyTypedHeading={slowlyTypedHeading}
-      isDoneTypingHeading={isDoneTypingHeading}
       description={description}
-      slowlyTypedDescription={slowlyTypedDescription}
-      isDoneTypingDescription={isDoneTypingDescription}
       headerIsDone={headerIsDone}
       canHeaderStart={canHeaderStart}
+      onSetTheme={onSetTheme}
+      onCompleteTypingHeading={onCompleteTypingHeading}
     />
   )
 }
