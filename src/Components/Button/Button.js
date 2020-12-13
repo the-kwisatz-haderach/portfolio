@@ -16,11 +16,11 @@ const StyledButton = styled.button`
     background-color: black;
     color: white;
   }
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 120px;
     height: 60px;
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     width: 140px;
     height: 80px;
   }

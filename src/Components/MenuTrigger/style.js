@@ -7,14 +7,14 @@ export const ButtonContainer = styled.div`
   right: 10px;
   transform: translateY(${props => (props.hide ? -100 : 0)}%);
   transition: transform 0.5s ease-in-out;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     right: 20px;
   }
 `
 
 export const StyledIcon = styled.i`
   font-size: 1.5em;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 2em;
   }
 `
@@ -22,7 +22,7 @@ export const StyledIcon = styled.i`
 export const StyledP = styled.p`
   font-weight: 900;
   font-size: 0.8em;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 1em;
   }
 `

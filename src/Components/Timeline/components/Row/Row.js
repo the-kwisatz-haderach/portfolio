@@ -13,7 +13,7 @@ import {
 } from './style'
 
 const Row = ({ entry, rowIndex, onReachRow }) => {
-  const [rowRef, reachedRow] = useElementScrollTop(1.0, '0px 0px -20% 0px')
+  const [rowRef, reachedRow] = useElementScrollTop(1.0)
 
   useEffect(() => {
     if (reachedRow) {
@@ -22,8 +22,8 @@ const Row = ({ entry, rowIndex, onReachRow }) => {
   }, [reachedRow])
 
   return (
-    <TimeLineContent>
-      <TimelineRow ref={rowRef}>
+    <TimeLineContent ref={rowRef}>
+      <TimelineRow>
         <TimelineColumn>
           <ConnectingLine className={reachedRow && 'widen'} />
           <div

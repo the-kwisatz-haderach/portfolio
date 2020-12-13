@@ -27,7 +27,7 @@ export const Container = styled.section`
     width: 100%;
     background: linear-gradient(0deg, black 0%, transparent);
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     &::before {
       left: 20%;
       height: 100%;
@@ -54,10 +54,10 @@ export const TextWrapper = styled.div`
   background-color: ${props => props.theme.colors.primary};
   clip-path: inset(0% 0%);
   justify-content: flex-start;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     padding: 3em;
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     height: 100%;
     width: 45%;
     padding: 4em;
@@ -66,31 +66,32 @@ export const TextWrapper = styled.div`
 `
 
 export const HeadingContainer = styled.div`
-  margin-bottom: 1em;
+  margin-bottom: 0.8em;
   &&& > * {
-    font-size: 1.2em;
-    @media only screen and (min-width: 500px) {
+    font-size: 1em;
+    @media screen and (min-width: 500px) {
       font-size: 1.7em;
     }
-    @media only screen and (min-width: 1200px) {
+    @media screen and (min-width: 1200px) {
       font-size: 2em;
     }
-    @media only screen and (min-width: 1400px) {
+    @media screen and (min-width: 1400px) {
       font-size: 3em;
     }
   }
 `
 
 export const DescriptionContainer = styled.div`
-  margin-bottom: 3em;
+  margin-bottom: 1.5em;
   &&& > * {
-    font-size: 1em;
-    @media only screen and (min-width: 500px) {
-      font-size: 1.3em;
-    }
-    @media only screen and (min-width: 1200px) {
-      font-size: 1.8em;
-    }
+    font-size: 0.8em;
+  }
+  @media screen and (min-width: 500px) {
+    font-size: 1.3em;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 3em;
+    font-size: 1.8em;
   }
 `
 
@@ -103,10 +104,10 @@ export const DarkModeLabel = styled.p`
   margin-left: 1.5em;
   font-size: 1em;
   font-weight: 600;
-  @media only screen and (min-width: 425px) {
+  @media screen and (min-width: 425px) {
     font-size: 1.2em;
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     font-size: 1.5em;
   }
 `

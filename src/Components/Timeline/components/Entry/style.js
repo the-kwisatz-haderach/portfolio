@@ -5,7 +5,7 @@ export const Container = styled.div`
   position: relative;
   padding: 1.5em;
   background-color: ${props => props.theme.colors.foundation};
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     border: 1px solid #0000001f;
     border-radius: 3px;
     box-shadow: 3px 3px 14px 3px #0000000d;
@@ -15,14 +15,14 @@ export const Container = styled.div`
 
 export const TextContainer = styled.div`
   margin: 0 10px;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     margin: 0 20px;
   }
 `
 export const Logo = styled.img`
   width: 50px;
   height: 50px;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     position: relative;
     top: 4px;
   }
@@ -32,7 +32,7 @@ export const Title = styled.h3`
   margin: 0;
   font-size: 1em;
   margin-bottom: 0.4em;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 1.5em;
   }
 `
@@ -40,7 +40,7 @@ export const Title = styled.h3`
 export const SubTitle = styled.p`
   color: ${props => props.theme.colors.tertiaryFoundation};
   font-size: 0.7em;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     margin-bottom: 1em;
     font-size: 0.9em;
   }
@@ -55,13 +55,13 @@ export const Description = styled.p`
   position: relative;
   font-size: 0.8em;
   margin-top: 1em;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     margin-top: 0;
     max-height: 4em;
     font-size: 0.9em;
     text-align: justify;
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     font-size: 1em;
   }
 `

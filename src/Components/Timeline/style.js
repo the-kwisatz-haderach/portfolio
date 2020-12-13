@@ -31,7 +31,7 @@ export const Line = styled.span`
   &::after {
     bottom: -3px;
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     display: block;
     left: calc(50% - 2px);
     width: 4px;
@@ -58,7 +58,7 @@ export const TimelineStart = styled.div`
   top: 55%;
   pointer-events: none;
   z-index: 1;
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     display: block;
   }
 `
@@ -66,7 +66,7 @@ export const TimelineStart = styled.div`
 export const TimelineSticky = styled.i`
   position: relative;
   top: 8px;
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     left: 0;
     font-size: 4em;
   }

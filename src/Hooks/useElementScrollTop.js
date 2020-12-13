@@ -9,7 +9,9 @@ const useElementScrollTop = (
   rootMargin = '0px',
   options = defaultOptions
 ) => {
-  const [hasReached, setHasReached] = useState(false)
+  const [hasReached, setHasReached] = useState(
+    window.screen.width <= 1024 || false
+  )
   const ref = useRef(null)
 
   const observer = useRef(
@@ -18,12 +20,12 @@ const useElementScrollTop = (
         let prevRatio = 0
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            return setHasReached(true)
+            setHasReached(true)
+          } else if (entry.intersectionRatio > prevRatio) {
+            setHasReached(false)
+          } else {
+            prevRatio = entry.intersectionRatio
           }
-          if (entry.intersectionRatio > prevRatio) {
-            return setHasReached(false)
-          }
-          prevRatio = entry.intersectionRatio
         })
       },
       {
@@ -40,13 +42,13 @@ const useElementScrollTop = (
   }, [hasReached])
 
   useEffect(() => {
-    if (ref.current) {
+    if (!hasReached && ref.current) {
       observer.current.observe(ref.current)
     }
     return () => {
       observer.current.disconnect()
     }
-  }, [ref])
+  }, [ref, hasReached])
 
   return [ref, hasReached]
 }

@@ -10,7 +10,7 @@ export const TimelineContainer = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     margin-bottom: 4em;
   }
 `

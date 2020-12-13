@@ -9,7 +9,7 @@ export const DateMarker = styled.div`
   justify-content: center;
   align-items: center;
   color: ${props => props.theme.colors.foundation};
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     clip-path: polygon(50% 100%, 100% 50%, 50% 0%, 0% 50%, 50% 100%);
     width: 100px;
     height: 100px;
@@ -27,7 +27,7 @@ export const ConnectingLine = styled.div`
   border-top: 4px solid ${props => props.theme.colors.foundationDetail};
   width: 0px;
   transform-origin: right;
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     display: block;
   }
 `
@@ -41,14 +41,14 @@ export const SkillsList = styled.div`
   & > * {
     margin-bottom: 1em;
   }
-  @media only screen and (min-width: 425px) {
+  @media screen and (min-width: 425px) {
     margin-bottom: 1em;
     & > * {
       margin-bottom: 0;
     }
     flex-direction: row;
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     padding: 0;
   }
 `
@@ -60,12 +60,12 @@ export const TimelineColumn = styled.div`
   &:nth-child(2) {
     order: -1;
   }
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     &:not(:nth-child(2)) {
       padding: 2em;
     }
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     &:not(:nth-child(2)) {
       padding: 0;
     }
@@ -98,7 +98,7 @@ export const TimeLineContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     &:nth-child(odd) {
       background-color: ${props => props.theme.colors.tertiaryFoundation};
     }

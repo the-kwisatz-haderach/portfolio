@@ -7,7 +7,7 @@ export const ContentContainer = styled.div`
   flex-flow: column wrap;
   justify-content: space-between;
   align-items: center;
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     flex-flow: row nowrap;
   }
 `
@@ -15,10 +15,10 @@ export const ContentContainer = styled.div`
 export const StyledIcon = styled.i`
   font-size: 3em;
   margin-bottom: 0.4em;
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 4em;
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     font-size: 5em;
   }
 `
@@ -51,7 +51,7 @@ export const Clickable = styled.a`
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     height: 30vh;
     width: 30vh;
   }
@@ -80,10 +80,10 @@ export const LabelContainer = styled.div`
       transform: translateX(0%);
     }
   }
-  @media only screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 2.5em;
   }
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     font-size: 3em;
     &::before {
       animation: none;
@@ -99,7 +99,7 @@ export const LabelContainer = styled.div`
 export const StyledLabel = styled.h3`
   margin: 0;
   transform: translateX(-20px);
-  @media only screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
     transform: translateX(0);
     transition: transform 0.2s ease-in-out;
     ${Clickable}:hover & {

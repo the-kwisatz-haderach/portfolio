@@ -26,13 +26,13 @@ div {
   h1 {
     margin-bottom: 2em;
     font-size: 1.2em;
-    @media only screen and (min-width: 500px) {
+    @media screen and (min-width: 500px) {
         font-size: 1.7em;
     }
-    @media only screen and (min-width: 1200px) {
+    @media screen and (min-width: 1200px) {
         font-size: 2em;
     }
-    @media only screen and (min-width: 1400px) {
+    @media screen and (min-width: 1400px) {
         font-size: 3em;
     }
   }
